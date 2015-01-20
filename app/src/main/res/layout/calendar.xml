@@ -15,13 +15,13 @@
         android:id="@+id/topBarWrapper"
         android:layout_width="fill_parent"
         android:layout_height="100dp"
-        android:text="123"
-        android:gravity="right"
+        android:text="Русский Тест"
+        android:gravity="right|center"
         android:padding="5dp"
-        android:textSize="70sp"
+        android:textSize="30sp"
 
         android:textColor="@color/white"
-        android:background="#33B5E5"
+        android:background="@color/mainBlue"
         />
 
         <TextView
@@ -40,6 +40,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/circle_green"
             android:layout_below="@id/topBarWrapper"
             android:layout_marginTop="-15dp"
             android:layout_toLeftOf="@id/circle_red"

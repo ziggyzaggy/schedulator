@@ -32,6 +32,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -150,7 +151,23 @@ public class CalendarView extends Activity {
             }
         });
 
+        //clikc listeners of green circle
+        TextView greenCircle = (TextView) findViewById(R.id.circle_green);
+        greenCircle.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Green circle clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
+        //clikc listeners of red circle
+        TextView redCircle = (TextView) findViewById(R.id.circle_red);
+        redCircle.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Red circle clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 	}
 
 
