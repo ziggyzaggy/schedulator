@@ -32,7 +32,7 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 public class CalendarAdapter extends BaseAdapter {
-	static final int FIRST_DAY_OF_WEEK =0; // Sunday = 0, Monday = 1
+	static final int FIRST_DAY_OF_WEEK = 1; // Sunday = 0, Monday = 1
 	
 	
 	private Context mContext;
@@ -171,7 +171,7 @@ public class CalendarAdapter extends BaseAdapter {
         
         // figure size of the array
         if(firstDay==1){
-        	days = new String[lastDay+(FIRST_DAY_OF_WEEK*6)];
+        	days = new String[lastDay+(FIRST_DAY_OF_WEEK*6)+7];
         }
         else {
         	//days = new String[lastDay+firstDay-(FIRST_DAY_OF_WEEK+1)];
@@ -187,14 +187,14 @@ public class CalendarAdapter extends BaseAdapter {
 	        }
         }
 	    else {
-	    	for(j=0;j<FIRST_DAY_OF_WEEK*6+7;j++) {
+	    	for(j=0;j<FIRST_DAY_OF_WEEK*13;j++) {
 	        	days[j] = "";
 	        }
-	    	j=FIRST_DAY_OF_WEEK*6+8; // sunday => 1, monday => 7 //orig.j=FIRST_DAY_OF_WEEK*6+1
+	    	j=FIRST_DAY_OF_WEEK*6+8; // sunday => 2, monday => 8 //orig.j=FIRST_DAY_OF_WEEK*6+1
 	    }
 
         //array of headers
-        String[] headers = new String[] {"Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"};
+        String[] headers = new String[] {"Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"};
 
 
         //populate day headers
