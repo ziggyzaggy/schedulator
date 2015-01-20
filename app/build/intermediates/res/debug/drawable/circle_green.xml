@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <solid
+        android:color="#669900"/>
+
+    <size
+        android:width="30dp"
+        android:height="30dp"/>
+</shape><!-- From: file:/C:/Users/kristjan/Aprojects/calendar%2019012015%20-%20corrupted%20itemlistener/calendar%20experimental%2016012015/CalendarView-master1/app/src/main/res/drawable/circle_green.xml -->

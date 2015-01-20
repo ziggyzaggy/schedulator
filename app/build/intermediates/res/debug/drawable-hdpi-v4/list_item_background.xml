@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+    	  android:drawable="@drawable/item_background_focused"
+          android:state_pressed="true" />
+    <item 
+    	  android:drawable="@drawable/item_background_focused"
+          android:state_focused="true" />
+    <item  
+     	  android:drawable="@drawable/item_background" />
+</selector><!-- From: file:/C:/Users/kristjan/Aprojects/calendar%2019012015%20-%20corrupted%20itemlistener/calendar%20experimental%2016012015/CalendarView-master1/app/src/main/res/drawable-hdpi/list_item_background.xml -->
