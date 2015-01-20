@@ -17,10 +17,12 @@
 package com.examples.android.calendar;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.view.DragEvent;
 import android.view.SoundEffectConstants;
 import android.view.View;
@@ -98,40 +100,18 @@ public class CalendarView extends Activity {
 
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 		    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                //loop through all children of the gridview and set them to a colour
-                //else, the previously selected items will stay as chosen colors - something we don't wanna happen
-                int childCount = gridview.getChildCount();
-                for(int i = 0; i < childCount; i++){
-                    TextView tv =(TextView) gridview.getChildAt(i).findViewById(R.id.date);
-                    tv.setTextColor(Color.parseColor("#7a7a7a"));
+                TextView date = (TextView)v.findViewById(R.id.date);
 
-                    gridview.getChildAt(i).setBackgroundResource(R.drawable.back);
+                String dateText = date.getText().toString();
+                boolean isNum = tryParse(dateText);
+
+                if(date instanceof TextView && !date.getText().equals("") && isNum ) {
+                    setSelectedBackground(v, gridview);
                 }
-                //set the date text color of the clicked item
-		    	TextView date = (TextView)v.findViewById(R.id.date);
-		        date.setTextColor(Color.WHITE);
-                v.setBackgroundResource(R.drawable.back_selected);
-
 		    }
 		});
 
-        //obsolete ignore
-        /*
-        gridview.setOnDragListener(new View.OnDragListener() {
-            @Override
-            public boolean onDrag(View v, DragEvent event) {
-                TextView tvcoords = (TextView) v.findViewById(R.id.xycoords);
-                switch (event.getAction()){
-                    case DragEvent.ACTION_DRAG_STARTED:
-                        tvcoords.setText(" x - " + event.getX());
 
-                    break;
-                }
-
-                return false;
-            }
-        });
-        */
         gridview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
@@ -141,7 +121,13 @@ public class CalendarView extends Activity {
                 String dateText = date.getText().toString();
                 boolean isNum = tryParse(dateText);
 
-                if(date instanceof TextView && !date.getText().equals("") ) {
+
+                if(date instanceof TextView && !date.getText().equals("") && isNum ) {
+
+
+                    setSelectedBackground(v, gridview);
+
+
 
                     Intent intent = new Intent();
                     String day = date.getText().toString();
@@ -152,6 +138,9 @@ public class CalendarView extends Activity {
                     intent.putExtra("date", android.text.format.DateFormat.format("yyyy-MM", month)+"-"+day);
                     setResult(RESULT_OK, intent);
                     v.playSoundEffect(SoundEffectConstants.CLICK);
+                    //TODO - TEST ON DEVICES WITH NO VIBR
+                    Vibrator vibr = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    vibr.vibrate(20); //vibrate for whatever millis
                     finish();
                 }
 
@@ -163,6 +152,24 @@ public class CalendarView extends Activity {
 
 
 	}
+
+
+    //set background color to selected view in the gridview, set to defaults the non selected items
+    private void setSelectedBackground(View v, GridView gridview ){
+        //loop through all children of the gridview and set them to a colour
+        //else, the previously selected items will stay as chosen colors - something we don't wanna happen
+                int childCount = gridview.getChildCount();
+                for(int i = 0; i < childCount; i++){
+                    TextView tv =(TextView) gridview.getChildAt(i).findViewById(R.id.date);
+                    tv.setTextColor(Color.parseColor("#7a7a7a"));
+
+                    gridview.getChildAt(i).setBackgroundResource(R.drawable.back);
+                }
+                //set the date text color of the clicked item
+		    	TextView date = (TextView)v.findViewById(R.id.date);
+		        date.setTextColor(Color.WHITE);
+                v.setBackgroundResource(R.drawable.back_selected);
+    }
 
     //a simple implementation of C# tryparse() function,
     //returns true if string can be parsed into integer
