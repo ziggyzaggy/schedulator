@@ -6,5 +6,6 @@
     <color name="text_color">#31D1F1</color>
 	<color name="white">#ffffff</color>
     <color name="mainBlue">#33B5E5</color>
+    <color name="mainRed">#CC0000</color>
 	<string name="open">Open</string>
 </resources>

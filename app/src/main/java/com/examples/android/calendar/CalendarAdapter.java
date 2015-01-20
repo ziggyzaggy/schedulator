@@ -26,6 +26,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Dictionary;
@@ -146,18 +148,17 @@ public class CalendarAdapter extends BaseAdapter {
 
 
         //customize headers
-        /*
+
         for(int i = 0; i < 7; i++){
+            //set mon-friday
             if(position == i) {
-
-
-                v.setBackgroundResource(R.drawable.back_selected); //remove back from empty days
-
-                dayView.setClickable(false);
-                dayView.setFocusable(false);
-                v.setClickable(false);
+                dayView.setTextColor(mContext.getResources().getColor(R.color.mainBlue));
+                //set sat, sun
+                if(i == 5 || i ==6){
+                    dayView.setTextColor(mContext.getResources().getColor(R.color.mainRed));
+                }
             }
-        }*/
+        }
         return v;
     }
     

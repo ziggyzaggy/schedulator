@@ -12,8 +12,9 @@ public final class R {
     }
     public static final class color {
         public static final int mainBlue=0x7f040000;
-        public static final int text_color=0x7f040001;
-        public static final int white=0x7f040002;
+        public static final int mainRed=0x7f040001;
+        public static final int text_color=0x7f040002;
+        public static final int white=0x7f040003;
     }
     public static final class drawable {
         public static final int back=0x7f020000;
