@@ -225,7 +225,7 @@ public class CalendarView extends Activity {
 		public void run() {
 			items.clear();
 			// format random values. You can implement a dedicated class to provide real values
-			for(int i=0;i<31;i++) {
+		/*	for(int i=0;i<31;i++) {
 				Random r = new Random();
 				
 				if(r.nextInt(10)>6)
@@ -235,7 +235,10 @@ public class CalendarView extends Activity {
                     //generate number of events into the events hashtable
                     events.put(Integer.toString(i), Integer.toString(i+20));
 				}
-			}
+			}*/
+
+            items.add(Integer.toString(20));
+            events.put("20", "3");
 
 
             headerTitles.add("Sun");
