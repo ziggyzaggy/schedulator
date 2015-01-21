@@ -26,6 +26,8 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ENTITIES.Event;
+
 public class CalendarViewSampleActivity extends Activity {
     /** Called when the activity is first created. */
     
@@ -51,6 +53,7 @@ public class CalendarViewSampleActivity extends Activity {
 			}
 		});
     }
+
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {

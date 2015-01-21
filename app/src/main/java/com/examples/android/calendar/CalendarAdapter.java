@@ -150,9 +150,12 @@ public class CalendarAdapter extends BaseAdapter {
         for(int i = 0; i < 7; i++){
             //set mon-friday
             if(position == i) {
+                //set generic header background resources
+                dayView.setTextSize(25);
+                iw.setVisibility(View.GONE); //remove the date_icons from headers (GONE doesn't take up the space for the element)
                 dayView.setTextColor(mContext.getResources().getColor(R.color.mainBlue));
                 //set sat, sun
-                if(i == 5 || i ==6){
+                if(i == 5 || i == 6){
                     dayView.setTextColor(mContext.getResources().getColor(R.color.mainRed));
                 }
             }

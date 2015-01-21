@@ -29,16 +29,17 @@ public final class R {
         public static final int list_item_background=0x7f020009;
     }
     public static final class id {
+        public static final int cal_item_layout=0x7f060009;
         public static final int circle_green=0x7f060003;
         public static final int circle_red=0x7f060002;
-        public static final int date=0x7f060009;
-        public static final int dateHeaderText=0x7f06000b;
-        public static final int datePicker1=0x7f06000c;
-        public static final int date_icon=0x7f06000a;
+        public static final int date=0x7f06000a;
+        public static final int dateHeaderText=0x7f06000c;
+        public static final int datePicker1=0x7f06000d;
+        public static final int date_icon=0x7f06000b;
         public static final int gridview=0x7f060008;
         public static final int header=0x7f060004;
         public static final int next=0x7f060007;
-        public static final int openButton=0x7f06000d;
+        public static final int openButton=0x7f06000e;
         public static final int previous=0x7f060005;
         public static final int title=0x7f060006;
         public static final int topBarWrapper=0x7f060000;

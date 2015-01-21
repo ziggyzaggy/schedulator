@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cal_item_layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="0dip"
@@ -12,7 +13,7 @@
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 
-		    android:textSize="25sp"
+		    android:textSize="20sp"
 		    android:textStyle="normal"
 		    android:textColor="#f2f2f2"
 		    >

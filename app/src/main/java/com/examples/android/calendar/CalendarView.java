@@ -105,6 +105,7 @@ public class CalendarView extends Activity {
 		    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 TextView date = (TextView)v.findViewById(R.id.date);
 
+
                 String dateText = date.getText().toString();
                 boolean isNum = tryParse(dateText);
 
