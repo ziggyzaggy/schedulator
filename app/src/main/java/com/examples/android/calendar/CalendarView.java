@@ -34,8 +34,10 @@ import android.widget.TextView;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Random;
@@ -108,6 +110,14 @@ public class CalendarView extends Activity {
 
                 if(date instanceof TextView && !date.getText().equals("") && isNum ) {
                     setSelectedBackground(v, gridview);
+
+                    Calendar d = Calendar.getInstance();
+                    d.set(month.get(Calendar.YEAR), month.get(Calendar.MONTH), Integer.parseInt(dateText));
+                    //d.setFirstDayOfWeek(Calendar.MONDAY); //NOTE set this to ignore locale and instead use mondays as first day of week on all locales
+                    int ddd = d.get(Calendar.WEEK_OF_MONTH);
+                    TextView weekText = (TextView) findViewById(R.id.weekText);
+                    weekText.setText("Week " + ddd);
+
                 }
 		    }
 		});
@@ -117,7 +127,6 @@ public class CalendarView extends Activity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
                 TextView date = (TextView)v.findViewById(R.id.date);
-               // int parseint = Integer.parseInt(date.getText().toString()); //parse date text into an integer for future comparisons
                 //use tryparse to determine if the selected item is actually a date
                 String dateText = date.getText().toString();
                 boolean isNum = tryParse(dateText);
@@ -127,7 +136,6 @@ public class CalendarView extends Activity {
 
 
                     setSelectedBackground(v, gridview);
-
 
 
                     Intent intent = new Intent();
@@ -143,6 +151,10 @@ public class CalendarView extends Activity {
                     Vibrator vibr = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     vibr.vibrate(20); //vibrate for whatever millis
                     finish();
+
+
+
+
                 }
 
 
@@ -175,8 +187,9 @@ public class CalendarView extends Activity {
     private void setSelectedBackground(View v, GridView gridview ){
         //loop through all children of the gridview and set them to a colour
         //else, the previously selected items will stay as chosen colors - something we don't wanna happen
+        //(ignore first 7 elements as these are day headers)
                 int childCount = gridview.getChildCount();
-                for(int i = 0; i < childCount; i++){
+                for(int i = 7; i < childCount; i++){
                     TextView tv =(TextView) gridview.getChildAt(i).findViewById(R.id.date);
                     tv.setTextColor(Color.parseColor("#7a7a7a"));
 
@@ -236,7 +249,7 @@ public class CalendarView extends Activity {
                     events.put(Integer.toString(i), Integer.toString(i+20));
 				}
 			}*/
-
+            //concrete days with number of events
             items.add(Integer.toString(20));
             events.put("20", "3");
 
