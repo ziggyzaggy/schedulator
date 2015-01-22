@@ -255,7 +255,7 @@ public class CalendarView extends Activity {
             events.put("20", "3");
 
 
-            headerTitles.add("Sun");
+            headerTitles.add("Sunn");
             headerTitles.add("Mon");
             headerTitles.add("Tue");
             headerTitles.add("Wed");
