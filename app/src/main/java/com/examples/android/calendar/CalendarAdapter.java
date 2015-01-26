@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.Map;
 
 public class CalendarAdapter extends BaseAdapter {
 	static final int FIRST_DAY_OF_WEEK = 1; // Sunday = 0, Monday = 1
@@ -40,7 +41,7 @@ public class CalendarAdapter extends BaseAdapter {
     private java.util.Calendar month;
     private Calendar selectedDate;
     private ArrayList<String> items;
-    private Dictionary<String, String> events;
+    private Dictionary<String, Hashtable<String, String>> events;
     private ArrayList<String> headerTitles;
     
     public CalendarAdapter(Context c, Calendar monthCalendar) {
@@ -49,18 +50,19 @@ public class CalendarAdapter extends BaseAdapter {
     	mContext = c;
         month.set(Calendar.DAY_OF_MONTH, 1);
         this.items = new ArrayList<String>();
-        this.events = new Hashtable<String, String>();
+        this.events = new Hashtable<String, Hashtable<String, String>>();
         this.headerTitles = new ArrayList<>();
         refreshDays();
     }
     
-    public void setItems(ArrayList<String> items, Dictionary<String, String> events, ArrayList<String> headerTitles) {
-        //works
-    	for(int i = 0;i != items.size();i++){
-    		if(items.get(i).length()==1) {
-    		items.set(i, "0" + items.get(i));
-    		}
-    	}
+    public void setItems(ArrayList<String> items, Dictionary<String, Hashtable<String, String>> events, ArrayList<String> headerTitles) {
+       /* for(int i = 0;i != events.size();i++){
+            for(int j = 0; j < events.get(i).size(); j++){
+                if(events.get(i).get(j).length() == 1){
+                    events.get(i).put(Integer.toString(j), events.get(i).get(j));
+                }
+            }
+        }*/
     	this.items = items;
         this.events = events;
         this.headerTitles = headerTitles;
@@ -139,9 +141,27 @@ public class CalendarAdapter extends BaseAdapter {
         TextView iw = (TextView)v.findViewById(R.id.date_icon);
         //this is where the date icons are getting set for the correct dates/months
         //months are distinquished numerically i.e. 0-januery 11-december
-        if(date.length()>0 && items!=null && items.contains(date) && month.get(Calendar.MONTH) == selectedDate.get(Calendar.MONTH)) {
+
+       // int key = Integer.parseInt(((Map.Entry) events.get(Integer.toString(month.get(Calendar.MONTH))).entrySet()).getKey().toString());
+
+        Boolean isThisMonth = false;
+        Boolean isThisDay = false;
+        String m = Integer.toString(month.get(Calendar.MONTH)) ;
+        String d = days[position];
+        Hashtable<String, String> yo = new Hashtable<>();
+        if(events.get(m) != null) {
+            isThisMonth = true;
+
+            yo = events.get(m);
+            if(yo.get(d) != null){
+                isThisDay = true;
+            }
+        }
+        //Hashtable<String, String> t = events.get(Integer.toString(month.get(Calendar.MONTH)));
+
+        if(date.length()>0 && events!=null && isThisDay && isThisMonth) {
         	iw.setVisibility(View.VISIBLE);
-            iw.setText(events.get(days[position])); //sets text to events number
+            iw.setText(events.get(m).get(d)); //sets text to events number
         }
         else {
         	iw.setVisibility(View.INVISIBLE);

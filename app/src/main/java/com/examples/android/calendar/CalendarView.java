@@ -40,7 +40,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Dictionary;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 
@@ -50,7 +53,7 @@ public class CalendarView extends Activity {
 	public CalendarAdapter adapter;
 	public Handler handler;
 	public ArrayList<String> items; // container to store some random calendar items
-    public Dictionary<String, String> events;
+    public Dictionary<String, Hashtable<String, String>> events;
     public ArrayList<String> headerTitles;
 	
 	public void onCreate(Bundle savedInstanceState) {
@@ -60,7 +63,7 @@ public class CalendarView extends Activity {
 	    onNewIntent(getIntent());
 	    
 	    items = new ArrayList<String>();
-        events = new Hashtable<String, String>();
+        events = new Hashtable<String, Hashtable<String, String>>();
         headerTitles = new ArrayList<String>();
 	    adapter = new CalendarAdapter(this, month);
 	    
@@ -243,11 +246,23 @@ public class CalendarView extends Activity {
                     events.put(Integer.toString(i), Integer.toString(i+20));
 				}
 			}*/
+
+            //hastables of day => number of events
+            Hashtable table = new Hashtable<String, String>();
+            Hashtable table2 = new Hashtable<String, String>();
+            table.put("20", "5");
+            table.put("24", "6");
+            table2.put("5", "15");
+            table2.put("10", "20");
             //concrete days with number of events
+            //deprecated
             items.add(Integer.toString(20));
             items.add(Integer.toString(1));
-            events.put("20", "3");
-            events.put("1", "2");
+
+            //hashtables of month => day/events hashtable
+            events.put("0", table);
+            events.put("2", table2);
+            //events.put("1", "2");
 
 
             headerTitles.add("Sunn");
