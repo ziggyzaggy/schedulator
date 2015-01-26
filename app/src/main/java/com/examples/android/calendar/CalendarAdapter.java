@@ -55,6 +55,7 @@ public class CalendarAdapter extends BaseAdapter {
     }
     
     public void setItems(ArrayList<String> items, Dictionary<String, String> events, ArrayList<String> headerTitles) {
+        //works
     	for(int i = 0;i != items.size();i++){
     		if(items.get(i).length()==1) {
     		items.set(i, "0" + items.get(i));
@@ -136,7 +137,9 @@ public class CalendarAdapter extends BaseAdapter {
        
         // show icon if date is not empty and it exists in the items array
         TextView iw = (TextView)v.findViewById(R.id.date_icon);
-        if(date.length()>0 && items!=null && items.contains(date)) {        	
+        //this is where the date icons are getting set for the correct dates/months
+        //months are distinquished numerically i.e. 0-januery 11-december
+        if(date.length()>0 && items!=null && items.contains(date) && month.get(Calendar.MONTH) == selectedDate.get(Calendar.MONTH)) {
         	iw.setVisibility(View.VISIBLE);
             iw.setText(events.get(days[position])); //sets text to events number
         }

@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Dictionary;
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Random;
 
@@ -134,13 +135,10 @@ public class CalendarView extends Activity {
 
 
                 if(date instanceof TextView && !date.getText().equals("") && isNum ) {
-
-
                     setSelectedBackground(v, gridview);
-
-
                     Intent intent = new Intent();
                     String day = date.getText().toString();
+
                     if(day.length()==1) {
                         day = "0"+day;
                     }
@@ -153,13 +151,7 @@ public class CalendarView extends Activity {
                     vibr.vibrate(20); //vibrate for whatever millis
                     finish();
 
-
-
-
                 }
-
-
-
                 return false;
             }
         });
@@ -238,6 +230,7 @@ public class CalendarView extends Activity {
 		@Override
 		public void run() {
 			items.clear();
+
 			// format random values. You can implement a dedicated class to provide real values
 		/*	for(int i=0;i<31;i++) {
 				Random r = new Random();
@@ -252,7 +245,9 @@ public class CalendarView extends Activity {
 			}*/
             //concrete days with number of events
             items.add(Integer.toString(20));
+            items.add(Integer.toString(1));
             events.put("20", "3");
+            events.put("1", "2");
 
 
             headerTitles.add("Sunn");
