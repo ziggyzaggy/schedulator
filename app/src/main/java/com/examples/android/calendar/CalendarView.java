@@ -34,6 +34,9 @@ import android.widget.TextView;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -46,6 +49,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import HELPERS.DateHelper;
+
 
 public class CalendarView extends Activity {
 
@@ -55,7 +60,8 @@ public class CalendarView extends Activity {
 	public ArrayList<String> items; // container to store some random calendar items
     public Dictionary<String, Hashtable<String, String>> events;
     public ArrayList<String> headerTitles;
-	
+	public JSONObject jobj;
+
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.calendar);
@@ -75,8 +81,15 @@ public class CalendarView extends Activity {
 	    
 	    TextView title  = (TextView) findViewById(R.id.title);
 	    title.setText(android.text.format.DateFormat.format("MMMM yyyy", month));
-	    
-	    TextView previous  = (TextView) findViewById(R.id.previous);
+
+        try {
+            makeTest();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        TextView previous  = (TextView) findViewById(R.id.previous);
 	    previous.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -179,6 +192,13 @@ public class CalendarView extends Activity {
 	}
 
 
+    private void makeTest() throws JSONException {
+        DateHelper helper = new DateHelper(this, (TextView)findViewById(R.id.weekText), jobj, this);
+        helper.runAsyncGetter(jobj);
+        JSONObject temp = jobj;
+
+    }
+
     //set background color to selected view in the gridview, set to defaults the non selected items
     private void setSelectedBackground(View v, GridView gridview ){
         //loop through all children of the gridview and set them to a colour
@@ -217,7 +237,7 @@ public class CalendarView extends Activity {
 		
 		adapter.refreshDays();
 		adapter.notifyDataSetChanged();				
-		handler.post(calendarUpdater); // generate some random calendar items				
+		handler.post(calendarUpdater);
 		
 		title.setText(android.text.format.DateFormat.format("MMMM yyyy", month));
 	}
@@ -234,18 +254,7 @@ public class CalendarView extends Activity {
 		public void run() {
 			items.clear();
 
-			// format random values. You can implement a dedicated class to provide real values
-		/*	for(int i=0;i<31;i++) {
-				Random r = new Random();
-				
-				if(r.nextInt(10)>6)
-				{
-                    Log.i("integer", " " + i);
-					items.add(Integer.toString(i));
-                    //generate number of events into the events hashtable
-                    events.put(Integer.toString(i), Integer.toString(i+20));
-				}
-			}*/
+            JSONObject temp = jobj;
 
             //hastables of day => number of events
             Hashtable table = new Hashtable<String, String>();
@@ -255,25 +264,13 @@ public class CalendarView extends Activity {
             table2.put("5", "15");
             table2.put("10", "20");
             //concrete days with number of events
-            //deprecated
-            items.add(Integer.toString(20));
-            items.add(Integer.toString(1));
+
 
             //hashtables of month => day/events hashtable
             events.put("0", table);
             events.put("2", table2);
-            //events.put("1", "2");
 
-
-            headerTitles.add("Sunn");
-            headerTitles.add("Mon");
-            headerTitles.add("Tue");
-            headerTitles.add("Wed");
-            headerTitles.add("Thu");
-            headerTitles.add("Fri");
-            headerTitles.add("Sat");
-
-			adapter.setItems(items, events, headerTitles);
+			adapter.setItems(events);
 			adapter.notifyDataSetChanged();
 		}
 	};

@@ -40,22 +40,19 @@ public class CalendarAdapter extends BaseAdapter {
 
     private java.util.Calendar month;
     private Calendar selectedDate;
-    private ArrayList<String> items;
     private Dictionary<String, Hashtable<String, String>> events;
-    private ArrayList<String> headerTitles;
+
     
     public CalendarAdapter(Context c, Calendar monthCalendar) {
     	month = monthCalendar;
     	selectedDate = (Calendar)monthCalendar.clone();
     	mContext = c;
         month.set(Calendar.DAY_OF_MONTH, 1);
-        this.items = new ArrayList<String>();
         this.events = new Hashtable<String, Hashtable<String, String>>();
-        this.headerTitles = new ArrayList<>();
         refreshDays();
     }
     
-    public void setItems(ArrayList<String> items, Dictionary<String, Hashtable<String, String>> events, ArrayList<String> headerTitles) {
+    public void setItems(Dictionary<String, Hashtable<String, String>> events) {
        /* for(int i = 0;i != events.size();i++){
             for(int j = 0; j < events.get(i).size(); j++){
                 if(events.get(i).get(j).length() == 1){
@@ -63,9 +60,9 @@ public class CalendarAdapter extends BaseAdapter {
                 }
             }
         }*/
-    	this.items = items;
+
         this.events = events;
-        this.headerTitles = headerTitles;
+
     }
     
 
@@ -188,8 +185,8 @@ public class CalendarAdapter extends BaseAdapter {
     
     public void refreshDays()
     {
-    	// clear items
-    	items.clear();
+
+
     	
     	int lastDay = month.getActualMaximum(Calendar.DAY_OF_MONTH);
         int firstDay = (int)month.get(Calendar.DAY_OF_WEEK);
