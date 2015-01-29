@@ -18,6 +18,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="844babd5-75a0-41ac-a0ad-74669f615727" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/examples/android/calendar/CalendarView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/examples/android/calendar/CalendarView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CalendarView-master1.iws" />
@@ -57,13 +58,13 @@
       <file leaf-file-name="CalendarView.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/examples/android/calendar/CalendarView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48320413" vertical-offset="3366" max-vertical-offset="4148">
-              <caret line="271" column="61" selection-start-line="271" selection-start-column="61" selection-end-line="271" selection-end-column="61" />
+            <state vertical-scroll-proportion="0.25322998" vertical-offset="3421" max-vertical-offset="4352">
+              <caret line="269" column="137" selection-start-line="269" selection-start-column="137" selection-end-line="269" selection-end-column="137" />
               <folding>
                 <element signature="e#2859#3211#0" expanded="true" />
                 <element signature="e#3206#3207#0" expanded="true" />
-                <element signature="e#9045#10828#0" expanded="true" />
-                <element signature="e#10824#10825#0" expanded="true" />
+                <element signature="e#9042#11041#0" expanded="true" />
+                <element signature="e#11037#11038#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1604,8 +1605,8 @@
           <folding>
             <element signature="e#2859#3211#0" expanded="true" />
             <element signature="e#3206#3207#0" expanded="true" />
-            <element signature="e#9045#10828#0" expanded="true" />
-            <element signature="e#10824#10825#0" expanded="true" />
+            <element signature="e#9042#11041#0" expanded="true" />
+            <element signature="e#11037#11038#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1690,8 +1691,8 @@
           <folding>
             <element signature="e#2859#3211#0" expanded="true" />
             <element signature="e#3206#3207#0" expanded="true" />
-            <element signature="e#9045#10828#0" expanded="true" />
-            <element signature="e#10824#10825#0" expanded="true" />
+            <element signature="e#9042#11041#0" expanded="true" />
+            <element signature="e#11037#11038#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2002,13 +2003,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/examples/android/calendar/CalendarView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48320413" vertical-offset="3366" max-vertical-offset="4148">
-          <caret line="271" column="61" selection-start-line="271" selection-start-column="61" selection-end-line="271" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.25322998" vertical-offset="3421" max-vertical-offset="4352">
+          <caret line="269" column="137" selection-start-line="269" selection-start-column="137" selection-end-line="269" selection-end-column="137" />
           <folding>
             <element signature="e#2859#3211#0" expanded="true" />
             <element signature="e#3206#3207#0" expanded="true" />
-            <element signature="e#9045#10828#0" expanded="true" />
-            <element signature="e#10824#10825#0" expanded="true" />
+            <element signature="e#9042#11041#0" expanded="true" />
+            <element signature="e#11037#11038#0" expanded="true" />
           </folding>
         </state>
       </provider>

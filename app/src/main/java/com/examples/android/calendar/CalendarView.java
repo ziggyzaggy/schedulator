@@ -238,7 +238,6 @@ public class CalendarView extends Activity {
 		adapter.refreshDays();
 		adapter.notifyDataSetChanged();				
 		handler.post(calendarUpdater);
-		
 		title.setText(android.text.format.DateFormat.format("MMMM yyyy", month));
 	}
 	
@@ -255,29 +254,42 @@ public class CalendarView extends Activity {
 			items.clear();
 
             JSONObject temp = jobj;
-            String d = "";
+
             try {
                 if(temp != null) {//test show the date string on the ui -- that is, if the temp isn't empty
-                    d = temp.getJSONArray("dates").getJSONObject(1).getJSONObject("2").getString("date");
-                    String[] parts = d.split("-");
-                    //parse the month and deduct 1 as months are starting from 0
-                    //and then parse it back to string as hashtable accepts strings
-                    String month = Integer.toString(Integer.parseInt(parts[1]) - 1);
-                    String day = parts[2];
 
-                    ((TextView) findViewById(R.id.weekText)).setText(month + " " + day);
+                    String d = "";
+                    String fullS = "";
 
-                    Hashtable table3 = new Hashtable<String, String>();
-                    table3.put(day, "40");
-                    events.put("0", table3);//dates work yaay
+
+                    //loop through all of the json dates and put them into events hashtable
+                    for(int i =0; i < temp.getJSONArray("dates").length(); i++){
+
+
+                        fullS += " " + temp.getJSONArray("dates").getJSONObject(i).getString("date");
+                        String numEvents = temp.getJSONArray("dates").getJSONObject(i).getString("count");//get number of events for date
+
+
+                        Hashtable t = new Hashtable<String, String>();
+                        d = temp.getJSONArray("dates").getJSONObject(i).getString("date");//get dates
+                        String[] parts = d.split("-");
+                        String month = Integer.toString(Integer.parseInt(parts[1]) - 1);
+                        String day = parts[2];
+
+
+                        t.put(day, numEvents);
+                        events.put(month, t);//dates work yaayklhlhl
+
+                    }
+
+                    ((TextView) findViewById(R.id.weekText)).setText(fullS);
+
+
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-           /* if(d.length() > 0){
-                ((TextView) findViewById(R.id.weekText)).setText(d);
-            }*/
 
             //hastables of day => number of events
             Hashtable table = new Hashtable<String, String>();
