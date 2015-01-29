@@ -17,8 +17,8 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.examples.android.calendar" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="844babd5-75a0-41ac-a0ad-74669f615727" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/examples/android/calendar/CalendarView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/examples/android/calendar/CalendarView.java" />
+    <list default="true" id="844babd5-75a0-41ac-a0ad-74669f615727" name="Default" comment="moved to public and free hosting">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/HELPERS/DateHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/HELPERS/DateHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CalendarView-master1.iws" />
@@ -55,10 +55,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CalendarView.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CalendarView.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/examples/android/calendar/CalendarView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25322998" vertical-offset="3421" max-vertical-offset="4352">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3285" max-vertical-offset="4352">
               <caret line="269" column="137" selection-start-line="269" selection-start-column="137" selection-end-line="269" selection-end-column="137" />
               <folding>
                 <element signature="e#2859#3211#0" expanded="true" />
@@ -70,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DateHelper.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DateHelper.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/HELPERS/DateHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1290" max-vertical-offset="1819">
-              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.57622737" vertical-offset="950" max-vertical-offset="1836">
+              <caret line="80" column="64" selection-start-line="80" selection-start-column="64" selection-end-line="80" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#onPreExecute#0;class#AsyncDateGetter#0;class#DateHelper#0" expanded="false" />
@@ -1075,8 +1075,8 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/HELPERS/JSONParser.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/examples/android/calendar/CalendarAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/HELPERS/DateHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/examples/android/calendar/CalendarView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/HELPERS/DateHelper.java" />
       </list>
     </option>
   </component>
@@ -1541,7 +1541,8 @@
     <MESSAGE value="Дни недели теперь начинаются с понедельника и заканчиваются воскресением" />
     <MESSAGE value="JSON parsing from urls, async tasks to retrieve the jsons" />
     <MESSAGE value="Dates parsed from db work yaaay" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dates parsed from db work yaaay" />
+    <MESSAGE value="moved to public and free hosting" />
+    <option name="LAST_COMMIT_MESSAGE" value="moved to public and free hosting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1958,16 +1959,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/HELPERS/JSONParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1091" max-vertical-offset="1989">
-          <caret line="68" column="17" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-21/android/os/Handler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4865" max-vertical-offset="12750">
@@ -1989,27 +1980,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/HELPERS/DateHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1290" max-vertical-offset="1819">
-          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#onPreExecute#0;class#AsyncDateGetter#0;class#DateHelper#0" expanded="false" />
-            <element signature="e#1845#1860#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/examples/android/calendar/CalendarView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25322998" vertical-offset="3421" max-vertical-offset="4352">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3285" max-vertical-offset="4352">
           <caret line="269" column="137" selection-start-line="269" selection-start-column="137" selection-end-line="269" selection-end-column="137" />
           <folding>
             <element signature="e#2859#3211#0" expanded="true" />
             <element signature="e#3206#3207#0" expanded="true" />
             <element signature="e#9042#11041#0" expanded="true" />
             <element signature="e#11037#11038#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/HELPERS/JSONParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1091" max-vertical-offset="1989">
+          <caret line="68" column="17" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/HELPERS/DateHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57622737" vertical-offset="950" max-vertical-offset="1836">
+          <caret line="80" column="64" selection-start-line="80" selection-start-column="64" selection-end-line="80" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#onPreExecute#0;class#AsyncDateGetter#0;class#DateHelper#0" expanded="false" />
+            <element signature="e#1845#1860#0" expanded="true" />
           </folding>
         </state>
       </provider>

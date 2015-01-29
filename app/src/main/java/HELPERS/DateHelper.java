@@ -77,7 +77,8 @@ public class DateHelper {
             List<NameValuePair> pars = new ArrayList<NameValuePair>();
             JSONParser parser = new JSONParser();
             JSONObject jobj = null;
-            String theURL = "http://192.168.1.115:1337/schedulator/getDates.php";
+            //db password sched47
+            String theURL = "http://sched.comoj.com/getDates.php";
             try {
                 jobj = parser.makeHttpRequest(theURL, "GET", pars);
                 Log.d("jobj: ", "" + jobj);
