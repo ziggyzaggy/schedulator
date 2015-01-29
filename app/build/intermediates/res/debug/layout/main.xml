@@ -19,4 +19,4 @@
 <Button android:layout_height="wrap_content" android:layout_width="fill_parent" android:text="@string/open" android:id="@+id/openButton"></Button>
 
 </LinearLayout>
-<!-- From: file:/C:/Users/kristjan/Aprojects/calendar%2019012015%20-%20corrupted%20itemlistener/calendar%20experimental%2016012015/CalendarView-master1/app/src/main/res/layout/main.xml -->
+<!-- From: file:/C:/Users/kris/Android%20Projects/schedulator1/app/src/main/res/layout/main.xml -->

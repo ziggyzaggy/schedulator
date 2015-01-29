@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cal_item_layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="0dip"
@@ -12,7 +13,7 @@
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 
-		    android:textSize="25sp"
+		    android:textSize="20sp"
 		    android:textStyle="normal"
 		    android:textColor="#f2f2f2"
 		    >
@@ -29,4 +30,4 @@
         android:textColor="@android:color/white"
         android:text="99+"
         android:visibility="invisible"/>
-</LinearLayout><!-- From: file:/C:/Users/kristjan/Aprojects/calendar%2019012015%20-%20corrupted%20itemlistener/calendar%20experimental%2016012015/CalendarView-master1/app/src/main/res/layout/calendar_item.xml -->
+</LinearLayout><!-- From: file:/C:/Users/kris/Android%20Projects/schedulator1/app/src/main/res/layout/calendar_item.xml -->

@@ -100,6 +100,7 @@ public class DateHelper {
                 try {
                     container.setText("" + result.getJSONArray("dates").getString(0)); //test that the right json is passed
                     refClass.refreshCalendar(); //call the refresh in referenced class
+                    //TODO - (should rewrite classes as with this method inside of this class rather than have it in the view)
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

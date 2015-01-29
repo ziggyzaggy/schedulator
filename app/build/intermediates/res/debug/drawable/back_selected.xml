@@ -10,7 +10,7 @@
                 android:width="1dp"
                 android:color="#f2f2f2" />
             <solid
-                android:color="#7a7a7a"/>
+                android:color="@color/mainBlue"/>
 
 
             <padding android:left="5dp"
@@ -20,4 +20,4 @@
         </shape>
     </item>
 
-</layer-list><!-- From: file:/C:/Users/kristjan/Aprojects/calendar%2019012015%20-%20corrupted%20itemlistener/calendar%20experimental%2016012015/CalendarView-master1/app/src/main/res/drawable/back_selected.xml -->
+</layer-list><!-- From: file:/C:/Users/kris/Android%20Projects/schedulator1/app/src/main/res/drawable/back_selected.xml -->

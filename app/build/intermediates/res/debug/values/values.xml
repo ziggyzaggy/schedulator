@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/kristjan/Aprojects/calendar%2019012015%20-%20corrupted%20itemlistener/calendar%20experimental%2016012015/CalendarView-master1/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/kris/Android%20Projects/schedulator1/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <color name="mainBlue">#33B5E5</color>
+    <color name="mainRed">#CC0000</color>
     <color name="text_color">#31D1F1</color>
     <color name="white">#ffffff</color>
     <string name="app_name">CalendarViewSample</string>
