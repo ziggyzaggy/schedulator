@@ -1,6 +1,7 @@
 package HELPERS;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -29,7 +30,8 @@ public class DateHelper {
     public DateHelper(Activity a, TextView container, JSONObject jobj, CalendarView c){
         this.mContext = a;
         this.container = container;
-        this.dialog = new ProgressDialog(mContext);
+        this.dialog = new ProgressDialog(mContext, AlertDialog.THEME_HOLO_LIGHT);
+
         this.jobj = jobj;
         this.refClass = c;
     }
@@ -96,16 +98,15 @@ public class DateHelper {
             refClass.jobj = result;//pass resulting json back to referenced class
 
 
-            if(container != null){
-                try {
-                    container.setText("" + result.getJSONArray("dates").getString(0)); //test that the right json is passed
+                    /*
+                   result.getJSONArray("dates").getJSONObject(1).getJSONObject("2").getString("date"); //test that the right json is passed
+                    */
+
                     refClass.refreshCalendar(); //call the refresh in referenced class
-                    //TODO - (should rewrite classes as with this method inside of this class rather than have it in the view)
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                    //TODO - (rewrite classes so that refreshcalendar is not in the view class) - k
+
             }
         }
     }
 
-}
+

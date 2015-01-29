@@ -255,6 +255,29 @@ public class CalendarView extends Activity {
 			items.clear();
 
             JSONObject temp = jobj;
+            String d = "";
+            try {
+                if(temp != null) {//test show the date string on the ui -- that is, if the temp isn't empty
+                    d = temp.getJSONArray("dates").getJSONObject(1).getJSONObject("2").getString("date");
+                    String[] parts = d.split("-");
+                    //parse the month and deduct 1 as months are starting from 0
+                    //and then parse it back to string as hashtable accepts strings
+                    String month = Integer.toString(Integer.parseInt(parts[1]) - 1);
+                    String day = parts[2];
+
+                    ((TextView) findViewById(R.id.weekText)).setText(month + " " + day);
+
+                    Hashtable table3 = new Hashtable<String, String>();
+                    table3.put(day, "40");
+                    events.put("0", table3);//dates work yaay
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+           /* if(d.length() > 0){
+                ((TextView) findViewById(R.id.weekText)).setText(d);
+            }*/
 
             //hastables of day => number of events
             Hashtable table = new Hashtable<String, String>();
@@ -267,7 +290,7 @@ public class CalendarView extends Activity {
 
 
             //hashtables of month => day/events hashtable
-            events.put("0", table);
+           // events.put("0", table);
             events.put("2", table2);
 
 			adapter.setItems(events);
