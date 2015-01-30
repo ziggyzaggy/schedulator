@@ -10,6 +10,7 @@ package com.examples.android.calendar;
 public final class R {
     public static final class anim {
         public static final int fade_in=0x7f040000;
+        public static final int from_right=0x7f040001;
     }
     public static final class attr {
     }
