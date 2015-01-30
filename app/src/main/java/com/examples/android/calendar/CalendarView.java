@@ -159,7 +159,7 @@ public class CalendarView extends Activity {
                                 {
                                     Toast.makeText(getApplicationContext(), "Left to Right swipe [Next] " + "x1 " + x1 + " x2 " + x2 , Toast.LENGTH_SHORT).show ();
                                     prevMonth();
-                                    Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+                                    Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_left);
                                     gridview.startAnimation(anim);
                                 }
 
