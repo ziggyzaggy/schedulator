@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.view.DragEvent;
+import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -62,11 +63,16 @@ public class CalendarView extends Activity {
     public ArrayList<String> headerTitles;
 	public JSONObject jobj;
 
+    private float x1,x2;
+    static final int MIN_DISTANCE = 150;
+
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.calendar);
 	    month = Calendar.getInstance();
 	    onNewIntent(getIntent());
+
+
 	    
 	    items = new ArrayList<String>();
         events = new Hashtable<String, Hashtable<String, String>>();
@@ -94,12 +100,7 @@ public class CalendarView extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				if(month.get(Calendar.MONTH)== month.getActualMinimum(Calendar.MONTH)) {				
-					month.set((month.get(Calendar.YEAR)-1),month.getActualMaximum(Calendar.MONTH),1);
-				} else {
-					month.set(Calendar.MONTH,month.get(Calendar.MONTH)-1);
-				}
-				refreshCalendar();
+				prevMonth();
 			}
 		});
 	    
@@ -108,12 +109,7 @@ public class CalendarView extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				if(month.get(Calendar.MONTH)== month.getActualMaximum(Calendar.MONTH)) {				
-					month.set((month.get(Calendar.YEAR)+1),month.getActualMinimum(Calendar.MONTH),1);
-				} else {
-					month.set(Calendar.MONTH,month.get(Calendar.MONTH)+1);
-				}
-				refreshCalendar();
+            nextMonth();
 				
 			}
 		});
@@ -141,25 +137,67 @@ public class CalendarView extends Activity {
 		});
 
 
+        gridview.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                    //switch months on swipe
+                    switch(event.getAction())
+                    {
+                        case MotionEvent.ACTION_DOWN:
+                            x1 = event.getX();
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            x2 = event.getX();
+                            float deltaX = x2 - x1;
+                            if (Math.abs(deltaX) > MIN_DISTANCE)
+                            {
+                                // Left to Right swipe action
+                                if (x2 > x1)
+                                {
+                                    Toast.makeText(getApplicationContext(), "Left to Right swipe [Next] " + "x1 " + x1 + " x2 " + x2 , Toast.LENGTH_SHORT).show ();
+                                    prevMonth();
+                                }
+
+                                // Right to left swipe action
+                                else
+                                {
+                                    Toast.makeText(getApplicationContext(), "Right to Left swipe [Previous]", Toast.LENGTH_SHORT).show ();
+
+                                    nextMonth();
+                                }
+
+                            }
+                            break;
+                    }
+                    return false;
+
+            }
+        });
+
+
+
+
+
         gridview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
-                TextView date = (TextView)v.findViewById(R.id.date);
+                TextView date = (TextView) v.findViewById(R.id.date);
                 //use tryparse to determine if the selected item is actually a date
                 String dateText = date.getText().toString();
                 boolean isNum = tryParse(dateText);
 
 
-                if(date instanceof TextView && !date.getText().equals("") && isNum ) {
+                if (date instanceof TextView && !date.getText().equals("") && isNum) {
                     setSelectedBackground(v, gridview);
                     Intent intent = new Intent();
                     String day = date.getText().toString();
 
-                    if(day.length()==1) {
-                        day = "0"+day;
+                    if (day.length() == 1) {
+                        day = "0" + day;
                     }
                     // return chosen date as string format
-                    intent.putExtra("date", android.text.format.DateFormat.format("yyyy-MM", month)+"-"+day);
+                    intent.putExtra("date", android.text.format.DateFormat.format("yyyy-MM", month) + "-" + day);
                     setResult(RESULT_OK, intent);
                     v.playSoundEffect(SoundEffectConstants.CLICK);
                     //TODO - TEST ON DEVICES WITH NO VIBR
@@ -192,12 +230,35 @@ public class CalendarView extends Activity {
 	}
 
 
+
+
+    private void nextMonth(){
+        if(month.get(Calendar.MONTH)== month.getActualMaximum(Calendar.MONTH)) {
+            month.set((month.get(Calendar.YEAR)+1),month.getActualMinimum(Calendar.MONTH),1);
+        } else {
+            month.set(Calendar.MONTH,month.get(Calendar.MONTH)+1);
+        }
+        refreshCalendar();
+    }
+
+    private void prevMonth(){
+        if(month.get(Calendar.MONTH)== month.getActualMinimum(Calendar.MONTH)) {
+            month.set((month.get(Calendar.YEAR)-1),month.getActualMaximum(Calendar.MONTH),1);
+        } else {
+            month.set(Calendar.MONTH,month.get(Calendar.MONTH)-1);
+        }
+        refreshCalendar();
+    }
+
     private void makeTest() throws JSONException {
         DateHelper helper = new DateHelper(this, (TextView)findViewById(R.id.weekText), jobj, this);
         helper.runAsyncGetter(jobj);
         JSONObject temp = jobj;
 
     }
+
+
+
 
     //set background color to selected view in the gridview, set to defaults the non selected items
     private void setSelectedBackground(View v, GridView gridview ){
