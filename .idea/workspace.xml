@@ -18,7 +18,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="844babd5-75a0-41ac-a0ad-74669f615727" name="Default" comment="moved to public and free hosting">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/anim/fade_in.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/examples/android/calendar/CalendarView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/examples/android/calendar/CalendarView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/examples/android/calendar/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/examples/android/calendar/R.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CalendarView-master1.iws" />
@@ -65,18 +67,28 @@
       <file leaf-file-name="CalendarView.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/examples/android/calendar/CalendarView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43041238" vertical-offset="1244" max-vertical-offset="5355">
-              <caret line="143" column="30" selection-start-line="143" selection-start-column="30" selection-end-line="143" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.4742268" vertical-offset="1516" max-vertical-offset="5457">
+              <caret line="162" column="66" selection-start-line="162" selection-start-column="66" selection-end-line="162" selection-end-column="66" />
               <folding>
-                <element signature="e#4332#5834#0" expanded="true" />
-                <element signature="e#5823#5824#0" expanded="true" />
-                <element signature="e#5886#7291#0" expanded="true" />
-                <element signature="e#7280#7281#0" expanded="true" />
-                <element signature="e#7451#7670#0" expanded="true" />
-                <element signature="e#7659#7660#0" expanded="true" />
-                <element signature="e#7822#8039#0" expanded="true" />
-                <element signature="e#8028#8029#0" expanded="true" />
+                <element signature="e#4419#6303#0" expanded="true" />
+                <element signature="e#6292#6293#0" expanded="true" />
+                <element signature="e#6355#7760#0" expanded="true" />
+                <element signature="e#7749#7750#0" expanded="true" />
+                <element signature="e#7920#8139#0" expanded="true" />
+                <element signature="e#8128#8129#0" expanded="true" />
+                <element signature="e#8291#8508#0" expanded="true" />
+                <element signature="e#8497#8498#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fade_in.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/anim/fade_in.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+              <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1084,6 +1096,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/HELPERS/JSONParser.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/examples/android/calendar/CalendarAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/HELPERS/DateHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/anim/fade_in.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/examples/android/calendar/CalendarView.java" />
       </list>
     </option>
@@ -1558,17 +1571,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/calendar.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="2771">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="289">
@@ -1608,14 +1610,14 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="3298" max-vertical-offset="4692">
           <caret line="194" column="9" selection-start-line="194" selection-start-column="9" selection-end-line="194" selection-end-column="9" />
           <folding>
-            <element signature="e#4332#5834#0" expanded="true" />
-            <element signature="e#5823#5824#0" expanded="true" />
-            <element signature="e#5886#7291#0" expanded="true" />
-            <element signature="e#7280#7281#0" expanded="true" />
-            <element signature="e#7451#7670#0" expanded="true" />
-            <element signature="e#7659#7660#0" expanded="true" />
-            <element signature="e#7822#8039#0" expanded="true" />
-            <element signature="e#8028#8029#0" expanded="true" />
+            <element signature="e#4419#6303#0" expanded="true" />
+            <element signature="e#6292#6293#0" expanded="true" />
+            <element signature="e#6355#7760#0" expanded="true" />
+            <element signature="e#7749#7750#0" expanded="true" />
+            <element signature="e#7920#8139#0" expanded="true" />
+            <element signature="e#8128#8129#0" expanded="true" />
+            <element signature="e#8291#8508#0" expanded="true" />
+            <element signature="e#8497#8498#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1692,14 +1694,14 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="3298" max-vertical-offset="4692">
           <caret line="194" column="9" selection-start-line="194" selection-start-column="9" selection-end-line="194" selection-end-column="9" />
           <folding>
-            <element signature="e#4332#5834#0" expanded="true" />
-            <element signature="e#5823#5824#0" expanded="true" />
-            <element signature="e#5886#7291#0" expanded="true" />
-            <element signature="e#7280#7281#0" expanded="true" />
-            <element signature="e#7451#7670#0" expanded="true" />
-            <element signature="e#7659#7660#0" expanded="true" />
-            <element signature="e#7822#8039#0" expanded="true" />
-            <element signature="e#8028#8029#0" expanded="true" />
+            <element signature="e#4419#6303#0" expanded="true" />
+            <element signature="e#6292#6293#0" expanded="true" />
+            <element signature="e#6355#7760#0" expanded="true" />
+            <element signature="e#7749#7750#0" expanded="true" />
+            <element signature="e#7920#8139#0" expanded="true" />
+            <element signature="e#8128#8129#0" expanded="true" />
+            <element signature="e#8291#8508#0" expanded="true" />
+            <element signature="e#8497#8498#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1984,19 +1986,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/anim/fade_in.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/examples/android/calendar/CalendarView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43041238" vertical-offset="1244" max-vertical-offset="5355">
-          <caret line="143" column="30" selection-start-line="143" selection-start-column="30" selection-end-line="143" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.4742268" vertical-offset="1516" max-vertical-offset="5457">
+          <caret line="162" column="66" selection-start-line="162" selection-start-column="66" selection-end-line="162" selection-end-column="66" />
           <folding>
-            <element signature="e#4332#5834#0" expanded="true" />
-            <element signature="e#5823#5824#0" expanded="true" />
-            <element signature="e#5886#7291#0" expanded="true" />
-            <element signature="e#7280#7281#0" expanded="true" />
-            <element signature="e#7451#7670#0" expanded="true" />
-            <element signature="e#7659#7660#0" expanded="true" />
-            <element signature="e#7822#8039#0" expanded="true" />
-            <element signature="e#8028#8029#0" expanded="true" />
+            <element signature="e#4419#6303#0" expanded="true" />
+            <element signature="e#6292#6293#0" expanded="true" />
+            <element signature="e#6355#7760#0" expanded="true" />
+            <element signature="e#7749#7750#0" expanded="true" />
+            <element signature="e#7920#8139#0" expanded="true" />
+            <element signature="e#8128#8129#0" expanded="true" />
+            <element signature="e#8291#8508#0" expanded="true" />
+            <element signature="e#8497#8498#0" expanded="true" />
           </folding>
         </state>
       </provider>
