@@ -136,6 +136,7 @@ public class CalendarAdapter extends BaseAdapter {
        
         // show icon if date is not empty and it exists in the items array
         TextView iw = (TextView)v.findViewById(R.id.date_icon);
+        RelativeLayout container = (RelativeLayout) v.findViewById(R.id.indicatorContainer);
         //this is where the date icons are getting set for the correct dates/months
         //months are distinquished numerically i.e. 0-januery 11-december
 
@@ -157,11 +158,13 @@ public class CalendarAdapter extends BaseAdapter {
         //Hashtable<String, String> t = events.get(Integer.toString(month.get(Calendar.MONTH)));
 
         if(date.length()>0 && events!=null && isThisDay && isThisMonth) {
-        	iw.setVisibility(View.VISIBLE);
+        	//iw.setVisibility(View.VISIBLE);
+            container.setVisibility(View.VISIBLE);
             iw.setText(events.get(m).get(d)); //sets text to events number
         }
         else {
-        	iw.setVisibility(View.INVISIBLE);
+        	//iw.setVisibility(View.INVISIBLE);
+            container.setVisibility(View.INVISIBLE);
         }
 
 

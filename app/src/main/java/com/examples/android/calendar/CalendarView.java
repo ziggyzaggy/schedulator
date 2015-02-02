@@ -125,6 +125,7 @@ public class CalendarView extends Activity {
                 boolean isNum = tryParse(dateText);
 
                 if(date instanceof TextView && !date.getText().equals("") && isNum ) {
+
                     setSelectedBackground(v, gridview);
 
                     Calendar d = Calendar.getInstance();
@@ -276,7 +277,11 @@ public class CalendarView extends Activity {
                 int childCount = gridview.getChildCount();
                 for(int i = 7; i < childCount; i++){
                     TextView tv =(TextView) gridview.getChildAt(i).findViewById(R.id.date);
-                    tv.setTextColor(Color.parseColor("#7a7a7a"));
+                    //dont change text color of current date
+                    if(tv.getCurrentTextColor() != -11375886) {
+                        tv.setTextColor(Color.parseColor("#7a7a7a"));
+                    }
+
 
                     gridview.getChildAt(i).setBackgroundResource(R.drawable.back);
                 }
