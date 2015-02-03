@@ -219,7 +219,7 @@ public class CalendarAdapter extends BaseAdapter {
 	    }
 
         //array of headers
-        String[] headers = new String[] {"Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"};
+        String[] headers = new String[] {"M", "T", "W", "T", "F", "S", "S"};
 
 
         //populate day headers

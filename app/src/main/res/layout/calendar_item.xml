@@ -15,7 +15,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="center"
-        android:padding="8dp"
+        android:padding="10dp"
         >
 
         <TextView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -44,13 +44,14 @@
                 android:id="@+id/greenIndicator"
                 android:layout_width="5dp"
                 android:layout_height="5dp"
+                android:layout_marginTop="2dp"
                 android:background="@color/mainGreen"
                 />
             <TextView
                 android:id="@+id/blueIndicator"
                 android:layout_width="5dp"
                 android:layout_height="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="2dp"
                 android:layout_below="@+id/greenIndicator"
                 android:background="@color/mainBlue"
 
@@ -59,7 +60,7 @@
                 android:id="@+id/redIndicator"
                 android:layout_width="5dp"
                 android:layout_height="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="2dp"
                 android:layout_below="@id/blueIndicator"
                 android:background="@color/mainRed"
 
