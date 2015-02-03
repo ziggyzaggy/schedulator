@@ -164,7 +164,7 @@ public class CalendarAdapter extends BaseAdapter {
         }
         else {
         	//iw.setVisibility(View.INVISIBLE);
-            container.setVisibility(View.INVISIBLE);
+            container.setVisibility(View.GONE);
         }
 
 
@@ -174,7 +174,7 @@ public class CalendarAdapter extends BaseAdapter {
             //set mon-friday
             if(position == i) {
                 //set generic header background resources
-                dayView.setTextSize(25);
+                //dayView.setTextSize(25);
                 iw.setVisibility(View.GONE); //remove the date_icons from headers (GONE doesn't take up the space for the element)
                 dayView.setTextColor(mContext.getResources().getColor(R.color.mainBlue));
                 //set sat, sun
