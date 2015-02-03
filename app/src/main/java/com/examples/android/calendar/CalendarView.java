@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -30,15 +31,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -127,6 +131,8 @@ public class CalendarView extends Activity {
                 if(date instanceof TextView && !date.getText().equals("") && isNum ) {
 
                     setSelectedBackground(v, gridview);
+
+                    scaleAnimateHeight(findViewById(R.id.dateDetailContainer),500, 50);
 
                     Calendar d = Calendar.getInstance();
                     d.set(month.get(Calendar.YEAR), month.get(Calendar.MONTH), Integer.parseInt(dateText));
@@ -267,6 +273,15 @@ public class CalendarView extends Activity {
     }
 
 
+
+    private void scaleAnimateHeight(View v, int duration, float heightTo){
+
+        LinearLayout tv = (LinearLayout) v;
+        tv.setVisibility(View.VISIBLE);
+        Animation expand = AnimationUtils.loadAnimation(this, R.anim.from_left);
+        tv.startAnimation(expand);
+
+    }
 
 
     //set background color to selected view in the gridview, set to defaults the non selected items
