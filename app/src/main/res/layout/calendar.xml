@@ -71,7 +71,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is a Placeholder for the chosen dates' items, it's gonna look super awesome once i implement this shit"
+        android:text="Placeholder"
         android:textSize="15sp"
         />
 

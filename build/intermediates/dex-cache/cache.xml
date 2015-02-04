@@ -2,25 +2,25 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
+        jar="C:\Users\kristjan\Aprojects\calendar 19012015 - corrupted itemlistener\calendar experimental 16012015\CalendarView-master1\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="8694693636ab36910c8100ce527c258ff3ebece0">
-        <dex dex="C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\pre-dexed\debug\classes-91acf9ab10752a51eb298aaf759e0300c2e18a2c.jar" />
+        <dex dex="C:\Users\kristjan\Aprojects\calendar 19012015 - corrupted itemlistener\calendar experimental 16012015\CalendarView-master1\app\build\intermediates\pre-dexed\debug\classes-809e01ed95bb4d5d5627bea8af15023d6f2e27c9.jar" />
     </item>
     <item
-        jar="C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
-        <dex dex="C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-8bacda9acfa1af2b626bdc86d01b972709c5f202.jar" />
-    </item>
-    <item
-        jar="C:\Users\kris\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jar="C:\Users\kristjan\AppData\Local\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
-        <dex dex="C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-0ddb8c31d757b8173215fc6a5c17d7eb6a8c9c8d.jar" />
+        <dex dex="C:\Users\kristjan\Aprojects\calendar 19012015 - corrupted itemlistener\calendar experimental 16012015\CalendarView-master1\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-bccfff6db5668447ff45937757868b7ad154ba65.jar" />
+    </item>
+    <item
+        jar="C:\Users\kristjan\Aprojects\calendar 19012015 - corrupted itemlistener\calendar experimental 16012015\CalendarView-master1\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
+        <dex dex="C:\Users\kristjan\Aprojects\calendar 19012015 - corrupted itemlistener\calendar experimental 16012015\CalendarView-master1\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-0e142aa4e3df0c5321314a5a607e65b699aa5b62.jar" />
     </item>
 
 </items>

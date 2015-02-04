@@ -36,6 +36,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.util.Log;
 import android.widget.Toast;
@@ -130,15 +131,18 @@ public class CalendarView extends Activity {
 
                 if(date instanceof TextView && !date.getText().equals("") && isNum ) {
                     setSelectedBackground(v, gridview);
-                    scaleAnimateHeight(findViewById(R.id.dateDetailContainer));
 
-                    /*Calendar d = Calendar.getInstance();
+
+                    if(((RelativeLayout)v.findViewById(R.id.indicatorContainer)).getVisibility() == View.VISIBLE){
+                        showDetailContainer(findViewById(R.id.dateDetailContainer), true);
+                    }
+
+                    Calendar d = Calendar.getInstance();
                     d.set(month.get(Calendar.YEAR), month.get(Calendar.MONTH), Integer.parseInt(dateText));
                     //d.setFirstDayOfWeek(Calendar.MONDAY); //NOTE set this to ignore locale and instead use mondays as first day of week on all locales
                     int ddd = d.get(Calendar.WEEK_OF_MONTH);
                     TextView weekText = (TextView) findViewById(R.id.weekText);
                     weekText.setText("Week " + ddd);
-                    Toast.makeText(getApplicationContext(), dateText, Toast.LENGTH_SHORT).show();*/
                 }
 		    }
 		});
@@ -164,7 +168,7 @@ public class CalendarView extends Activity {
                                 {
                                    // Toast.makeText(getApplicationContext(), "Left to Right swipe [Next] " + "x1 " + x1 + " x2 " + x2 , Toast.LENGTH_SHORT).show ();
                                     prevMonth();
-                                    Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+                                    Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_left);
                                     gridview.startAnimation(anim);
                                 }
 
@@ -173,9 +177,8 @@ public class CalendarView extends Activity {
                                 {
                                     //Toast.makeText(getApplicationContext(), "Right to Left swipe [Previous]", Toast.LENGTH_SHORT).show ();
                                     nextMonth();
-                                    Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+                                    Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_right);
                                     gridview.startAnimation(anim);
-
                                 }
 
                             }
@@ -272,12 +275,18 @@ public class CalendarView extends Activity {
 
 
 
-    private void scaleAnimateHeight(View v){
+    private void showDetailContainer(View v, boolean show){
 
         LinearLayout tv = (LinearLayout) v;
-        tv.setVisibility(View.VISIBLE);
-        Animation expand = AnimationUtils.loadAnimation(this, R.anim.from_left);
-        tv.startAnimation(expand);
+        Animation anim = null;
+        if(show) {
+            tv.setVisibility(View.VISIBLE);
+            anim = AnimationUtils.loadAnimation(this, R.anim.from_left);
+        }else{
+            tv.setVisibility(View.INVISIBLE);
+
+        }
+        tv.startAnimation(anim);
 
     }
 
@@ -302,6 +311,7 @@ public class CalendarView extends Activity {
 		    	TextView date = (TextView)v.findViewById(R.id.date);
 		        date.setTextColor(Color.WHITE);
                 v.setBackgroundResource(R.drawable.back_selected);
+
 
     }
 
