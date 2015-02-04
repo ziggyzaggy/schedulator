@@ -8,5 +8,6 @@
     <color name="mainBlue">#33B5E5</color>
     <color name="mainRed">#CC0000</color>
     <color name="mainGreen">#669900</color>
+    <color name="mainGrayText">#7a7a7a</color>
 	<string name="open">Open</string>
 </resources>

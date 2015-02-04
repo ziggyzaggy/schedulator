@@ -65,11 +65,10 @@ public class CalendarView extends Activity {
 	public Calendar month;
 	public CalendarAdapter adapter;
 	public Handler handler;
-	public ArrayList<String> items; // container to store some random calendar items
     public Dictionary<String, Hashtable<String, String>> events;
-    public ArrayList<String> headerTitles;
 	public JSONObject jobj;
 
+    private TextView titleText;
     private float x1,x2;
     static final int MIN_DISTANCE = 150;
 
@@ -80,10 +79,12 @@ public class CalendarView extends Activity {
 	    onNewIntent(getIntent());
 
 
-	    
-	    items = new ArrayList<String>();
+         final Animation animFromRight = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_right);
+         final Animation animFromLeft = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_left);
+
+        titleText  = (TextView) findViewById(R.id.title);
+
         events = new Hashtable<String, Hashtable<String, String>>();
-        headerTitles = new ArrayList<String>();
 	    adapter = new CalendarAdapter(this, month);
 	    
 	    final GridView gridview = (GridView) findViewById(R.id.gridview);
@@ -101,8 +102,8 @@ public class CalendarView extends Activity {
             e.printStackTrace();
         }
 
-
-        TextView previous  = (TextView) findViewById(R.id.previous);
+        //deprecated next prev controls
+      /*  TextView previous  = (TextView) findViewById(R.id.previous);
 	    previous.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -119,7 +120,7 @@ public class CalendarView extends Activity {
             nextMonth();
 				
 			}
-		});
+		});*/
 
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 		    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
@@ -163,13 +164,17 @@ public class CalendarView extends Activity {
                             float deltaX = x2 - x1;
                             if (Math.abs(deltaX) > MIN_DISTANCE)
                             {
+
                                 // Left to Right swipe action
                                 if (x2 > x1)
                                 {
                                    // Toast.makeText(getApplicationContext(), "Left to Right swipe [Next] " + "x1 " + x1 + " x2 " + x2 , Toast.LENGTH_SHORT).show ();
                                     prevMonth();
-                                    Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_left);
-                                    gridview.startAnimation(anim);
+
+
+
+                                    gridview.startAnimation(animFromLeft);
+                                    titleText.startAnimation(animFromLeft);
                                 }
 
                                 // Right to left swipe action
@@ -177,8 +182,10 @@ public class CalendarView extends Activity {
                                 {
                                     //Toast.makeText(getApplicationContext(), "Right to Left swipe [Previous]", Toast.LENGTH_SHORT).show ();
                                     nextMonth();
-                                    Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_right);
-                                    gridview.startAnimation(anim);
+
+
+                                    gridview.startAnimation(animFromRight);
+                                    titleText.startAnimation(animFromRight);
                                 }
 
                             }
@@ -331,12 +338,12 @@ public class CalendarView extends Activity {
 
 	public void refreshCalendar()
 	{
-		TextView title  = (TextView) findViewById(R.id.title);
+
 		
 		adapter.refreshDays();
 		adapter.notifyDataSetChanged();				
 		handler.post(calendarUpdater);
-		title.setText(android.text.format.DateFormat.format("MMMM yyyy", month));
+		titleText.setText(android.text.format.DateFormat.format("MMMM yyyy", month));
 	}
 	
 	public void onNewIntent(Intent intent) {
@@ -349,8 +356,6 @@ public class CalendarView extends Activity {
 		
 		@Override
 		public void run() {
-			items.clear();
-
             JSONObject temp = jobj;
 
             try {
@@ -390,6 +395,7 @@ public class CalendarView extends Activity {
 
 
             //hastables of day => number of events
+            /*these are now generated from json responses here just as an example of what the maps look like
             Hashtable table = new Hashtable<String, String>();
             Hashtable table2 = new Hashtable<String, String>();
             table.put("20", "5");
@@ -402,7 +408,7 @@ public class CalendarView extends Activity {
             //hashtables of month => day/events hashtable
            // events.put("0", table);
             events.put("2", table2);
-
+*/
 			adapter.setItems(events);
 			adapter.notifyDataSetChanged();
 		}
