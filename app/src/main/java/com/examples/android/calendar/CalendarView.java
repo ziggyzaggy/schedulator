@@ -129,18 +129,16 @@ public class CalendarView extends Activity {
                 boolean isNum = tryParse(dateText);
 
                 if(date instanceof TextView && !date.getText().equals("") && isNum ) {
-
                     setSelectedBackground(v, gridview);
+                    scaleAnimateHeight(findViewById(R.id.dateDetailContainer));
 
-                    scaleAnimateHeight(findViewById(R.id.dateDetailContainer),500, 50);
-
-                    Calendar d = Calendar.getInstance();
+                    /*Calendar d = Calendar.getInstance();
                     d.set(month.get(Calendar.YEAR), month.get(Calendar.MONTH), Integer.parseInt(dateText));
                     //d.setFirstDayOfWeek(Calendar.MONDAY); //NOTE set this to ignore locale and instead use mondays as first day of week on all locales
                     int ddd = d.get(Calendar.WEEK_OF_MONTH);
                     TextView weekText = (TextView) findViewById(R.id.weekText);
                     weekText.setText("Week " + ddd);
-
+                    Toast.makeText(getApplicationContext(), dateText, Toast.LENGTH_SHORT).show();*/
                 }
 		    }
 		});
@@ -274,7 +272,7 @@ public class CalendarView extends Activity {
 
 
 
-    private void scaleAnimateHeight(View v, int duration, float heightTo){
+    private void scaleAnimateHeight(View v){
 
         LinearLayout tv = (LinearLayout) v;
         tv.setVisibility(View.VISIBLE);
@@ -304,6 +302,7 @@ public class CalendarView extends Activity {
 		    	TextView date = (TextView)v.findViewById(R.id.date);
 		        date.setTextColor(Color.WHITE);
                 v.setBackgroundResource(R.drawable.back_selected);
+
     }
 
     //a simple implementation of C# tryparse() function,

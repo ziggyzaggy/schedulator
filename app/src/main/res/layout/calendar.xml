@@ -6,7 +6,6 @@
     android:padding="0dp"
     android:layout_margin="0dp"
     android:background="@color/white"
-    android:animateLayoutChanges="true"
     >
 
 <RelativeLayout
@@ -68,7 +67,7 @@
     android:id="@+id/dateDetailContainer"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:visibility="gone">
+    android:visibility="invisible">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -164,6 +163,7 @@
     android:gravity="center"
     android:listSelector="#cccccc"
     android:layout_marginTop="20dp"
+
     />
 
 
