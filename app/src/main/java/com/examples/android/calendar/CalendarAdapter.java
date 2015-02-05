@@ -110,7 +110,7 @@ public class CalendarAdapter extends BaseAdapter {
         	}
         	else {
         		v.setBackgroundResource(R.drawable.back);
-                ((TextView) v.findViewById(R.id.date)).setTextColor(Color.parseColor("#7a7a7a"));
+                ((TextView) v.findViewById(R.id.date)).setTextColor(mContext.getResources().getColor(R.color.mainGrayText));
                 ((TextView) v.findViewById(R.id.date_icon)).setBackgroundColor(Color.parseColor("#aaaaaa"));
         	}
         }
@@ -140,7 +140,6 @@ public class CalendarAdapter extends BaseAdapter {
         //this is where the date icons are getting set for the correct dates/months
         //months are distinquished numerically i.e. 0-januery 11-december
 
-       // int key = Integer.parseInt(((Map.Entry) events.get(Integer.toString(month.get(Calendar.MONTH))).entrySet()).getKey().toString());
 
         Boolean isThisMonth = false;
         Boolean isThisDay = false;
@@ -155,7 +154,6 @@ public class CalendarAdapter extends BaseAdapter {
                 isThisDay = true;
             }
         }
-        //Hashtable<String, String> t = events.get(Integer.toString(month.get(Calendar.MONTH)));
 
         if(date.length()>0 && events!=null && isThisDay && isThisMonth) {
         	//iw.setVisibility(View.VISIBLE);

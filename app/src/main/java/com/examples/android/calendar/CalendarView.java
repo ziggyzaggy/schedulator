@@ -79,8 +79,9 @@ public class CalendarView extends Activity {
 	    onNewIntent(getIntent());
 
 
-         final Animation animFromRight = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_right);
-         final Animation animFromLeft = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_left);
+        final Animation animFromRight = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_right);
+        final Animation animFromLeft = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_left);
+        final Animation animFromLeftLesser = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_left_lesser);
 
         titleText  = (TextView) findViewById(R.id.title);
 
@@ -288,7 +289,7 @@ public class CalendarView extends Activity {
         Animation anim = null;
         if(show) {
             tv.setVisibility(View.VISIBLE);
-            anim = AnimationUtils.loadAnimation(this, R.anim.from_left);
+            anim = AnimationUtils.loadAnimation(this, R.anim.from_left_lesser);
         }else{
             tv.setVisibility(View.INVISIBLE);
 
@@ -374,6 +375,7 @@ public class CalendarView extends Activity {
 
 
                         Hashtable t = new Hashtable<String, String>();
+
                         d = temp.getJSONArray("dates").getJSONObject(i).getString("date");//get dates
                         String[] parts = d.split("-");
                         String month = Integer.toString(Integer.parseInt(parts[1]) - 1);
