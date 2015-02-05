@@ -10,11 +10,12 @@ public class Event {
 
 
 
-    int day, month, year, numAccepted, numPending, numMinePending;
+    String day, month, year;
+    int numAccepted, numPending, numMinePending;
     boolean hasAccepted, hasPending, hasMinePending;
 
 
-    public Event(int day, int month, int year, int numAccepted, int numPending, int numMinePending) {
+    public Event(String day, String month, String year, int numAccepted, int numPending, int numMinePending) {
         this.day = day;
         this.month = month;
         this.year = year;
@@ -36,27 +37,28 @@ public class Event {
 
 
     //region getters setters
-    public int getDay() {
+
+    public String getDay() {
         return day;
     }
 
-    public void setDay(int day) {
+    public void setDay(String day) {
         this.day = day;
     }
 
-    public int getMonth() {
+    public String getMonth() {
         return month;
     }
 
-    public void setMonth(int month) {
+    public void setMonth(String month) {
         this.month = month;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
@@ -107,5 +109,7 @@ public class Event {
     public void setHasMinePending(boolean hasMinePending) {
         this.hasMinePending = hasMinePending;
     }
+
+
     //endregion
 }

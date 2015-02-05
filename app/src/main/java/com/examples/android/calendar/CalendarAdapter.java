@@ -32,6 +32,8 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Map;
 
+import ENTITIES.Event;
+
 public class CalendarAdapter extends BaseAdapter {
 	static final int FIRST_DAY_OF_WEEK = 1; // Sunday = 0, Monday = 1
 	
@@ -41,6 +43,7 @@ public class CalendarAdapter extends BaseAdapter {
     private java.util.Calendar month;
     private Calendar selectedDate;
     private Dictionary<String, Hashtable<String, String>> events;
+    private ArrayList<Event> eventObjs;
 
     
     public CalendarAdapter(Context c, Calendar monthCalendar) {
@@ -49,10 +52,11 @@ public class CalendarAdapter extends BaseAdapter {
     	mContext = c;
         month.set(Calendar.DAY_OF_MONTH, 1);
         this.events = new Hashtable<String, Hashtable<String, String>>();
+        this.eventObjs = new ArrayList<>();
         refreshDays();
     }
     
-    public void setItems(Dictionary<String, Hashtable<String, String>> events) {
+    public void setItems(Dictionary<String, Hashtable<String, String>> events, ArrayList<Event> eventies) {
        /* for(int i = 0;i != events.size();i++){
             for(int j = 0; j < events.get(i).size(); j++){
                 if(events.get(i).get(j).length() == 1){
@@ -62,7 +66,7 @@ public class CalendarAdapter extends BaseAdapter {
         }*/
 
         this.events = events;
-
+        this.eventObjs = eventies;
     }
     
 
@@ -145,13 +149,32 @@ public class CalendarAdapter extends BaseAdapter {
         Boolean isThisDay = false;
         String m = Integer.toString(month.get(Calendar.MONTH)) ;
         String d = days[position];
-        Hashtable<String, String> yo = new Hashtable<>();
+       /* Hashtable<String, String> yo = new Hashtable<>();
         if(events.get(m) != null) {
             isThisMonth = true;
 
             yo = events.get(m);
             if(yo.get(d) != null){
                 isThisDay = true;
+            }
+        }*/
+
+        if(eventObjs.size() > 0) {
+
+            for (Event e : eventObjs) {
+                if (m == e.getMonth()) {
+                    isThisMonth = true;
+
+                    String tempp = e.getDay();
+                    //correct equality test.... ffs...
+                    if(d.equals("18")){
+                        int temp = 1;
+                    }
+
+                    if (d == e.getDay()) {
+                        isThisDay = true;
+                    }
+                }
             }
         }
 

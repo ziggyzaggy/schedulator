@@ -57,6 +57,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import ENTITIES.Event;
 import HELPERS.DateHelper;
 
 
@@ -359,6 +360,8 @@ public class CalendarView extends Activity {
 		public void run() {
             JSONObject temp = jobj;
 
+            ArrayList<Event> eventObjs = new ArrayList<>();
+
             try {
                 if(temp != null) {//test show the date string on the ui -- that is, if the temp isn't empty
 
@@ -384,6 +387,10 @@ public class CalendarView extends Activity {
 
                         t.put(day, numEvents);
                         events.put(month, t);//dates work yaayklhlhl
+
+                        //lets try it with an object
+                        Event eObj = new Event(day, month, "2015", Integer.parseInt(numEvents), 1, 3);
+                        eventObjs.add(eObj);
 
                     }
 
@@ -411,7 +418,7 @@ public class CalendarView extends Activity {
            // events.put("0", table);
             events.put("2", table2);
 */
-			adapter.setItems(events);
+			adapter.setItems(events, eventObjs);
 			adapter.notifyDataSetChanged();
 		}
 	};
