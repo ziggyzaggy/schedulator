@@ -288,7 +288,7 @@ public class CalendarView extends Activity {
         tv.setText(text);
 
         Event e = eventObjs.get(Integer.parseInt(text));
-        tv.setText("Accepted Events: " + e.getNumAccepted() + " Pending events: " + e.getNumMinePending() + " Mine Pending Events: " + e.getNumMinePending());
+        tv.setText("Accepted Events: " + e.getNumAccepted() + " Pending events: " + e.getNumPending() + " Mine Pending Events: " + e.getNumMinePending());
     }
 
 
@@ -406,7 +406,9 @@ public class CalendarView extends Activity {
 
 
             Event eTest = new Event("20", "1", "2015", 1,0,1);
+            Event eTest2 = new Event("13", "1", "2015", 0,2,5);
             eventObjs.add(eTest);
+            eventObjs.add(eTest2);
 
 			adapter.setItems(eventObjs);
 			adapter.notifyDataSetChanged();
