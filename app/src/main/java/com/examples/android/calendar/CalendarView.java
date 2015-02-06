@@ -67,6 +67,7 @@ public class CalendarView extends Activity {
 	public CalendarAdapter adapter;
 	public Handler handler;
     public Dictionary<String, Hashtable<String, String>> events;
+    ArrayList<Event> eventObjs;
 	public JSONObject jobj;
 
     private TextView titleText;
@@ -87,6 +88,7 @@ public class CalendarView extends Activity {
         titleText  = (TextView) findViewById(R.id.title);
 
         events = new Hashtable<String, Hashtable<String, String>>();
+        eventObjs = new ArrayList<>();
 	    adapter = new CalendarAdapter(this, month);
 	    
 	    final GridView gridview = (GridView) findViewById(R.id.gridview);
@@ -137,7 +139,10 @@ public class CalendarView extends Activity {
 
 
                     if(((RelativeLayout)v.findViewById(R.id.indicatorContainer)).getVisibility() == View.VISIBLE){
+                        TextView boundField = (TextView) v.findViewById(R.id.bind);
+                        setDetailInfo(boundField.getText().toString());
                         showDetailContainer(findViewById(R.id.dateDetailContainer), true);
+
                     }
 
                     Calendar d = Calendar.getInstance();
@@ -282,7 +287,13 @@ public class CalendarView extends Activity {
 
     }
 
+    private void setDetailInfo(String text) {
+        TextView tv = (TextView) findViewById(R.id.dateDetailContainerText);
+        tv.setText(text);
 
+        Event e = eventObjs.get(Integer.parseInt(text));
+        tv.setText("Accepted Events: " + e.getNumAccepted());
+    }
 
     private void showDetailContainer(View v, boolean show){
 
@@ -359,8 +370,8 @@ public class CalendarView extends Activity {
 		@Override
 		public void run() {
             JSONObject temp = jobj;
+            eventObjs.clear(); // gotta be careful with the bound field
 
-            ArrayList<Event> eventObjs = new ArrayList<>();
 
             try {
                 if(temp != null) {//test show the date string on the ui -- that is, if the temp isn't empty
@@ -389,7 +400,7 @@ public class CalendarView extends Activity {
                         events.put(month, t);//dates work yaayklhlhl
 
                         //lets try it with an object
-                        Event eObj = new Event(day, month, "2015", Integer.parseInt(numEvents), 1, 3);
+                        Event eObj = new Event(day, month, "2015", Integer.parseInt(numEvents), 1, 0);
                         eventObjs.add(eObj);
 
                     }
@@ -402,6 +413,9 @@ public class CalendarView extends Activity {
                 e.printStackTrace();
             }
 
+
+            Event eTest = new Event("20", "1", "2015", 1,0,1);
+            eventObjs.add(eTest);
 
             //hastables of day => number of events
             /*these are now generated from json responses here just as an example of what the maps look like

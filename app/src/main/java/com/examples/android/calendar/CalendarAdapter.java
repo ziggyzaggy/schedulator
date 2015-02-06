@@ -144,11 +144,17 @@ public class CalendarAdapter extends BaseAdapter {
         //this is where the date icons are getting set for the correct dates/months
         //months are distinquished numerically i.e. 0-januery 11-december
 
-
+        Boolean isThisYear = false;
         Boolean isThisMonth = false;
         Boolean isThisDay = false;
+        Boolean hasMinePending = false;
+        Boolean hasAccepted = false;
+        Boolean hasPending = false;
+        String y = Integer.toString(month.get(Calendar.YEAR));
         String m = Integer.toString(month.get(Calendar.MONTH)) ;
         String d = days[position];
+        int bindPos = 0;
+        int actualPos = 0;
        /* Hashtable<String, String> yo = new Hashtable<>();
         if(events.get(m) != null) {
             isThisMonth = true;
@@ -162,26 +168,52 @@ public class CalendarAdapter extends BaseAdapter {
         if(eventObjs.size() > 0) {
 
             for (Event e : eventObjs) {
-                if (m == e.getMonth()) {
-                    isThisMonth = true;
+                if (y.equals(e.getYear())) {
+                    isThisYear = true;
 
-                    String tempp = e.getDay();
-                    //correct equality test.... ffs...
-                    if(d.equals("18")){
-                        int temp = 1;
-                    }
+                    if (m.equals(e.getMonth())) {
+                        isThisMonth = true;
 
-                    if (d == e.getDay()) {
-                        isThisDay = true;
+                        if (d.equals(e.getDay())) {
+                            isThisDay = true;
+                            actualPos = bindPos;
+
+                            if (e.isHasMinePending())
+                                hasMinePending = true;
+
+                            if (e.isHasAccepted())
+                                hasAccepted = true;
+
+                            if (e.isHasPending())
+                                hasPending = true;
+                        }
                     }
                 }
+
+                bindPos++;
             }
         }
 
-        if(date.length()>0 && events!=null && isThisDay && isThisMonth) {
+        if(date.length()>0 && eventObjs!=null && isThisDay && isThisMonth && isThisYear) {
         	//iw.setVisibility(View.VISIBLE);
+
+            TextView bind = (TextView) v.findViewById(R.id.bind);
+            bind.setText("" + actualPos);
+
             container.setVisibility(View.VISIBLE);
-            iw.setText(events.get(m).get(d)); //sets text to events number
+            if(hasMinePending) {
+                TextView redIndicator = (TextView) v.findViewById(R.id.redIndicator);
+                redIndicator.setVisibility(View.VISIBLE);
+            }
+            if(hasAccepted){
+                TextView greenIndicator = (TextView) v.findViewById(R.id.greenIndicator);
+                greenIndicator.setVisibility(View.VISIBLE);
+            }
+            if(hasPending){
+                TextView blueIndicator = (TextView) v.findViewById(R.id.blueIndicator);
+                blueIndicator.setVisibility(View.VISIBLE);
+            }
+//            iw.setText(events.get(m).get(d)); //sets text to events number
         }
         else {
         	//iw.setVisibility(View.INVISIBLE);

@@ -16,6 +16,12 @@
         android:gravity="center"
         android:padding="10dp"
         >
+        <TextView
+            android:id="@+id/bind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            />
 
         <TextView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/date"
@@ -41,6 +47,7 @@
             >
             <TextView
                 android:id="@+id/greenIndicator"
+                android:visibility="invisible"
                 android:layout_width="5dp"
                 android:layout_height="5dp"
                 android:layout_marginTop="2dp"
@@ -48,6 +55,7 @@
                 />
             <TextView
                 android:id="@+id/blueIndicator"
+                android:visibility="invisible"
                 android:layout_width="5dp"
                 android:layout_height="5dp"
                 android:layout_marginTop="2dp"
@@ -57,6 +65,7 @@
                 />
             <TextView
                 android:id="@+id/redIndicator"
+                android:visibility="invisible"
                 android:layout_width="5dp"
                 android:layout_height="5dp"
                 android:layout_marginTop="2dp"
