@@ -42,7 +42,6 @@ public class CalendarAdapter extends BaseAdapter {
 
     private java.util.Calendar month;
     private Calendar selectedDate;
-    private Dictionary<String, Hashtable<String, String>> events;
     private ArrayList<Event> eventObjs;
 
     
@@ -51,12 +50,11 @@ public class CalendarAdapter extends BaseAdapter {
     	selectedDate = (Calendar)monthCalendar.clone();
     	mContext = c;
         month.set(Calendar.DAY_OF_MONTH, 1);
-        this.events = new Hashtable<String, Hashtable<String, String>>();
         this.eventObjs = new ArrayList<>();
         refreshDays();
     }
     
-    public void setItems(Dictionary<String, Hashtable<String, String>> events, ArrayList<Event> eventies) {
+    public void setItems(ArrayList<Event> eventies) {
        /* for(int i = 0;i != events.size();i++){
             for(int j = 0; j < events.get(i).size(); j++){
                 if(events.get(i).get(j).length() == 1){
@@ -64,8 +62,6 @@ public class CalendarAdapter extends BaseAdapter {
                 }
             }
         }*/
-
-        this.events = events;
         this.eventObjs = eventies;
     }
     

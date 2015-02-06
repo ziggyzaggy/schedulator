@@ -14,5 +14,17 @@ public final class Utils {
         return (val > 0);
     }
 
+    //a simple implementation of C# tryparse() function,
+    //returns true if string can be parsed into integer
+    public static boolean intTryParse(String str){
+        try
+        {
+            Integer.parseInt(str);
+            return true;
+        } catch(NumberFormatException nfe)
+        {
+            return false;
+        }
+    }
 
 }

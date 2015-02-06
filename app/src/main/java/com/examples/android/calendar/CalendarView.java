@@ -59,6 +59,7 @@ import java.util.Random;
 
 import ENTITIES.Event;
 import HELPERS.DateHelper;
+import StaticUtils.Utils;
 
 
 public class CalendarView extends Activity {
@@ -66,7 +67,6 @@ public class CalendarView extends Activity {
 	public Calendar month;
 	public CalendarAdapter adapter;
 	public Handler handler;
-    public Dictionary<String, Hashtable<String, String>> events;
     ArrayList<Event> eventObjs;
 	public JSONObject jobj;
 
@@ -87,7 +87,6 @@ public class CalendarView extends Activity {
 
         titleText  = (TextView) findViewById(R.id.title);
 
-        events = new Hashtable<String, Hashtable<String, String>>();
         eventObjs = new ArrayList<>();
 	    adapter = new CalendarAdapter(this, month);
 	    
@@ -132,7 +131,7 @@ public class CalendarView extends Activity {
 
 
                 String dateText = date.getText().toString();
-                boolean isNum = tryParse(dateText);
+                boolean isNum = Utils.intTryParse(dateText);
 
                 if(date instanceof TextView && !date.getText().equals("") && isNum ) {
                     setSelectedBackground(v, gridview);
@@ -143,6 +142,8 @@ public class CalendarView extends Activity {
                         setDetailInfo(boundField.getText().toString());
                         showDetailContainer(findViewById(R.id.dateDetailContainer), true);
 
+                    }else{
+                        showDetailContainer(findViewById(R.id.dateDetailContainer), false);
                     }
 
                     Calendar d = Calendar.getInstance();
@@ -177,9 +178,6 @@ public class CalendarView extends Activity {
                                 {
                                    // Toast.makeText(getApplicationContext(), "Left to Right swipe [Next] " + "x1 " + x1 + " x2 " + x2 , Toast.LENGTH_SHORT).show ();
                                     prevMonth();
-
-
-
                                     gridview.startAnimation(animFromLeft);
                                     titleText.startAnimation(animFromLeft);
                                 }
@@ -189,12 +187,9 @@ public class CalendarView extends Activity {
                                 {
                                     //Toast.makeText(getApplicationContext(), "Right to Left swipe [Previous]", Toast.LENGTH_SHORT).show ();
                                     nextMonth();
-
-
                                     gridview.startAnimation(animFromRight);
                                     titleText.startAnimation(animFromRight);
                                 }
-
                             }
                             break;
                     }
@@ -213,7 +208,7 @@ public class CalendarView extends Activity {
                 TextView date = (TextView) v.findViewById(R.id.date);
                 //use tryparse to determine if the selected item is actually a date
                 String dateText = date.getText().toString();
-                boolean isNum = tryParse(dateText);
+                boolean isNum = Utils.intTryParse(dateText);
 
 
                 if (date instanceof TextView && !date.getText().equals("") && isNum) {
@@ -292,7 +287,7 @@ public class CalendarView extends Activity {
         tv.setText(text);
 
         Event e = eventObjs.get(Integer.parseInt(text));
-        tv.setText("Accepted Events: " + e.getNumAccepted());
+        tv.setText("Accepted Events: " + e.getNumAccepted() + " Pending events: " + e.getNumMinePending() + " Mine Pending Events: " + e.getNumMinePending());
     }
 
     private void showDetailContainer(View v, boolean show){
@@ -303,10 +298,14 @@ public class CalendarView extends Activity {
             tv.setVisibility(View.VISIBLE);
             anim = AnimationUtils.loadAnimation(this, R.anim.from_left_lesser);
         }else{
-            tv.setVisibility(View.INVISIBLE);
+            if(tv.getVisibility() == View.VISIBLE) {
+                tv.setVisibility(View.INVISIBLE);
+                anim = AnimationUtils.loadAnimation(this, R.anim.exit_to_left);
+            }
 
         }
-        tv.startAnimation(anim);
+        if(anim != null)
+            tv.startAnimation(anim);
 
     }
 
@@ -324,7 +323,6 @@ public class CalendarView extends Activity {
                         tv.setTextColor(Color.parseColor("#7a7a7a"));
                     }
 
-
                     gridview.getChildAt(i).setBackgroundResource(R.drawable.back);
                 }
                 //set the date text color of the clicked item
@@ -335,8 +333,8 @@ public class CalendarView extends Activity {
 
     }
 
-    //a simple implementation of C# tryparse() function,
-    //returns true if string can be parsed into integer
+    //@deprecated - use Utils#intTryParse Instead
+    @Deprecated
     public boolean tryParse(String str){
         try
         {
@@ -351,8 +349,6 @@ public class CalendarView extends Activity {
 
 	public void refreshCalendar()
 	{
-
-		
 		adapter.refreshDays();
 		adapter.notifyDataSetChanged();				
 		handler.post(calendarUpdater);
@@ -387,17 +383,10 @@ public class CalendarView extends Activity {
                         fullS += " " + temp.getJSONArray("dates").getJSONObject(i).getString("date");
                         String numEvents = temp.getJSONArray("dates").getJSONObject(i).getString("count");//get number of events for date
 
-
-                        Hashtable t = new Hashtable<String, String>();
-
                         d = temp.getJSONArray("dates").getJSONObject(i).getString("date");//get dates
                         String[] parts = d.split("-");
                         String month = Integer.toString(Integer.parseInt(parts[1]) - 1);
                         String day = parts[2];
-
-
-                        t.put(day, numEvents);
-                        events.put(month, t);//dates work yaayklhlhl
 
                         //lets try it with an object
                         Event eObj = new Event(day, month, "2015", Integer.parseInt(numEvents), 1, 0);
@@ -406,8 +395,6 @@ public class CalendarView extends Activity {
                     }
 
                     ((TextView) findViewById(R.id.weekText)).setText(fullS);
-
-
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -417,22 +404,7 @@ public class CalendarView extends Activity {
             Event eTest = new Event("20", "1", "2015", 1,0,1);
             eventObjs.add(eTest);
 
-            //hastables of day => number of events
-            /*these are now generated from json responses here just as an example of what the maps look like
-            Hashtable table = new Hashtable<String, String>();
-            Hashtable table2 = new Hashtable<String, String>();
-            table.put("20", "5");
-            table.put("24", "6");
-            table2.put("5", "15");
-            table2.put("10", "20");
-            //concrete days with number of events
-
-
-            //hashtables of month => day/events hashtable
-           // events.put("0", table);
-            events.put("2", table2);
-*/
-			adapter.setItems(events, eventObjs);
+			adapter.setItems(eventObjs);
 			adapter.notifyDataSetChanged();
 		}
 	};
