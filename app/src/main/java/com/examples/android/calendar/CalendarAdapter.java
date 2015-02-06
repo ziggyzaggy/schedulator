@@ -279,7 +279,8 @@ public class CalendarAdapter extends BaseAdapter {
         }
         // populate days
         int dayNumber = 1;
-        for(int i=j-1;i<days.length;i++) {
+        int daysLength = days.length;
+        for(int i=j-1;i<daysLength;i++) {
         	days[i] = ""+dayNumber;
         	dayNumber++;
         }

@@ -282,6 +282,7 @@ public class CalendarView extends Activity {
 
     }
 
+    //get bound object from the eventObjs arraylist and set details
     private void setDetailInfo(String text) {
         TextView tv = (TextView) findViewById(R.id.dateDetailContainerText);
         tv.setText(text);
@@ -290,6 +291,8 @@ public class CalendarView extends Activity {
         tv.setText("Accepted Events: " + e.getNumAccepted() + " Pending events: " + e.getNumMinePending() + " Mine Pending Events: " + e.getNumMinePending());
     }
 
+
+    //animates exit/intro of detail container
     private void showDetailContainer(View v, boolean show){
 
         LinearLayout tv = (LinearLayout) v;
@@ -377,7 +380,8 @@ public class CalendarView extends Activity {
 
 
                     //loop through all of the json dates and put them into events hashtable
-                    for(int i =0; i < temp.getJSONArray("dates").length(); i++){
+                    int size = temp.getJSONArray("dates").length();
+                    for(int i =0; i < size; i++){
 
 
                         fullS += " " + temp.getJSONArray("dates").getJSONObject(i).getString("date");
