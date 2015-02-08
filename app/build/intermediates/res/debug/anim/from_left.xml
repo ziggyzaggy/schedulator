@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set xmlns:android="http://schemas.android.com/apk/res/android">
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/overshoot_interpolator">
     <translate xmlns:android="http://schemas.android.com/apk/res/android"
-        android:interpolator="@android:anim/linear_interpolator"
-        android:duration="250"
-        android:fromXDelta="-100%"
-        android:toXDelta="0%" >
+        android:duration="650"
+        android:fromXDelta="-500%"
+        android:toXDelta="0%">
     </translate>
 </set><!-- From: file:/C:/Users/kris/Android%20Projects/schedulator1/app/src/main/res/anim/from_left.xml -->

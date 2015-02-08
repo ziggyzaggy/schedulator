@@ -6,9 +6,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.examples.android.calendar.CalendarView;
+import com.examples.android.calendar.R;
 
 import org.apache.http.NameValuePair;
 import org.json.JSONException;
@@ -26,12 +29,13 @@ public class DateHelper {
     private ProgressDialog dialog;
     private JSONObject jobj;
     private CalendarView refClass;
+    private ProgressBar prgBar;
 
     public DateHelper(Activity a, TextView container, JSONObject jobj, CalendarView c){
         this.mContext = a;
         this.container = container;
         this.dialog = new ProgressDialog(mContext, AlertDialog.THEME_HOLO_LIGHT);
-
+        prgBar = (ProgressBar) a.findViewById(R.id.prgBarDates);
         this.jobj = jobj;
         this.refClass = c;
     }
@@ -70,6 +74,8 @@ public class DateHelper {
         protected void onPreExecute(){
             dialog.setMessage("Getting Event Dates");
             dialog.show();
+
+            prgBar.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -95,6 +101,8 @@ public class DateHelper {
                 dialog.hide();
                 dialog.dismiss();
             }
+
+            prgBar.setVisibility(View.GONE);
 
             refClass.jobj = result;//pass resulting json back to referenced class
 

@@ -2,22 +2,81 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cal_item_layout"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="0dip"
+    android:layout_height="70dp"
+    android:padding="0dp"
+    android:layout_margin="20dp"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
+    android:gravity="center"
     android:background="@android:color/transparent"
     >
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-			android:id="@+id/date"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
 
-		    android:textSize="20sp"
-		    android:textStyle="normal"
-		    android:textColor="#f2f2f2"
-		    >
-</TextView>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:padding="10dp"
+        >
+        <TextView
+            android:id="@+id/bind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            />
+
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:textColor="#f2f2f2"
+            android:text="1"
+            >
+        </TextView>
+
+
+        <RelativeLayout
+            android:id="@+id/indicatorContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right|center_vertical"
+            android:layout_toRightOf="@+id/date"
+            android:layout_marginLeft="5dp"
+
+            >
+            <TextView
+                android:id="@+id/greenIndicator"
+                android:visibility="invisible"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/mainGreen"
+                />
+            <TextView
+                android:id="@+id/blueIndicator"
+                android:visibility="invisible"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_below="@+id/greenIndicator"
+                android:background="@color/mainBlue"
+
+                />
+            <TextView
+                android:id="@+id/redIndicator"
+                android:visibility="invisible"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_below="@id/blueIndicator"
+                android:background="@color/mainRed"
+
+                />
+        </RelativeLayout>
+
+        </RelativeLayout>
+
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/date_icon"
@@ -28,6 +87,8 @@
         android:gravity="center"
         android:textStyle="italic"
         android:textColor="@android:color/white"
-        android:text="99+"
-        android:visibility="invisible"/>
+        android:text="0"
+        android:visibility="gone"/>
+
+
 </LinearLayout><!-- From: file:/C:/Users/kris/Android%20Projects/schedulator1/app/src/main/res/layout/calendar_item.xml -->

@@ -1,0 +1,4 @@
+C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\classes\debug
+C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-0ddb8c31d757b8173215fc6a5c17d7eb6a8c9c8d.jar
+C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-8bacda9acfa1af2b626bdc86d01b972709c5f202.jar
+C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\pre-dexed\debug\classes-91acf9ab10752a51eb298aaf759e0300c2e18a2c.jar

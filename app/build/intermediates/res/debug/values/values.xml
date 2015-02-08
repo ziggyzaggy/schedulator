@@ -3,6 +3,8 @@
     <!-- From: file:/C:/Users/kris/Android%20Projects/schedulator1/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <color name="mainBlue">#33B5E5</color>
+    <color name="mainGrayText">#7a7a7a</color>
+    <color name="mainGreen">#669900</color>
     <color name="mainRed">#CC0000</color>
     <color name="text_color">#31D1F1</color>
     <color name="white">#ffffff</color>

@@ -16,7 +16,7 @@
         android:id="@+id/topBarWrapper"
         android:layout_width="fill_parent"
         android:layout_height="100dp"
-        android:text="Русский Тест"
+        android:text="Ибица  - Убийца"
         android:gravity="right|center"
         android:padding="5dp"
         android:textSize="30sp"
@@ -63,8 +63,33 @@
             />
 </RelativeLayout>
 
+    <ProgressBar
+        android:id="@+id/prgBarDates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        style="@android:style/Widget.Holo.Light.ProgressBar"
+        />
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:id="@+id/dateDetailContainer"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:visibility="invisible"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/dateDetailContainerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Placeholder"
+        android:textSize="15sp"
+        />
+
+    </LinearLayout>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/header"
     android:orientation="horizontal"
     android:layout_width="fill_parent"
@@ -74,30 +99,7 @@
 
 
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:gravity="left"
-    >
 
-
-
-<TextView  
-	android:id="@+id/previous" 
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:padding="5dp"
-    android:paddingLeft="5dp"
-    android:textSize="24sp"
-    android:textStyle="bold"
-    android:textColor="#000"
-    android:gravity="center_horizontal"
-    android:text="&lt;&lt;" 
-    android:clickable="true"   
-    />
-
-</LinearLayout>
 
 <TextView  
 	android:id="@+id/title" 
@@ -106,35 +108,13 @@
     android:layout_centerHorizontal="true"
     android:padding="5dp"
     android:paddingLeft="5dp"
-    android:textSize="14sp"
-    android:textStyle="bold"
-    android:textColor="#000"
+    android:textSize="24sp"
+    android:textColor="@color/mainGrayText"
     android:gravity="center_horizontal"
-    android:layout_toRightOf="@+id/previous"
+
     
     />
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:gravity="right"
-    android:layout_toRightOf="@+id/title"
-    >
-<TextView  
-	android:id="@+id/next" 
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:padding="5dp"
-    android:paddingLeft="5dp"
-    android:textSize="24sp"
-    android:textStyle="bold"
-    android:textColor="#000"
-    android:gravity="center_horizontal"
-    android:text=">>"
-    android:clickable="true"
-    />
 
-</LinearLayout>
 </RelativeLayout>
 
 
@@ -150,6 +130,7 @@
     android:gravity="center"
     android:listSelector="#cccccc"
     android:layout_marginTop="20dp"
+
     />
 
 

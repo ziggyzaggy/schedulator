@@ -63,12 +63,22 @@
             />
 </RelativeLayout>
 
+    <ProgressBar
+        android:id="@+id/prgBarDates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        style="@android:style/Widget.Holo.Light.ProgressBar"
+        />
+
 <LinearLayout
     android:id="@+id/dateDetailContainer"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:visibility="invisible"
     android:gravity="center">
+
     <TextView
         android:id="@+id/dateDetailContainerText"
         android:layout_width="wrap_content"

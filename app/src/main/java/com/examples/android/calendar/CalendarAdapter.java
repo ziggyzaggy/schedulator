@@ -183,7 +183,7 @@ public class CalendarAdapter extends BaseAdapter {
                             if (e.isHasPending())
                                 hasPending = true;
                         }
-                    }
+                    }//PROgRESSBRAR indeterminate
                 }
 
                 bindPos++;
