@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package com.examples.android.calendar;
+package ADAPTERS;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -23,6 +23,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+
+import com.examples.android.calendar.R;
 
 import org.w3c.dom.Text;
 

@@ -40,8 +40,11 @@ public final class R {
         public static final int item_background=0x7f02000a;
         public static final int item_background_focused=0x7f02000b;
         public static final int list_item_background=0x7f02000c;
+        public static final int list_item_selected=0x7f02000d;
+        public static final int row_background_selector=0x7f02000e;
     }
     public static final class id {
+        public static final int avatarTV=0x7f070018;
         public static final int bind=0x7f070010;
         public static final int blueIndicator=0x7f070014;
         public static final int cal_item_layout=0x7f07000f;
@@ -51,9 +54,10 @@ public final class R {
         public static final int date=0x7f070011;
         public static final int dateDetailContainer=0x7f070008;
         public static final int dateDetailContainerText=0x7f070009;
-        public static final int dateHeaderText=0x7f070017;
-        public static final int datePicker1=0x7f070018;
+        public static final int dateHeaderText=0x7f07001a;
+        public static final int datePicker1=0x7f07001b;
         public static final int date_icon=0x7f070016;
+        public static final int friend_container=0x7f070017;
         public static final int friends_drawer=0x7f070000;
         public static final int greenIndicator=0x7f070013;
         public static final int gridview=0x7f07000c;
@@ -61,7 +65,8 @@ public final class R {
         public static final int indicatorContainer=0x7f070012;
         public static final int left_drawer=0x7f07000d;
         public static final int mainLayoutContainer=0x7f070001;
-        public static final int openButton=0x7f070019;
+        public static final int nameTV=0x7f070019;
+        public static final int openButton=0x7f07001c;
         public static final int prgBarDates=0x7f070007;
         public static final int redIndicator=0x7f070015;
         public static final int right_drawer=0x7f07000e;
@@ -72,7 +77,8 @@ public final class R {
     public static final class layout {
         public static final int calendar=0x7f030000;
         public static final int calendar_item=0x7f030001;
-        public static final int main=0x7f030002;
+        public static final int friend_list_item=0x7f030002;
+        public static final int main=0x7f030003;
     }
     public static final class string {
         public static final int app_name=0x7f060000;

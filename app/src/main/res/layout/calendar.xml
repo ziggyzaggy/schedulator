@@ -174,13 +174,14 @@
 
     <ListView
         android:id="@+id/right_drawer"
-        android:layout_width="100dp"
+        android:layout_width="200dp"
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:choiceMode="multipleChoice"
+        android:drawSelectorOnTop="false"
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
-        android:background="#111"/>
+        android:background="#09ffffff"/>
 
 
 </android.support.v4.widget.DrawerLayout>

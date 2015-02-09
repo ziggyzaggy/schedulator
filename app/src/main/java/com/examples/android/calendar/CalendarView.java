@@ -21,13 +21,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.opengl.Visibility;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.view.DragEvent;
+import android.util.SparseBooleanArray;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
@@ -35,7 +35,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.ScaleAnimation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
@@ -43,25 +42,16 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Dictionary;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
 
+import ADAPTERS.CalendarAdapter;
+import ADAPTERS.FriendListAdapter;
 import ENTITIES.Event;
 import HELPERS.DateHelper;
 import StaticUtils.Utils;
@@ -71,6 +61,7 @@ public class CalendarView extends Activity {
 
 	public Calendar month;
 	public CalendarAdapter adapter;
+    public FriendListAdapter friendAdapter;
 	public Handler handler;
     ArrayList<Event> eventObjs;
 	public JSONObject jobj;
@@ -81,6 +72,7 @@ public class CalendarView extends Activity {
     private Boolean isRightDrawerOpened;
 
     private DrawerLayout mDrawerLayout;
+    private ListView mRightDrawerList;
     static final int MIN_DISTANCE = 150;
 
 	public void onCreate(Bundle savedInstanceState) {
@@ -100,7 +92,11 @@ public class CalendarView extends Activity {
 
         eventObjs = new ArrayList<>();
 	    adapter = new CalendarAdapter(this, month);
-	    
+        friendAdapter = new FriendListAdapter(this);
+
+        mRightDrawerList = (ListView) findViewById(R.id.right_drawer);
+	    mRightDrawerList.setAdapter(friendAdapter);
+
 	    final GridView gridview = (GridView) findViewById(R.id.gridview);
 	    gridview.setAdapter(adapter);
 	    
@@ -152,7 +148,7 @@ public class CalendarView extends Activity {
         gridview.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-
+                    //region swipes
                     //switch months on swipe
                     switch(event.getAction())
                     {
@@ -186,6 +182,7 @@ public class CalendarView extends Activity {
                             break;
                     }
                     return false;
+                //endregion
 
             }
         });
@@ -273,7 +270,7 @@ public class CalendarView extends Activity {
             public void onDrawerClosed(View view){
                 super.onDrawerClosed(view);
                 if(isRightDrawerOpened){
-                    Toast.makeText(getApplicationContext(), "Drawer RIGHT closed", Toast.LENGTH_SHORT).show();
+                    getCheckedFriends();
                     isRightDrawerOpened = false;
                 }
 
@@ -281,10 +278,39 @@ public class CalendarView extends Activity {
 
         });
 
+
+        mRightDrawerList.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                view.setBackgroundColor(getResources().getColor(R.color.mainBlue));
+
+                Drawable d = view.getBackground().getCurrent();
+               /* view.setBackgroundResource(R.drawable.list_item_selected);
+                Drawable d = view.getBackground();
+
+                if(d == getResources().getDrawable(R.drawable.list_item_selected)){
+                    String teeeee = "";
+                }*/
+
+                String o = "temp";
+            }
+        });
+
 	}
 
 
+    private void getCheckedFriends(){
+        SparseBooleanArray checkeds = mRightDrawerList.getCheckedItemPositions();
+        String str = "";
+        for (int i = 0; i < mRightDrawerList.getAdapter().getCount(); i++) {
+            if (checkeds.get(i)) {
+                str += "POS " + i +" ";
+            }
 
+        }
+        Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
+    }
 
     private void nextMonth(){
         if(month.get(Calendar.MONTH)== month.getActualMaximum(Calendar.MONTH)) {
