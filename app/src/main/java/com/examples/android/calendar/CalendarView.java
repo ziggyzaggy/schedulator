@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -290,11 +291,25 @@ public class CalendarView extends Activity {
                 TextView name = (TextView)view.findViewById(R.id.nameTV);
 
 
-                if(name.getCurrentTextColor() == getResources().getColor(R.color.mainBlue)){
+
+                if(view.getBackground() != null) {
+                    ColorDrawable col = (ColorDrawable) view.getBackground();
+                    int colCode = col.getColor();
+                   // Toast.makeText(getApplicationContext(), "" + colCode + " " + getResources().getColor(R.color.mainBlue), Toast.LENGTH_SHORT).show(); //-13388315 ?mainblue?
+                    if(colCode == getResources().getColor(R.color.mainBlue)){
+                        view.setBackgroundColor(Color.TRANSPARENT);
+                    }else{
+                        view.setBackgroundColor(getResources().getColor(R.color.mainBlue));
+                    }
+                }else{
+                    view.setBackgroundColor(getResources().getColor(R.color.mainBlue));
+                }
+
+              /*  if(name.getCurrentTextColor() == getResources().getColor(R.color.mainBlue)){
                     name.setTextColor(getResources().getColor(R.color.white));
                 }else{
                     name.setTextColor(getResources().getColor(R.color.mainBlue));
-                }
+                }*/
 
                /* view.setBackgroundResource(R.drawable.list_item_selected);
                 Drawable d = view.getBackground();
