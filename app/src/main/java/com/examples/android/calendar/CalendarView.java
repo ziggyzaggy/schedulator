@@ -20,11 +20,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
 import android.view.DragEvent;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
 import android.view.View;
@@ -36,6 +40,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.util.Log;
@@ -72,6 +77,10 @@ public class CalendarView extends Activity {
 
     private TextView titleText;
     private float x1,x2;
+
+    private Boolean isRightDrawerOpened;
+
+    private DrawerLayout mDrawerLayout;
     static final int MIN_DISTANCE = 150;
 
 	public void onCreate(Bundle savedInstanceState) {
@@ -80,6 +89,8 @@ public class CalendarView extends Activity {
 	    month = Calendar.getInstance();
 	    onNewIntent(getIntent());
 
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.friends_drawer);
+        isRightDrawerOpened = false;
 
         final Animation animFromRight = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_right);
         final Animation animFromLeft = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_left);
@@ -105,25 +116,6 @@ public class CalendarView extends Activity {
             e.printStackTrace();
         }
 
-        //deprecated next prev controls
-      /*  TextView previous  = (TextView) findViewById(R.id.previous);
-	    previous.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				prevMonth();
-			}
-		});
-	    
-	    TextView next  = (TextView) findViewById(R.id.next);
-	    next.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-            nextMonth();
-				
-			}
-		});*/
 
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 		    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
@@ -250,6 +242,45 @@ public class CalendarView extends Activity {
                 Toast.makeText(getApplicationContext(), "Red circle clicked", Toast.LENGTH_SHORT).show();
             }
         });
+
+        TextView friendCircle = (TextView) findViewById(R.id.circle_friends);
+        friendCircle.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDrawerLayout.openDrawer(Gravity.END);
+            }
+        });
+
+        //set drawer listener to distinguish between right and left drawer closes
+        mDrawerLayout.setDrawerListener(new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.circle_friends, R.string.drawer_open_desc, R.string.drawer_close_desc){
+            public void onDrawerOpened(View view){
+                super.onDrawerOpened(view);
+
+                ListView lw = (ListView) findViewById(R.id.right_drawer);
+                LinearLayout mainLayout = (LinearLayout) findViewById(R.id.mainLayoutContainer);
+
+                Rect bounds = new Rect();
+                //get bounds of main view
+                mainLayout.getHitRect(bounds);
+                //if right drawer in bounds of main view
+                if(lw.getLocalVisibleRect(bounds)){
+                    Toast.makeText(getApplicationContext(), "Drawer RIGHT", Toast.LENGTH_SHORT).show();
+                    isRightDrawerOpened = true;
+                }
+
+            }
+
+            public void onDrawerClosed(View view){
+                super.onDrawerClosed(view);
+                if(isRightDrawerOpened){
+                    Toast.makeText(getApplicationContext(), "Drawer RIGHT closed", Toast.LENGTH_SHORT).show();
+                    isRightDrawerOpened = false;
+                }
+
+            }
+
+        });
+
 	}
 
 
