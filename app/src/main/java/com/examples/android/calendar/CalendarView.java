@@ -261,7 +261,6 @@ public class CalendarView extends Activity {
                 mainLayout.getHitRect(bounds);
                 //if right drawer in bounds of main view
                 if(lw.getLocalVisibleRect(bounds)){
-                    Toast.makeText(getApplicationContext(), "Drawer RIGHT", Toast.LENGTH_SHORT).show();
                     isRightDrawerOpened = true;
                 }
 
@@ -283,9 +282,20 @@ public class CalendarView extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                view.setBackgroundColor(getResources().getColor(R.color.mainBlue));
+                //view.setBackgroundColor(getResources().getColor(R.color.mainBlue));
 
-                Drawable d = view.getBackground().getCurrent();
+                //Drawable d = view.getBackground().getCurrent();
+                //TODO - save position of checked items and set their color
+
+                TextView name = (TextView)view.findViewById(R.id.nameTV);
+
+
+                if(name.getCurrentTextColor() == getResources().getColor(R.color.mainBlue)){
+                    name.setTextColor(getResources().getColor(R.color.white));
+                }else{
+                    name.setTextColor(getResources().getColor(R.color.mainBlue));
+                }
+
                /* view.setBackgroundResource(R.drawable.list_item_selected);
                 Drawable d = view.getBackground();
 
