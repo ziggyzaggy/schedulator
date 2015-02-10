@@ -72,8 +72,8 @@ public class DateHelper {
     private class AsyncDateGetter extends AsyncTask<String, Void, JSONObject>{
 
         protected void onPreExecute(){
-            dialog.setMessage("Getting Event Dates");
-            dialog.show();
+           /* dialog.setMessage("Getting Event Dates");
+            dialog.show();*/
 
             prgBar.setVisibility(View.VISIBLE);
         }

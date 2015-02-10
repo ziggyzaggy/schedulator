@@ -140,7 +140,9 @@
 
 </RelativeLayout>
 
-
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
 <GridView xmlns:android="http://schemas.android.com/apk/res/android" 
     android:id="@+id/gridview"
     android:layout_width="fill_parent"
@@ -153,10 +155,9 @@
     android:gravity="center"
     android:listSelector="#cccccc"
     android:layout_marginTop="20dp"
-
     />
 
-
+</RelativeLayout>
 
 </LinearLayout>
 
@@ -167,7 +168,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:orientation="vertical"
-        android:background="@android:color/black"
+        android:background="#001"
         >
         <TextView
             android:layout_width="match_parent"
@@ -185,9 +186,8 @@
             android:id="@+id/right_drawer_groups"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:choiceMode="multipleChoice"
-            android:listSelector="@android:color/transparent"
-            android:cacheColorHint="@android:color/transparent"
+            android:choiceMode="singleChoice"
+            android:listSelector="@android:color/darker_gray"
             android:drawSelectorOnTop="false"
             android:divider="@color/mainGrayText"
             android:dividerHeight="0dp"

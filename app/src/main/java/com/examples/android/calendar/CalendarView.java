@@ -32,6 +32,7 @@ import android.util.SparseBooleanArray;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
+import android.view.TextureView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -47,12 +48,14 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import ADAPTERS.CalendarAdapter;
 import ADAPTERS.FriendListAdapter;
+import ADAPTERS.GroupsAdapter;
 import ENTITIES.Event;
 import HELPERS.AnimHelper;
 import HELPERS.DateHelper;
@@ -72,7 +75,7 @@ public class CalendarView extends Activity {
     private float x1,x2;
 
     private Boolean isRightDrawerOpened;
-
+    private ArrayList<Integer> curSelectedFriends;
     private DrawerLayout mDrawerLayout;
     private ListView mRightDrawerList;
     static final int MIN_DISTANCE = 150;
@@ -86,6 +89,8 @@ public class CalendarView extends Activity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.friends_drawer);
         isRightDrawerOpened = false;
 
+        curSelectedFriends = new ArrayList<>();
+
         final Animation animFromRight = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_right);
         final Animation animFromLeft = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_left);
         final Animation animFromLeftLesser = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_left_lesser);
@@ -95,9 +100,15 @@ public class CalendarView extends Activity {
         eventObjs = new ArrayList<>();
 	    adapter = new CalendarAdapter(this, month);
         friendAdapter = new FriendListAdapter(this);
+        GroupsAdapter gAdapter = new GroupsAdapter(this);
+
+
 
         mRightDrawerList = (ListView) findViewById(R.id.right_drawer);
 	    mRightDrawerList.setAdapter(friendAdapter);
+
+        ListView mRightGroupsDrawerList = (ListView) findViewById((R.id.right_drawer_groups));
+        mRightGroupsDrawerList.setAdapter(gAdapter);
 
 	    final GridView gridview = (GridView) findViewById(R.id.gridview);
 	    gridview.setAdapter(adapter);
@@ -247,6 +258,7 @@ public class CalendarView extends Activity {
             @Override
             public void onClick(View v) {
                 mDrawerLayout.openDrawer(Gravity.END);
+
             }
         });
 
@@ -272,12 +284,14 @@ public class CalendarView extends Activity {
                 super.onDrawerClosed(view);
                 if(isRightDrawerOpened){
                     getCheckedFriends();
+
                     isRightDrawerOpened = false;
                 }
 
             }
 
         });
+
 
 
         mRightDrawerList.setOnItemClickListener(new OnItemClickListener() {
@@ -289,26 +303,13 @@ public class CalendarView extends Activity {
                 //Drawable d = view.getBackground().getCurrent();
                 //TODO - save position of checked items and set their color
 
-                TextView name = (TextView)view.findViewById(R.id.nameTV);
+                //TextView name = (TextView)view.findViewById(R.id.nameTV);
 
 
 
-                if(view.getBackground() != null) {
-                    ColorDrawable col = (ColorDrawable) view.getBackground();
-                    int colCode = col.getColor();
-                    // Toast.makeText(getApplicationContext(), "" + colCode + " " + getResources().getColor(R.color.mainBlue), Toast.LENGTH_SHORT).show(); //-13388315 ?mainblue?
-                    if(colCode == getResources().getColor(R.color.mainBlue)){
-                        view.setBackgroundColor(Color.TRANSPARENT);
-                    }else{
-                        view.setBackgroundColor(getResources().getColor(R.color.mainBlue));
-                    }
-                }else{
-                    view.setBackgroundColor(getResources().getColor(R.color.mainBlue));
-                }
+               setSelectedListItemBackground(view);
 
-
-
-              /*  if(name.getCurrentTextColor() == getResources().getColor(R.color.mainBlue)){
+               /* if(name.getCurrentTextColor() == getResources().getColor(R.color.mainBlue)){
                     name.setTextColor(getResources().getColor(R.color.white));
                 }else{
                     name.setTextColor(getResources().getColor(R.color.mainBlue));
@@ -328,16 +329,60 @@ public class CalendarView extends Activity {
 	}
 
 
+    private void setSelectedListItemBackground(View v){
+
+        if(v.getBackground() != null) {
+            v.getBackground().mutate();
+            ColorDrawable col = (ColorDrawable) v.getBackground();
+            int colCode = col.getColor();
+            // Toast.makeText(getApplicationContext(), "" + colCode + " " + getResources().getColor(R.color.mainBlue), Toast.LENGTH_SHORT).show(); //-13388315 ?mainblue?
+            if(colCode == getResources().getColor(R.color.mainBlue)){
+                v.setBackgroundColor(Color.TRANSPARENT);
+            }else{
+                v.setBackgroundColor(getResources().getColor(R.color.mainBlue));
+            }
+        }else{
+            v.setBackgroundColor(getResources().getColor(R.color.mainBlue));
+        }
+    }
+
+
     private void getCheckedFriends(){
         SparseBooleanArray checkeds = mRightDrawerList.getCheckedItemPositions();
-        String str = "";
-        for (int i = 0; i < mRightDrawerList.getAdapter().getCount(); i++) {
-            if (checkeds.get(i)) {
-                str += "POS " + i +" ";
-            }
+        //create array to store last checked friends
+        ArrayList<Integer> curList = new ArrayList<>();
 
+        boolean needsUpdate = false;//flag if the view needs updating
+
+        String str = "";
+
+        for (int i = 0; i < mRightDrawerList.getAdapter().getCount(); i++) {
+            if (checkeds.get(i)) {//get checked friends
+                str += "POS " + i +" ";
+                curList.add(i);//add position of checked friend to arraylist
+            }
         }
-        Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
+
+        if(curSelectedFriends.size() > 0){
+           if(!Utils.equalLists(curList, curSelectedFriends)) {//check lists for equality
+               //lists differ - update and save checked friends
+               curSelectedFriends = curList;
+               needsUpdate = true;
+           }
+        }else if(curList.size() > 0){
+            curSelectedFriends = curList;
+            needsUpdate = true;
+        }
+
+        Toast.makeText(getApplicationContext(), str + " " + needsUpdate, Toast.LENGTH_SHORT).show();
+
+        if(needsUpdate) {
+            try {
+                makeTest();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void nextMonth(){

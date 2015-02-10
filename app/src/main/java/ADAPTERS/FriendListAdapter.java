@@ -34,7 +34,7 @@ public class FriendListAdapter extends BaseAdapter {
     public FriendListAdapter(Context c){
         mContext = c;
         friendsList = new ArrayList<>();
-        makeFriends(5);
+        makeFriends(20);
 
     }
 
@@ -72,17 +72,17 @@ public class FriendListAdapter extends BaseAdapter {
 
         }
 
+        if(v.getBackground() != null){
+            v.getBackground().mutate();
+        }
+
+
         nameTV = (TextView) v.findViewById(R.id.nameTV);
         avatarTV = (TextView) v.findViewById(R.id.avatarTV);
 
         nameTV.setText(friendsList.get(position).getName());
         //avatarTV.setText("" + friendsList.get(position).getUserId());
         avatarTV.setBackgroundResource(R.drawable.ic_contact_picture);
-
-
-
-
-
 
         return v;
     }
