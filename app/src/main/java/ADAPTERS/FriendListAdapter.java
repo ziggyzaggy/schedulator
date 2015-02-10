@@ -76,8 +76,8 @@ public class FriendListAdapter extends BaseAdapter {
         avatarTV = (TextView) v.findViewById(R.id.avatarTV);
 
         nameTV.setText(friendsList.get(position).getName());
-        avatarTV.setText("" + friendsList.get(position).getUserId());
-
+        //avatarTV.setText("" + friendsList.get(position).getUserId());
+        avatarTV.setBackgroundResource(R.drawable.ic_contact_picture);
 
 
 

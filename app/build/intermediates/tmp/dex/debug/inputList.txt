@@ -1,4 +1,4 @@
-C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\classes\debug
-C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-0ddb8c31d757b8173215fc6a5c17d7eb6a8c9c8d.jar
-C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-8bacda9acfa1af2b626bdc86d01b972709c5f202.jar
-C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\pre-dexed\debug\classes-91acf9ab10752a51eb298aaf759e0300c2e18a2c.jar
+C:\Users\kristjan\Aprojects\calendar 19012015 - corrupted itemlistener\calendar experimental 16012015\CalendarView-master1\app\build\intermediates\classes\debug
+C:\Users\kristjan\Aprojects\calendar 19012015 - corrupted itemlistener\calendar experimental 16012015\CalendarView-master1\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-bccfff6db5668447ff45937757868b7ad154ba65.jar
+C:\Users\kristjan\Aprojects\calendar 19012015 - corrupted itemlistener\calendar experimental 16012015\CalendarView-master1\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-0e142aa4e3df0c5321314a5a607e65b699aa5b62.jar
+C:\Users\kristjan\Aprojects\calendar 19012015 - corrupted itemlistener\calendar experimental 16012015\CalendarView-master1\app\build\intermediates\pre-dexed\debug\classes-809e01ed95bb4d5d5627bea8af15023d6f2e27c9.jar

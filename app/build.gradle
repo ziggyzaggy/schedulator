@@ -6,8 +6,8 @@ android {
 
     defaultConfig {
         applicationId "com.examples.android.calendar"
-        minSdkVersion 11
-        targetSdkVersion 10
+        minSdkVersion 12
+        targetSdkVersion 12
     }
 
     buildTypes {

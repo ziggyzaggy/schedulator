@@ -54,6 +54,7 @@ import java.util.Calendar;
 import ADAPTERS.CalendarAdapter;
 import ADAPTERS.FriendListAdapter;
 import ENTITIES.Event;
+import HELPERS.AnimHelper;
 import HELPERS.DateHelper;
 import StaticUtils.Utils;
 
@@ -295,7 +296,7 @@ public class CalendarView extends Activity {
                 if(view.getBackground() != null) {
                     ColorDrawable col = (ColorDrawable) view.getBackground();
                     int colCode = col.getColor();
-                   // Toast.makeText(getApplicationContext(), "" + colCode + " " + getResources().getColor(R.color.mainBlue), Toast.LENGTH_SHORT).show(); //-13388315 ?mainblue?
+                    // Toast.makeText(getApplicationContext(), "" + colCode + " " + getResources().getColor(R.color.mainBlue), Toast.LENGTH_SHORT).show(); //-13388315 ?mainblue?
                     if(colCode == getResources().getColor(R.color.mainBlue)){
                         view.setBackgroundColor(Color.TRANSPARENT);
                     }else{
@@ -304,6 +305,8 @@ public class CalendarView extends Activity {
                 }else{
                     view.setBackgroundColor(getResources().getColor(R.color.mainBlue));
                 }
+
+
 
               /*  if(name.getCurrentTextColor() == getResources().getColor(R.color.mainBlue)){
                     name.setTextColor(getResources().getColor(R.color.white));

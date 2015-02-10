@@ -161,27 +161,66 @@
 </LinearLayout>
 
 
-
-    <ListView
-        android:id="@+id/left_drawer"
-        android:layout_width="100dp"
+    <LinearLayout
+        android:id="@+id/lldrawercontent"
+        android:layout_width="250dp"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:choiceMode="singleChoice"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
-        android:background="#111"/>
+        android:layout_gravity="end"
+        android:orientation="vertical"
+        android:background="@android:color/black"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Groups"
+            android:textSize="20sp"
+            android:gravity="center"
+            />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" />
+
+        <ListView
+            android:id="@+id/right_drawer_groups"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:choiceMode="multipleChoice"
+            android:listSelector="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
+            android:drawSelectorOnTop="false"
+            android:divider="@color/mainGrayText"
+            android:dividerHeight="0dp"
+            android:layout_gravity="end"
+
+            />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Friends"
+        android:textSize="20sp"
+        android:gravity="center"
+        />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" />
 
     <ListView
         android:id="@+id/right_drawer"
-        android:layout_width="200dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:choiceMode="multipleChoice"
+        android:listSelector="@android:color/transparent"
+        android:cacheColorHint="@android:color/transparent"
         android:drawSelectorOnTop="false"
-        android:divider="@android:color/transparent"
+        android:divider="@color/mainGrayText"
         android:dividerHeight="0dp"
-        android:background="#09ffffff"/>
+        android:layout_gravity="end"
 
+        />
+    </LinearLayout>
 
 </android.support.v4.widget.DrawerLayout>
