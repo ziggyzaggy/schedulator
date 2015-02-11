@@ -332,7 +332,7 @@ public class CalendarView extends Activity {
     private void setSelectedListItemBackground(View v){
 
         if(v.getBackground() != null) {
-            v.getBackground().mutate();
+
             ColorDrawable col = (ColorDrawable) v.getBackground();
             int colCode = col.getColor();
             // Toast.makeText(getApplicationContext(), "" + colCode + " " + getResources().getColor(R.color.mainBlue), Toast.LENGTH_SHORT).show(); //-13388315 ?mainblue?

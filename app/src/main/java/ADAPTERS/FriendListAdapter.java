@@ -34,7 +34,7 @@ public class FriendListAdapter extends BaseAdapter {
     public FriendListAdapter(Context c){
         mContext = c;
         friendsList = new ArrayList<>();
-        makeFriends(20);
+        makeFriends(100);
 
     }
 
@@ -44,6 +44,23 @@ public class FriendListAdapter extends BaseAdapter {
             friendsList.add(u);
         }
 
+    }
+
+    //NOTE: getViewTypeCount and getItemViewType methods basically are telling the adapter to never recycle the views,
+    // this fixes the problems with the row states (highlighting of selected items in the list)
+    // but could result in using up too much memory (e.g. 100 firends results in approx 65 mb of allocated memory !!! vs ~15mb on recycled views),
+    // should implement and keep actual states in the model
+
+    @Override
+    public int getViewTypeCount() {
+
+        return getCount();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+
+        return position;
     }
 
 
@@ -72,9 +89,6 @@ public class FriendListAdapter extends BaseAdapter {
 
         }
 
-        if(v.getBackground() != null){
-            v.getBackground().mutate();
-        }
 
 
         nameTV = (TextView) v.findViewById(R.id.nameTV);
@@ -82,7 +96,7 @@ public class FriendListAdapter extends BaseAdapter {
 
         nameTV.setText(friendsList.get(position).getName());
         //avatarTV.setText("" + friendsList.get(position).getUserId());
-        avatarTV.setBackgroundResource(R.drawable.ic_contact_picture);
+       // avatarTV.setBackgroundResource(R.drawable.ic_contact_picture);
 
         return v;
     }
