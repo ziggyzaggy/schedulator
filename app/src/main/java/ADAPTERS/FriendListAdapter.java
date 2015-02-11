@@ -82,22 +82,36 @@ public class FriendListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
+        viewHolder holder = null;
 
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             LayoutInflater vi = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(R.layout.friend_list_item, null);
-
+            holder = new viewHolder();
+            holder.nameTV = (TextView) v.findViewById(R.id.nameTV);
+            holder.avatarTv = (TextView) v.findViewById(R.id.avatarTV);
+            v.setTag(holder);
+        }else{
+            holder = (viewHolder) v.getTag();
         }
 
+        holder.nameTV.setText(friendsList.get(position).getName());
+        holder.avatarTv.setBackgroundResource(R.drawable.ic_contact_picture);
 
-
-        nameTV = (TextView) v.findViewById(R.id.nameTV);
+        /*nameTV = (TextView) v.findViewById(R.id.nameTV);
         avatarTV = (TextView) v.findViewById(R.id.avatarTV);
 
-        nameTV.setText(friendsList.get(position).getName());
+        nameTV.setText(friendsList.get(position).getName());*/
         //avatarTV.setText("" + friendsList.get(position).getUserId());
        // avatarTV.setBackgroundResource(R.drawable.ic_contact_picture);
 
         return v;
     }
+
+
+    static class viewHolder{
+        TextView nameTV;
+        TextView avatarTv;
+    }
+
 }
