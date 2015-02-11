@@ -168,19 +168,23 @@
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:orientation="vertical"
-        android:background="#001"
+        android:background="#fff"
         >
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Groups"
             android:textSize="20sp"
-            android:gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             />
         <View
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="#ffffff" />
+            android:background="#ccc"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            />
 
         <ListView
             android:id="@+id/right_drawer_groups"
@@ -201,12 +205,16 @@
         android:layout_height="wrap_content"
         android:text="Friends"
         android:textSize="20sp"
-        android:gravity="center"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="16dp"
         />
         <View
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="#ffffff" />
+            android:background="#ccc"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            />
 
     <ListView
         android:id="@+id/right_drawer"
@@ -219,7 +227,8 @@
         android:divider="@color/mainGrayText"
         android:dividerHeight="0dp"
         android:layout_gravity="end"
-
+        android:fadingEdge="none"
+        android:fadingEdgeLength="0dp"
         />
     </LinearLayout>
 

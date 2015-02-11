@@ -37,6 +37,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
@@ -323,6 +324,32 @@ public class CalendarView extends Activity {
                 }*/
 
                 String o = "temp";
+            }
+        });
+
+
+        mRightDrawerList.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            private int mLastFirstVisibleItem;
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem,
+                                 int visibleItemCount, int totalItemCount) {
+
+                if(mLastFirstVisibleItem<firstVisibleItem)
+                {
+                   //TODO: Do something on scroll down
+                }
+                if(mLastFirstVisibleItem>firstVisibleItem)
+                {
+                    //TODO: do something on scroll up
+                }
+                mLastFirstVisibleItem=firstVisibleItem;
+
             }
         });
 
