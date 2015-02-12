@@ -79,6 +79,11 @@ public class CalendarView extends Activity {
     private ArrayList<Integer> curSelectedFriends;
     private DrawerLayout mDrawerLayout;
     private ListView mRightDrawerList;
+    private TextView mGroupsTV;
+    private TextView mFriendsTV;
+
+    private LinearLayout mRightDrawerGroupContainer;
+    private LinearLayout mRightDrawerFriendContainer;
     static final int MIN_DISTANCE = 150;
 
 	public void onCreate(Bundle savedInstanceState) {
@@ -90,11 +95,18 @@ public class CalendarView extends Activity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.friends_drawer);
         isRightDrawerOpened = false;
 
+        mRightDrawerGroupContainer = (LinearLayout) findViewById(R.id.groupsContainer);
+        mRightDrawerFriendContainer = (LinearLayout) findViewById(R.id.drawerFriendContainer);
+        mGroupsTV = (TextView) findViewById(R.id.groupsTV);
+        mFriendsTV = (TextView) findViewById(R.id.friendsTV);
+
         curSelectedFriends = new ArrayList<>();
 
         final Animation animFromRight = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_right);
         final Animation animFromLeft = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_left);
         final Animation animFromLeftLesser = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_left_lesser);
+        final Animation animScaleUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.expand_height_width);
+        final Animation animScaleDown = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.collapse_height_width);
 
         titleText  = (TextView) findViewById(R.id.title);
 
@@ -108,7 +120,7 @@ public class CalendarView extends Activity {
         mRightDrawerList = (ListView) findViewById(R.id.right_drawer);
 	    mRightDrawerList.setAdapter(friendAdapter);
 
-        ListView mRightGroupsDrawerList = (ListView) findViewById((R.id.right_drawer_groups));
+        final ListView mRightGroupsDrawerList = (ListView) findViewById((R.id.right_drawer_groups));
         mRightGroupsDrawerList.setAdapter(gAdapter);
 
 	    final GridView gridview = (GridView) findViewById(R.id.gridview);
@@ -126,11 +138,27 @@ public class CalendarView extends Activity {
             e.printStackTrace();
         }
 
+        mFriendsTV.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mRightDrawerGroupContainer.setVisibility(View.VISIBLE);
+                mRightDrawerGroupContainer.startAnimation(animScaleUp);
+            }
+        });
+
+        mGroupsTV.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mRightDrawerFriendContainer.startAnimation(animScaleUp);
+                mRightDrawerGroupContainer.setVisibility(View.GONE);
+            }
+        });
+
 
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 		    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 TextView date = (TextView)v.findViewById(R.id.date);
-
 
                 String dateText = date.getText().toString();
                 boolean isNum = Utils.intTryParse(dateText);
@@ -349,10 +377,13 @@ public class CalendarView extends Activity {
                 if(mLastFirstVisibleItem<firstVisibleItem)
                 {
                    //TODO: Do something on scroll down
+
                 }
                 if(mLastFirstVisibleItem>firstVisibleItem)
                 {
-                    //TODO: do something on scroll up
+
+                    //scroll up
+
                 }
                 mLastFirstVisibleItem=firstVisibleItem;
 

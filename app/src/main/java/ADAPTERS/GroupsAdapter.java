@@ -24,7 +24,7 @@ public class GroupsAdapter extends BaseAdapter {
     public GroupsAdapter(Context c) {
         groups = new ArrayList<>();
         mContext = c;
-        makeGroups(2);
+        makeGroups(10);
 
     }
 

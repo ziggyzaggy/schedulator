@@ -9,12 +9,14 @@ package com.examples.android.calendar;
 
 public final class R {
     public static final class anim {
-        public static final int exit_to_left=0x7f040000;
-        public static final int expand_height=0x7f040001;
-        public static final int fade_in=0x7f040002;
-        public static final int from_left=0x7f040003;
-        public static final int from_left_lesser=0x7f040004;
-        public static final int from_right=0x7f040005;
+        public static final int collapse_height_width=0x7f040000;
+        public static final int exit_to_left=0x7f040001;
+        public static final int expand_height=0x7f040002;
+        public static final int expand_height_width=0x7f040003;
+        public static final int fade_in=0x7f040004;
+        public static final int from_left=0x7f040005;
+        public static final int from_left_lesser=0x7f040006;
+        public static final int from_right=0x7f040007;
     }
     public static final class attr {
     }
@@ -47,36 +49,40 @@ public final class R {
     }
     public static final class id {
         public static final int TAG_EVENT_ID=0x7f060000;
-        public static final int avatarTV=0x7f06001a;
-        public static final int bind=0x7f060012;
-        public static final int blueIndicator=0x7f060016;
-        public static final int cal_item_layout=0x7f060011;
+        public static final int avatarTV=0x7f06001e;
+        public static final int bind=0x7f060016;
+        public static final int blueIndicator=0x7f06001a;
+        public static final int cal_item_layout=0x7f060015;
         public static final int circle_friends=0x7f060007;
         public static final int circle_green=0x7f060006;
         public static final int circle_red=0x7f060005;
-        public static final int date=0x7f060013;
+        public static final int date=0x7f060017;
         public static final int dateDetailContainer=0x7f060009;
         public static final int dateDetailContainerText=0x7f06000a;
-        public static final int dateHeaderText=0x7f06001d;
-        public static final int datePicker1=0x7f06001e;
-        public static final int date_icon=0x7f060018;
-        public static final int friend_container=0x7f060019;
+        public static final int dateHeaderText=0x7f060021;
+        public static final int datePicker1=0x7f060022;
+        public static final int date_icon=0x7f06001c;
+        public static final int drawerFriendContainer=0x7f060012;
+        public static final int friend_container=0x7f06001d;
+        public static final int friendsTV=0x7f060013;
         public static final int friends_drawer=0x7f060001;
-        public static final int greenIndicator=0x7f060015;
+        public static final int greenIndicator=0x7f060019;
         public static final int gridview=0x7f06000d;
+        public static final int groupsContainer=0x7f06000f;
+        public static final int groupsTV=0x7f060010;
         public static final int header=0x7f06000b;
-        public static final int indicatorContainer=0x7f060014;
+        public static final int indicatorContainer=0x7f060018;
         public static final int lldrawercontent=0x7f06000e;
         public static final int mainLayoutContainer=0x7f060002;
-        public static final int nameTV=0x7f06001b;
-        public static final int openButton=0x7f06001f;
+        public static final int nameTV=0x7f06001f;
+        public static final int openButton=0x7f060023;
         public static final int prgBarDates=0x7f060008;
-        public static final int redIndicator=0x7f060017;
-        public static final int right_drawer=0x7f060010;
-        public static final int right_drawer_groups=0x7f06000f;
+        public static final int redIndicator=0x7f06001b;
+        public static final int right_drawer=0x7f060014;
+        public static final int right_drawer_groups=0x7f060011;
         public static final int title=0x7f06000c;
         public static final int topBarWrapper=0x7f060003;
-        public static final int txtGroupName=0x7f06001c;
+        public static final int txtGroupName=0x7f060020;
         public static final int weekText=0x7f060004;
     }
     public static final class layout {

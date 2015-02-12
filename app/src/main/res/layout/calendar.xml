@@ -169,20 +169,30 @@
         android:layout_gravity="end"
         android:orientation="vertical"
         android:background="@color/friendsDrawerColor"
+        android:weightSum="2"
         >
+        <LinearLayout
+            android:id="@+id/groupsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
         <TextView
+            android:id="@+id/groupsTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Groups"
             android:textSize="20sp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
+
             />
         <View
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:background="#ccc"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             />
 
         <ListView
@@ -191,27 +201,41 @@
             android:layout_height="wrap_content"
             android:choiceMode="singleChoice"
             android:listSelector="@color/mainBlue"
+            android:cacheColorHint="@android:color/transparent"
             android:drawSelectorOnTop="false"
             android:divider="@color/mainGrayText"
             android:dividerHeight="0dp"
             android:layout_gravity="end"
+            android:fadingEdge="none"
+            android:fadingEdgeLength="0dp"
 
             />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/drawerFriendContainer"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+
+            >
+
 
     <TextView
+        android:id="@+id/friendsTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Friends"
         android:textSize="20sp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
         />
         <View
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:background="#ccc"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             />
 
     <ListView
@@ -228,6 +252,7 @@
         android:fadingEdge="none"
         android:fadingEdgeLength="0dp"
         />
+        </LinearLayout>
     </LinearLayout>
 
 </android.support.v4.widget.DrawerLayout>
