@@ -29,7 +29,7 @@ import ENTITIES.User;
 public class FriendListAdapter extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<User> friendsList;
+    private ArrayList<Friend> friendsList;
     private TextView nameTV;
     private TextView avatarTV;
 
@@ -42,8 +42,8 @@ public class FriendListAdapter extends BaseAdapter {
 
     public void makeFriends(int number){
         for(int i = 0; i < number; i++){
-            User u = new User(i, false, "user no " + i, "example@example.com");
-            friendsList.add(u);
+            Friend f = new Friend(i, false, "user no " + i, "example@example.com");
+            friendsList.add(f);
 
 
 
@@ -55,11 +55,11 @@ public class FriendListAdapter extends BaseAdapter {
     public void updateCheckedFriends(ArrayList<Integer> checkedFriendsList){
         //uncheck all users
         for(int j = 0; j < friendsList.size(); j++){
-            friendsList.get(j).setSetAsChecked(false);
+            friendsList.get(j).setCheckedInList(false);
         }
         //check users at positions at the checkedFriendsList positions
         for(int i : checkedFriendsList){
-            friendsList.get(i).setSetAsChecked(true);
+            friendsList.get(i).setCheckedInList(true);
         }
         notifyDataSetChanged();
     }
@@ -123,7 +123,7 @@ public class FriendListAdapter extends BaseAdapter {
         holder.avatarTv.setBackgroundResource(R.drawable.ic_contact_picture);
         int colorToSet = 0;
 
-        if(friendsList.get(position).isSetAsChecked()){
+        if(friendsList.get(position).isCheckedInList()){
             colorToSet = mContext.getResources().getColor(R.color.mainBlue);
         }else{
             colorToSet = mContext.getResources().getColor(android.R.color.transparent);

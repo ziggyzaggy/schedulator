@@ -8,7 +8,6 @@ public class User {
     private boolean isDeleted;
     private String name;
     private String email;
-    private boolean isSetAsChecked;
 
     public User(int userId, boolean isDeleted, String name, String email) {
         this.userId = userId;
@@ -57,12 +56,6 @@ public class User {
         this.email = email;
     }
 
-    public boolean isSetAsChecked() {
-        return isSetAsChecked;
-    }
 
-    public void setSetAsChecked(boolean isSetAsChecked) {
-        this.isSetAsChecked = isSetAsChecked;
-    }
     //endregion
 }
