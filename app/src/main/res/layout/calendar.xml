@@ -168,7 +168,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:orientation="vertical"
-        android:background="#fff"
+        android:background="@color/friendsDrawerColor"
         >
         <TextView
             android:layout_width="match_parent"
@@ -191,7 +191,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:choiceMode="singleChoice"
-            android:listSelector="@android:color/darker_gray"
+            android:listSelector="@color/mainBlue"
             android:drawSelectorOnTop="false"
             android:divider="@color/mainGrayText"
             android:dividerHeight="0dp"
@@ -221,7 +221,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:choiceMode="multipleChoice"
-        android:listSelector="@android:color/transparent"
+        android:listSelector="@color/friendsDrawerColor"
         android:cacheColorHint="@android:color/transparent"
         android:drawSelectorOnTop="false"
         android:divider="@color/mainGrayText"

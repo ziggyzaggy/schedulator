@@ -18,7 +18,9 @@ import com.examples.android.calendar.R;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import ENTITIES.Friend;
 import ENTITIES.User;
 
 /**
@@ -42,15 +44,37 @@ public class FriendListAdapter extends BaseAdapter {
         for(int i = 0; i < number; i++){
             User u = new User(i, false, "user no " + i, "example@example.com");
             friendsList.add(u);
+
+
+
+
         }
 
+    }
+
+    public void updateCheckedFriends(ArrayList<Integer> checkedFriendsList){
+        //uncheck all users
+        for(int j = 0; j < friendsList.size(); j++){
+            friendsList.get(j).setSetAsChecked(false);
+        }
+        //check users at positions at the checkedFriendsList positions
+        for(int i : checkedFriendsList){
+            friendsList.get(i).setSetAsChecked(true);
+        }
+        notifyDataSetChanged();
     }
 
     //NOTE: getViewTypeCount and getItemViewType methods basically are telling the adapter to never recycle the views,
     // this fixes the problems with the row states (highlighting of selected items in the list)
     // but could result in using up too much memory (e.g. 100 firends results in approx 65 mb of allocated memory !!! vs ~15mb on recycled views),
-    // should implement and keep actual states in the model
+    //(500 friends results in ~200mb of memory and scrolling freezes)
+    // should implement and keep actual states in the entity
 
+    //update - entity User now holds checked state,
+    // updateCheckedFriends and getView methods are now responsible of keeping the views checked
+    // memory usage back to normal
+    //keep above note for future possible android quirks
+/*
     @Override
     public int getViewTypeCount() {
 
@@ -62,7 +86,7 @@ public class FriendListAdapter extends BaseAdapter {
 
         return position;
     }
-
+*/
 
     @Override
     public int getCount() {
@@ -97,13 +121,14 @@ public class FriendListAdapter extends BaseAdapter {
 
         holder.nameTV.setText(friendsList.get(position).getName());
         holder.avatarTv.setBackgroundResource(R.drawable.ic_contact_picture);
+        int colorToSet = 0;
 
-        /*nameTV = (TextView) v.findViewById(R.id.nameTV);
-        avatarTV = (TextView) v.findViewById(R.id.avatarTV);
-
-        nameTV.setText(friendsList.get(position).getName());*/
-        //avatarTV.setText("" + friendsList.get(position).getUserId());
-       // avatarTV.setBackgroundResource(R.drawable.ic_contact_picture);
+        if(friendsList.get(position).isSetAsChecked()){
+            colorToSet = mContext.getResources().getColor(R.color.mainBlue);
+        }else{
+            colorToSet = mContext.getResources().getColor(android.R.color.transparent);
+        }
+        holder.nameTV.setBackgroundColor(colorToSet);
 
         return v;
     }

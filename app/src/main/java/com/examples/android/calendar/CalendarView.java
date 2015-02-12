@@ -284,8 +284,14 @@ public class CalendarView extends Activity {
             public void onDrawerClosed(View view){
                 super.onDrawerClosed(view);
                 if(isRightDrawerOpened){
-                    getCheckedFriends();
-
+                    //getCheckedFriends();
+                    //artificial delay to start updating the calendar after the drawer closing animation is finished
+                    mDrawerLayout.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            getCheckedFriends();
+                        }
+                    }, 200);
                     isRightDrawerOpened = false;
                 }
 
@@ -358,7 +364,7 @@ public class CalendarView extends Activity {
 
     private void setSelectedListItemBackground(View v){
 
-        if(v.getBackground() != null) {
+     /*   if(v.getBackground() != null) {
 
             ColorDrawable col = (ColorDrawable) v.getBackground();
             int colCode = col.getColor();
@@ -370,9 +376,31 @@ public class CalendarView extends Activity {
             }
         }else{
             v.setBackgroundColor(getResources().getColor(R.color.mainBlue));
-        }
+        }*/
+
+        sendCheckedFriendsToAdapter();
     }
 
+
+    private void sendCheckedFriendsToAdapter(){
+        SparseBooleanArray checkeds = mRightDrawerList.getCheckedItemPositions();
+        //create array to store last checked friends
+        ArrayList<Integer> curList = new ArrayList<>();
+
+        boolean needsUpdate = false;//flag if the view needs updating
+
+        String str = "";
+
+        for (int i = 0; i < mRightDrawerList.getAdapter().getCount(); i++) {
+            if (checkeds.get(i)) {//get checked friends
+                str += "POS " + i +" ";
+                curList.add(i);//add position of checked friend to arraylist
+            }
+        }
+
+        friendAdapter.updateCheckedFriends(curList);
+
+    }
 
     private void getCheckedFriends(){
         SparseBooleanArray checkeds = mRightDrawerList.getCheckedItemPositions();
