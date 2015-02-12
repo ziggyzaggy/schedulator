@@ -144,12 +144,14 @@ public class CalendarView extends Activity {
 
                 mRightDrawerGroupContainer.setVisibility(View.VISIBLE);
                 mRightDrawerGroupContainer.startAnimation(animScaleUp);
+                mRightDrawerFriendContainer.setVisibility(View.GONE);
             }
         });
 
         mGroupsTV.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                mRightDrawerFriendContainer.setVisibility(View.VISIBLE);
                 mRightDrawerFriendContainer.startAnimation(animScaleUp);
                 mRightDrawerGroupContainer.setVisibility(View.GONE);
             }

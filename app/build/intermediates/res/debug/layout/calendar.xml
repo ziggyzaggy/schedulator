@@ -140,7 +140,9 @@
 
 </RelativeLayout>
 
-
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
 <GridView xmlns:android="http://schemas.android.com/apk/res/android" 
     android:id="@+id/gridview"
     android:layout_width="fill_parent"
@@ -153,35 +155,104 @@
     android:gravity="center"
     android:listSelector="#cccccc"
     android:layout_marginTop="20dp"
-
     />
 
-
+</RelativeLayout>
 
 </LinearLayout>
 
 
-
-    <ListView
-        android:id="@+id/left_drawer"
-        android:layout_width="100dp"
+    <LinearLayout
+        android:id="@+id/lldrawercontent"
+        android:layout_width="250dp"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:choiceMode="singleChoice"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
-        android:background="#111"/>
+        android:layout_gravity="end"
+        android:orientation="vertical"
+        android:background="@color/friendsDrawerColor"
+        android:weightSum="2"
+        >
+        <LinearLayout
+            android:id="@+id/groupsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+        <TextView
+            android:id="@+id/groupsTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Groups"
+            android:textSize="20sp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+
+            />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#ccc"
+            android:layout_marginTop="16dp"
+            />
+
+        <ListView
+            android:id="@+id/right_drawer_groups"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:choiceMode="singleChoice"
+            android:listSelector="@color/mainBlue"
+            android:cacheColorHint="@android:color/transparent"
+            android:drawSelectorOnTop="false"
+            android:divider="@color/mainGrayText"
+            android:dividerHeight="0dp"
+            android:layout_gravity="end"
+            android:fadingEdge="none"
+            android:fadingEdgeLength="0dp"
+
+            />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/drawerFriendContainer"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+
+            >
+
+
+    <TextView
+        android:id="@+id/friendsTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Friends"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#ccc"
+            android:layout_marginTop="16dp"
+            />
 
     <ListView
         android:id="@+id/right_drawer"
-        android:layout_width="200dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:choiceMode="multipleChoice"
+        android:listSelector="@color/friendsDrawerColor"
+        android:cacheColorHint="@android:color/transparent"
         android:drawSelectorOnTop="false"
-        android:divider="@android:color/transparent"
+        android:divider="@color/mainGrayText"
         android:dividerHeight="0dp"
-        android:background="#09ffffff"/>
-
+        android:layout_gravity="end"
+        android:fadingEdge="none"
+        android:fadingEdgeLength="0dp"
+        />
+        </LinearLayout>
+    </LinearLayout>
 
 </android.support.v4.widget.DrawerLayout><!-- From: file:/C:/Users/kris/Android%20Projects/schedulator1/app/src/main/res/layout/calendar.xml -->
