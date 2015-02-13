@@ -170,10 +170,10 @@ public class CalendarView extends Activity {
                     if(((RelativeLayout)v.findViewById(R.id.indicatorContainer)).getVisibility() == View.VISIBLE){
                         TextView boundField = (TextView) v.findViewById(R.id.bind);
                         setDetailInfo(boundField.getText().toString());
-                        showDetailContainer(findViewById(R.id.dateDetailContainer), true);
+                        showDetailContainer(findViewById(R.id.dateDetailContainerText), true);
 
                     }else{
-                        showDetailContainer(findViewById(R.id.dateDetailContainer), false);
+                        showDetailContainer(findViewById(R.id.dateDetailContainerText), false);
                     }
 
                     Calendar d = Calendar.getInstance();
@@ -511,7 +511,7 @@ public class CalendarView extends Activity {
     //animates exit/intro of detail container
     private void showDetailContainer(View v, boolean show){
 
-        LinearLayout tv = (LinearLayout) v;
+        TextView tv = (TextView) v;
         Animation anim = null;
         if(show) {
             tv.setVisibility(View.VISIBLE);

@@ -41,6 +41,7 @@ public class CalendarAdapter extends BaseAdapter {
 	
 	
 	private Context mContext;
+    private viewHolder holder;
 
     private java.util.Calendar month;
     private Calendar selectedDate;
@@ -83,10 +84,15 @@ public class CalendarAdapter extends BaseAdapter {
     // create a new view for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
+        holder = null;
+
     	TextView dayView;
+
         if (convertView == null) {  // if it's not recycled, initialize some attributes
         	LayoutInflater vi = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(R.layout.calendar_item, null);
+
+            holder = new viewHolder();
         	
         }
         dayView = (TextView)v.findViewById(R.id.date);
@@ -235,6 +241,13 @@ public class CalendarAdapter extends BaseAdapter {
             }
         }
         return v;
+    }
+
+
+
+    static class viewHolder{
+        TextView nameTV;
+        TextView avatarTv;
     }
     
     public void refreshDays()
