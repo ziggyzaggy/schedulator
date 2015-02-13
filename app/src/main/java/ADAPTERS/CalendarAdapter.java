@@ -86,11 +86,12 @@ public class CalendarAdapter extends BaseAdapter {
 
             holder = new viewHolder();
             holder.dateTV = (TextView) v.findViewById(R.id.date);
-            holder.dateIcon = (TextView) v.findViewById(R.id.date_icon);
+
             holder.indicLayout = (RelativeLayout) v.findViewById(R.id.indicatorContainer);
             holder.bIndicator = (TextView) v.findViewById(R.id.blueIndicator);
             holder.rIndicator = (TextView) v.findViewById(R.id.redIndicator);
             holder.gIndicator = (TextView) v.findViewById(R.id.greenIndicator);
+            holder.bind = (TextView) v.findViewById(R.id.bind);
 
             v.setTag(holder);
         	
@@ -114,13 +115,11 @@ public class CalendarAdapter extends BaseAdapter {
         	if(month.get(Calendar.YEAR)== selectedDate.get(Calendar.YEAR) && month.get(Calendar.MONTH)== selectedDate.get(Calendar.MONTH) && days[position].equals(""+selectedDate.get(Calendar.DAY_OF_MONTH))) {
 
                 holder.dateTV.setTextColor(Color.parseColor("#526AF2"));
-                v.findViewById(R.id.date_icon).setBackgroundColor(Color.parseColor("#526AF2"));
                 v.setBackgroundResource(R.drawable.back);
         	}
         	else {
         		v.setBackgroundResource(R.drawable.back);
-                holder.dateTV.setTextColor(mContext.getResources().getColor(R.color.mainGrayText));
-               holder.dateIcon.setBackgroundColor(Color.parseColor("#aaaaaa"));
+                holder.dateTV.setTextColor(mContext.getResources().getColor(R.color.mainGrayText));;
         	}
         }
 
@@ -193,8 +192,10 @@ public class CalendarAdapter extends BaseAdapter {
 
         if(date.length()>0 && eventObjs!=null && isThisDay && isThisMonth && isThisYear) {
 
-            TextView bind = (TextView) v.findViewById(R.id.bind);
-            bind.setText("" + actualPos);
+            holder.bind.setText("" + actualPos);
+
+            //does that even work?
+            holder.boundInt = actualPos;
 
             holder.indicLayout.setVisibility(View.VISIBLE);
             if(hasMinePending) {
@@ -221,7 +222,6 @@ public class CalendarAdapter extends BaseAdapter {
             if(position == i) {
                 //set generic header background resources
                 //dayView.setTextSize(25);
-                holder.dateIcon.setVisibility(View.GONE); //remove the date_icons from headers (GONE doesn't take up the space for the element)
                 holder.dateTV.setTextColor(mContext.getResources().getColor(R.color.mainBlue));
                 //set sat, sun
                 if(i == 5 || i == 6){
@@ -234,14 +234,16 @@ public class CalendarAdapter extends BaseAdapter {
 
 
 
-    static class viewHolder{
+    public static class viewHolder{
         TextView dateTV;
-        TextView dateIcon;
         RelativeLayout indicLayout;
         TextView bIndicator;
         TextView gIndicator;
         TextView rIndicator;
+        TextView bind;
+        int boundInt;
     }
+
     
     public void refreshDays()
     {

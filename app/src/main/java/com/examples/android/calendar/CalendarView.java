@@ -99,9 +99,7 @@ public class CalendarView extends Activity {
 
         final Animation animFromRight = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_right);
         final Animation animFromLeft = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_left);
-        final Animation animFromLeftLesser = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_left_lesser);
         final Animation animScaleUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.expand_height_width);
-        final Animation animScaleDown = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.collapse_height_width);
 
         titleText  = (TextView) findViewById(R.id.title);
 
@@ -165,6 +163,10 @@ public class CalendarView extends Activity {
 
 
                     if(v.findViewById(R.id.indicatorContainer).getVisibility() == View.VISIBLE){
+                        //TODO: test this shit, should replace the bind textview and instead use the selected views 'memory'
+                        if(v.getTag() != null){CalendarAdapter.viewHolder holder = (CalendarAdapter.viewHolder) v.getTag();}
+
+
                         TextView boundField = (TextView) v.findViewById(R.id.bind);
                         setDetailInfo(boundField.getText().toString());
                         showDetailContainer(findViewById(R.id.dateDetailContainerText), true);
@@ -203,7 +205,6 @@ public class CalendarView extends Activity {
                                 // Left to Right swipe action
                                 if (x2 > x1)
                                 {
-                                   // Toast.makeText(getApplicationContext(), "Left to Right swipe [Next] " + "x1 " + x1 + " x2 " + x2 , Toast.LENGTH_SHORT).show ();
                                     prevMonth();
                                     gridview.startAnimation(animFromLeft);
                                     titleText.startAnimation(animFromLeft);
@@ -212,7 +213,6 @@ public class CalendarView extends Activity {
                                 // Right to left swipe action
                                 else
                                 {
-                                    //Toast.makeText(getApplicationContext(), "Right to Left swipe [Previous]", Toast.LENGTH_SHORT).show ();
                                     nextMonth();
                                     gridview.startAnimation(animFromRight);
                                     titleText.startAnimation(animFromRight);
@@ -234,7 +234,6 @@ public class CalendarView extends Activity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
                 TextView date = (TextView) v.findViewById(R.id.date);
-                //use tryparse to determine if the selected item is actually a date
                 String dateText = date.getText().toString();
                 boolean isNum = Utils.intTryParse(dateText);
 
@@ -400,13 +399,8 @@ public class CalendarView extends Activity {
         //create array to store last checked friends
         ArrayList<Integer> curList = new ArrayList<>();
 
-        boolean needsUpdate = false;//flag if the view needs updating
-
-        String str = "";
-
         for (int i = 0; i < mRightDrawerList.getAdapter().getCount(); i++) {
             if (checkeds.get(i)) {//get checked friends
-                str += "POS " + i +" ";
                 curList.add(i);//add position of checked friend to arraylist
             }
         }
@@ -476,7 +470,7 @@ public class CalendarView extends Activity {
     private void makeTest() throws JSONException {
         DateHelper helper = new DateHelper(this, (TextView)findViewById(R.id.weekText), jobj, this);
         helper.runAsyncGetter(jobj);
-        JSONObject temp = jobj;
+
 
     }
 
