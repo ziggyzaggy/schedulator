@@ -26,8 +26,6 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import ENTITIES.Event;
-
 public class CalendarViewSampleActivity extends Activity {
     /** Called when the activity is first created. */
     

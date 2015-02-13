@@ -46,8 +46,8 @@ public final class Utils {
 
         //to avoid messing the order of the lists we will use a copy
         //as noted in comments by A. R. S.
-        one = new ArrayList<Integer>(one);
-        two = new ArrayList<Integer>(two);
+        one = new ArrayList<>(one);
+        two = new ArrayList<>(two);
 
         Collections.sort(one);
         Collections.sort(two);

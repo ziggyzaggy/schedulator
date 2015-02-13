@@ -33,7 +33,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.examples.android.calendar.CalendarView"></activity>
+        <activity android:name="com.examples.android.calendar.CalendarView"/>
 
     </application>
 </manifest>

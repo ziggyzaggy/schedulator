@@ -21,8 +21,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -32,7 +30,6 @@ import android.util.SparseBooleanArray;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
-import android.view.TextureView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -49,7 +46,6 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -58,7 +54,6 @@ import ADAPTERS.CalendarAdapter;
 import ADAPTERS.FriendListAdapter;
 import ADAPTERS.GroupsAdapter;
 import ENTITIES.Event;
-import HELPERS.AnimHelper;
 import HELPERS.DateHelper;
 import StaticUtils.Utils;
 
@@ -129,8 +124,8 @@ public class CalendarView extends Activity {
 	    handler = new Handler();
 	    handler.post(calendarUpdater);
 	    
-	    TextView title  = (TextView) findViewById(R.id.title);
-	    title.setText(android.text.format.DateFormat.format("MMMM yyyy", month));
+
+	    titleText.setText(android.text.format.DateFormat.format("MMMM yyyy", month));
 
         try {
             makeTest();
@@ -169,7 +164,7 @@ public class CalendarView extends Activity {
                     setSelectedBackground(v, gridview);
 
 
-                    if(((RelativeLayout)v.findViewById(R.id.indicatorContainer)).getVisibility() == View.VISIBLE){
+                    if(v.findViewById(R.id.indicatorContainer).getVisibility() == View.VISIBLE){
                         TextView boundField = (TextView) v.findViewById(R.id.bind);
                         setDetailInfo(boundField.getText().toString());
                         showDetailContainer(findViewById(R.id.dateDetailContainerText), true);
@@ -344,7 +339,7 @@ public class CalendarView extends Activity {
 
 
 
-               setSelectedListItemBackground(view);
+               setSelectedListItemBackground();
 
                /* if(name.getCurrentTextColor() == getResources().getColor(R.color.mainBlue)){
                     name.setTextColor(getResources().getColor(R.color.white));
@@ -395,22 +390,7 @@ public class CalendarView extends Activity {
 	}
 
 
-    private void setSelectedListItemBackground(View v){
-
-     /*   if(v.getBackground() != null) {
-
-            ColorDrawable col = (ColorDrawable) v.getBackground();
-            int colCode = col.getColor();
-            // Toast.makeText(getApplicationContext(), "" + colCode + " " + getResources().getColor(R.color.mainBlue), Toast.LENGTH_SHORT).show(); //-13388315 ?mainblue?
-            if(colCode == getResources().getColor(R.color.mainBlue)){
-                v.setBackgroundColor(Color.TRANSPARENT);
-            }else{
-                v.setBackgroundColor(getResources().getColor(R.color.mainBlue));
-            }
-        }else{
-            v.setBackgroundColor(getResources().getColor(R.color.mainBlue));
-        }*/
-
+    private void setSelectedListItemBackground(){
         sendCheckedFriendsToAdapter();
     }
 
@@ -554,18 +534,7 @@ public class CalendarView extends Activity {
 
     }
 
-    //@deprecated - use Utils#intTryParse Instead
-    @Deprecated
-    public boolean tryParse(String str){
-        try
-        {
-            Integer.parseInt(str);
-            return true;
-        } catch(NumberFormatException nfe)
-        {
-            return false;
-        }
-    }
+
 
 
 	public void refreshCalendar()

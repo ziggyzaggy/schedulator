@@ -12,7 +12,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -74,9 +73,7 @@ public class JSONParser {
             }
 
 
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (ClientProtocolException e) {
+        } catch (UnsupportedEncodingException | ClientProtocolException e) {
             e.printStackTrace();
         } catch (Exception ex) {
             Log.d("Networking", ex.getLocalizedMessage());
@@ -89,7 +86,7 @@ public class JSONParser {
             StringBuilder sb = new StringBuilder();
             String line = null;
             while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
+                sb.append(line).append("\n");
             }
             is.close();
             json = sb.toString();

@@ -17,7 +17,6 @@
 package ADAPTERS;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,13 +25,8 @@ import android.widget.*;
 
 import com.examples.android.calendar.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Dictionary;
-import java.util.Hashtable;
-import java.util.Map;
 
 import ENTITIES.Event;
 
@@ -86,40 +80,47 @@ public class CalendarAdapter extends BaseAdapter {
         View v = convertView;
         holder = null;
 
-    	TextView dayView;
-
         if (convertView == null) {  // if it's not recycled, initialize some attributes
         	LayoutInflater vi = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(R.layout.calendar_item, null);
 
             holder = new viewHolder();
+            holder.dateTV = (TextView) v.findViewById(R.id.date);
+            holder.dateIcon = (TextView) v.findViewById(R.id.date_icon);
+            holder.indicLayout = (RelativeLayout) v.findViewById(R.id.indicatorContainer);
+            holder.bIndicator = (TextView) v.findViewById(R.id.blueIndicator);
+            holder.rIndicator = (TextView) v.findViewById(R.id.redIndicator);
+            holder.gIndicator = (TextView) v.findViewById(R.id.greenIndicator);
+
+            v.setTag(holder);
         	
+        }else{
+            holder = (viewHolder) v.getTag();
         }
-        dayView = (TextView)v.findViewById(R.id.date);
+
 
 
 
         
         // disable empty days from the beginning
         if(days[position].equals("")) {
-        	dayView.setClickable(false);
-        	dayView.setFocusable(false);
+        	holder.dateTV.setClickable(false);
+            holder.dateTV.setFocusable(false);
             v.setBackgroundResource(R.drawable.back); //remove back from empty days
             v.setClickable(false);
         }
         else {
         	// mark current day as focused
         	if(month.get(Calendar.YEAR)== selectedDate.get(Calendar.YEAR) && month.get(Calendar.MONTH)== selectedDate.get(Calendar.MONTH) && days[position].equals(""+selectedDate.get(Calendar.DAY_OF_MONTH))) {
-        		//v.setBackgroundResource(R.drawable.item_background_focused);
-                v.setBackgroundResource(android.R.color.transparent);
-                ((TextView) v.findViewById(R.id.date)).setTextColor(Color.parseColor("#526AF2"));
-                ((TextView) v.findViewById(R.id.date_icon)).setBackgroundColor(Color.parseColor("#526AF2"));
+
+                holder.dateTV.setTextColor(Color.parseColor("#526AF2"));
+                v.findViewById(R.id.date_icon).setBackgroundColor(Color.parseColor("#526AF2"));
                 v.setBackgroundResource(R.drawable.back);
         	}
         	else {
         		v.setBackgroundResource(R.drawable.back);
-                ((TextView) v.findViewById(R.id.date)).setTextColor(mContext.getResources().getColor(R.color.mainGrayText));
-                ((TextView) v.findViewById(R.id.date_icon)).setBackgroundColor(Color.parseColor("#aaaaaa"));
+                holder.dateTV.setTextColor(mContext.getResources().getColor(R.color.mainGrayText));
+               holder.dateIcon.setBackgroundColor(Color.parseColor("#aaaaaa"));
         	}
         }
 
@@ -129,7 +130,7 @@ public class CalendarAdapter extends BaseAdapter {
             v.setBackgroundResource(R.drawable.back_no_right_border);
         }
 */
-        dayView.setText(days[position]);
+        holder.dateTV.setText(days[position]);
         
         // create date string for comparison
         String date = days[position];
@@ -143,8 +144,8 @@ public class CalendarAdapter extends BaseAdapter {
     	}
        
         // show icon if date is not empty and it exists in the items array
-        TextView iw = (TextView)v.findViewById(R.id.date_icon);
-        RelativeLayout container = (RelativeLayout) v.findViewById(R.id.indicatorContainer);
+
+
         //this is where the date icons are getting set for the correct dates/months
         //months are distinquished numerically i.e. 0-januery 11-december
 
@@ -159,15 +160,7 @@ public class CalendarAdapter extends BaseAdapter {
         String d = days[position];
         int bindPos = 0;
         int actualPos = 0;
-       /* Hashtable<String, String> yo = new Hashtable<>();
-        if(events.get(m) != null) {
-            isThisMonth = true;
 
-            yo = events.get(m);
-            if(yo.get(d) != null){
-                isThisDay = true;
-            }
-        }*/
 
         if(eventObjs.size() > 0) {
 
@@ -191,7 +184,7 @@ public class CalendarAdapter extends BaseAdapter {
                             if (e.isHasPending())
                                 hasPending = true;
                         }
-                    }//PROgRESSBRAR indeterminate
+                    }
                 }
 
                 bindPos++;
@@ -199,29 +192,25 @@ public class CalendarAdapter extends BaseAdapter {
         }
 
         if(date.length()>0 && eventObjs!=null && isThisDay && isThisMonth && isThisYear) {
-        	//iw.setVisibility(View.VISIBLE);
 
             TextView bind = (TextView) v.findViewById(R.id.bind);
             bind.setText("" + actualPos);
 
-            container.setVisibility(View.VISIBLE);
+            holder.indicLayout.setVisibility(View.VISIBLE);
             if(hasMinePending) {
-                TextView redIndicator = (TextView) v.findViewById(R.id.redIndicator);
-                redIndicator.setVisibility(View.VISIBLE);
+
+                holder.rIndicator.setVisibility(View.VISIBLE);
             }
             if(hasAccepted){
-                TextView greenIndicator = (TextView) v.findViewById(R.id.greenIndicator);
-                greenIndicator.setVisibility(View.VISIBLE);
+
+                holder.gIndicator.setVisibility(View.VISIBLE);
             }
             if(hasPending){
-                TextView blueIndicator = (TextView) v.findViewById(R.id.blueIndicator);
-                blueIndicator.setVisibility(View.VISIBLE);
+                holder.bIndicator.setVisibility(View.VISIBLE);
             }
-//            iw.setText(events.get(m).get(d)); //sets text to events number
         }
         else {
-        	//iw.setVisibility(View.INVISIBLE);
-            container.setVisibility(View.GONE);
+            holder.indicLayout.setVisibility(View.GONE);
         }
 
 
@@ -232,11 +221,11 @@ public class CalendarAdapter extends BaseAdapter {
             if(position == i) {
                 //set generic header background resources
                 //dayView.setTextSize(25);
-                iw.setVisibility(View.GONE); //remove the date_icons from headers (GONE doesn't take up the space for the element)
-                dayView.setTextColor(mContext.getResources().getColor(R.color.mainBlue));
+                holder.dateIcon.setVisibility(View.GONE); //remove the date_icons from headers (GONE doesn't take up the space for the element)
+                holder.dateTV.setTextColor(mContext.getResources().getColor(R.color.mainBlue));
                 //set sat, sun
                 if(i == 5 || i == 6){
-                    dayView.setTextColor(mContext.getResources().getColor(R.color.mainRed));
+                    holder.dateTV.setTextColor(mContext.getResources().getColor(R.color.mainRed));
                 }
             }
         }
@@ -246,8 +235,12 @@ public class CalendarAdapter extends BaseAdapter {
 
 
     static class viewHolder{
-        TextView nameTV;
-        TextView avatarTv;
+        TextView dateTV;
+        TextView dateIcon;
+        RelativeLayout indicLayout;
+        TextView bIndicator;
+        TextView gIndicator;
+        TextView rIndicator;
     }
     
     public void refreshDays()
@@ -256,7 +249,7 @@ public class CalendarAdapter extends BaseAdapter {
 
     	
     	int lastDay = month.getActualMaximum(Calendar.DAY_OF_MONTH);
-        int firstDay = (int)month.get(Calendar.DAY_OF_WEEK);
+        int firstDay = month.get(Calendar.DAY_OF_WEEK);
         
         // figure size of the array
         if(firstDay==1){
@@ -287,11 +280,7 @@ public class CalendarAdapter extends BaseAdapter {
 
 
         //populate day headers
-        for(int i = 0; i < 7; i++ ){
-
-            days[i] = headers[i];
-
-        }
+        System.arraycopy(headers, 0, days, 0, 7);
         // populate days
         int dayNumber = 1;
         int daysLength = days.length;

@@ -14,7 +14,6 @@ import com.examples.android.calendar.CalendarView;
 import com.examples.android.calendar.R;
 
 import org.apache.http.NameValuePair;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -80,7 +79,7 @@ public class DateHelper {
 
         @Override
         protected JSONObject doInBackground(String... params) {
-            List<NameValuePair> pars = new ArrayList<NameValuePair>();
+            List<NameValuePair> pars = new ArrayList<>();
             JSONParser parser = new JSONParser();
             JSONObject jobj = null;
             //db password sched47
