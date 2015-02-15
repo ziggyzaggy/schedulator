@@ -17,11 +17,14 @@
     android:layout_margin="0dp"
     android:background="@color/white"
     android:animateLayoutChanges="true"
+
     >
 
     <RelativeLayout
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="138dp"
+        android:clipToPadding="true"
+        >
 
         <TextView
             android:id="@+id/topBarWrapper"
@@ -31,9 +34,9 @@
             android:gravity="right|center"
             android:padding="5dp"
             android:textSize="30sp"
-
             android:textColor="@color/white"
             android:background="@color/mainBlue"
+            android:elevation="4dp"
             />
 
         <TextView
@@ -44,6 +47,7 @@
             android:gravity="left|center"
             android:textColor="@color/white"
             android:text=""
+            android:elevation="4dp"
             />
 
         <TextView
@@ -51,10 +55,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/circle_red"
             android:layout_below="@id/topBarWrapper"
-            android:layout_marginTop="-15dp"
+            android:layout_marginTop="-20dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"
             android:background="@drawable/circle_outstanding"
+            android:elevation="16dp"
             android:text="3"
             android:gravity="center"
             android:textColor="@color/white"
@@ -64,25 +69,27 @@
             android:layout_height="wrap_content"
             android:id="@+id/circle_green"
             android:layout_below="@id/topBarWrapper"
-            android:layout_marginTop="-15dp"
+            android:layout_marginTop="-20dp"
             android:layout_toLeftOf="@id/circle_red"
             android:layout_marginRight="15dp"
             android:background="@drawable/circle_green"
             android:text="1"
             android:gravity="center"
             android:textColor="@color/white"
+            android:elevation="16dp"
             />
         <TextView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:id="@+id/circle_friends"
             android:layout_below="@id/topBarWrapper"
-            android:layout_marginTop="-15dp"
+            android:layout_marginTop="-20dp"
             android:layout_toLeftOf="@id/circle_green"
             android:layout_marginRight="15dp"
             android:background="@drawable/circle_friends"
             android:gravity="center"
             android:textColor="@color/white"
+            android:elevation="16dp"
             />
 
     </RelativeLayout>
@@ -104,6 +111,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Placeholder"
+        android:layout_marginBottom="8dp"
         android:textSize="15sp"
         android:visibility="invisible"
         android:gravity="center"
@@ -147,7 +155,7 @@
 
     <LinearLayout
         android:id="@+id/lldrawercontent"
-        android:layout_width="250dp"
+        android:layout_width="270dp"
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:orientation="vertical"
@@ -157,7 +165,7 @@
         <LinearLayout
             android:id="@+id/groupsContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:orientation="vertical"
             android:visibility="gone"
             >
@@ -167,7 +175,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Groups"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
 
@@ -182,10 +190,10 @@
             <ListView
                 android:id="@+id/right_drawer_groups"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:choiceMode="singleChoice"
                 android:listSelector="@color/mainBlue"
-                android:cacheColorHint="@android:color/transparent"
+                android:cacheColorHint="@color/friendsDrawerColor"
                 android:drawSelectorOnTop="false"
                 android:divider="@color/mainGrayText"
                 android:dividerHeight="0dp"
@@ -210,7 +218,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Friends"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
                 />
@@ -227,7 +235,7 @@
                 android:layout_height="wrap_content"
                 android:choiceMode="multipleChoice"
                 android:listSelector="@color/friendsDrawerColor"
-                android:cacheColorHint="@android:color/transparent"
+                android:cacheColorHint="@color/friendsDrawerColor"
                 android:drawSelectorOnTop="false"
                 android:divider="@color/mainGrayText"
                 android:dividerHeight="0dp"

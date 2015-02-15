@@ -6,8 +6,8 @@ android {
 
     defaultConfig {
         applicationId "com.examples.android.calendar"
-        minSdkVersion 12
-        targetSdkVersion 12
+        minSdkVersion 16
+        targetSdkVersion 21
     }
 
     buildTypes {
@@ -18,6 +18,6 @@ android {
     }
 
     dependencies{
-        compile "com.android.support:support-v4:20.0.+"
+        compile "com.android.support:support-v4:21.0.+"
     }
 }

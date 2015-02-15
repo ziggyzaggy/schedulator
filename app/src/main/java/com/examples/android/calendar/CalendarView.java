@@ -84,6 +84,9 @@ public class CalendarView extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.calendar);
+
+        //getWindow().setBackgroundDrawable(null);
+
 	    month = Calendar.getInstance();
 	    onNewIntent(getIntent());
 
@@ -278,12 +281,11 @@ public class CalendarView extends Activity {
             }
         });
 
-        TextView friendCircle = (TextView) findViewById(R.id.circle_friends);
+        final TextView friendCircle = (TextView) findViewById(R.id.circle_friends);
         friendCircle.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDrawerLayout.openDrawer(Gravity.END);
-
+               mDrawerLayout.openDrawer(Gravity.END);
             }
         });
 

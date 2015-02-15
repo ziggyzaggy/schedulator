@@ -7,6 +7,6 @@ android:shape="oval">
     android:color="@color/mainGreen"/>
 
 <size
-    android:width="30dp"
-    android:height="30dp"/>
+    android:width="40dp"
+    android:height="40dp"/>
 </shape><!-- From: file:/C:/Users/kris/Android%20Projects/schedulator1/app/src/main/res/drawable/circle_green.xml -->

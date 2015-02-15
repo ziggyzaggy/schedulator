@@ -19,4 +19,10 @@
     <string name="drawer_open_desc">Open</string>
     <string name="hello">Open calendar</string>
     <string name="open">Open</string>
+    <!-- From: file:/C:/Users/kris/Android%20Projects/schedulator1/app/src/main/res/values/Theme.xml -->
+    <eat-comment/>
+    <style name="Theme.NoBackground" parent="android:Theme">
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
 </resources>

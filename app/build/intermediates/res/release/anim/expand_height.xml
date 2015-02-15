@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<set xmlns:android="http://schemas.android.com/apk/res/android"
-    android:interpolator="@android:anim/linear_interpolator">
-    <scale android:fromXScale="1.0" android:fromYScale="0.0"
-        android:toXScale="1.0" android:toYScale="30dp"
-        android:duration="500" android:fillBefore="false" />
-
-
-</set><!-- From: file:/C:/Users/kris/Android%20Projects/schedulator1/app/src/main/res/anim/expand_height.xml -->
