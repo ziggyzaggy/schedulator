@@ -26,12 +26,16 @@ import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.text.Layout;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
@@ -41,6 +45,7 @@ import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,6 +60,7 @@ import ADAPTERS.FriendListAdapter;
 import ADAPTERS.GroupsAdapter;
 import ENTITIES.Event;
 import HELPERS.DateHelper;
+import HELPERS.ScrollTracker;
 import StaticUtils.Utils;
 
 
@@ -69,6 +75,8 @@ public class CalendarView extends Activity {
 
     private TextView titleText;
     private float x1,x2;
+    private ScrollTracker mScrollTracker;
+    private int initialFriendsTextHeight;
 
     private Boolean isRightDrawerOpened;
     private ArrayList<Integer> curSelectedFriends;
@@ -85,6 +93,7 @@ public class CalendarView extends Activity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.calendar);
 
+        final Toast t = new Toast(getApplicationContext());
         //getWindow().setBackgroundDrawable(null);
 
 	    month = Calendar.getInstance();
@@ -97,6 +106,8 @@ public class CalendarView extends Activity {
         mRightDrawerFriendContainer = (LinearLayout) findViewById(R.id.drawerFriendContainer);
         mGroupsTV = (TextView) findViewById(R.id.groupsTV);
         mFriendsTV = (TextView) findViewById(R.id.friendsTV);
+
+        initialFriendsTextHeight = 0;
 
         curSelectedFriends = new ArrayList<>();
 
@@ -115,6 +126,8 @@ public class CalendarView extends Activity {
 
         mRightDrawerList = (ListView) findViewById(R.id.right_drawer);
 	    mRightDrawerList.setAdapter(friendAdapter);
+
+        mScrollTracker = new ScrollTracker(mRightDrawerList);
 
         final ListView mRightGroupsDrawerList = (ListView) findViewById((R.id.right_drawer_groups));
         mRightGroupsDrawerList.setAdapter(gAdapter);
@@ -371,6 +384,53 @@ public class CalendarView extends Activity {
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem,
                                  int visibleItemCount, int totalItemCount) {
+
+
+                int offset = mScrollTracker.calculateIncrementalOffset(firstVisibleItem, visibleItemCount);
+                if(initialFriendsTextHeight == 0){
+                    initialFriendsTextHeight = mFriendsTV.getHeight();
+                }
+
+                if(offset > initialFriendsTextHeight){
+                    offset = initialFriendsTextHeight;
+                }
+
+                int curHeight = mFriendsTV.getHeight();
+
+                if(offset > 0 && curHeight < initialFriendsTextHeight){
+                    mFriendsTV.setHeight( mFriendsTV.getHeight() + offset);
+                }
+
+                if(offset < 0 && curHeight > 0){
+                    mFriendsTV.setHeight( mFriendsTV.getHeight() + offset);
+                }
+
+                if(curHeight > initialFriendsTextHeight){
+                    mFriendsTV.setHeight(initialFriendsTextHeight);
+                }
+
+
+
+
+
+
+                Log.v("Offset", " " + offset);
+                Log.v("Height", " " + mFriendsTV.getHeight() + " H " + initialFriendsTextHeight);
+
+
+/*
+                t.makeText(getApplicationContext(), "offset " + offset, Toast.LENGTH_SHORT).show();
+               /* if(t.getView() != null) {
+                    if (t.getView().isShown()) {
+                        t.cancel();
+
+                    } else {
+                        t.show();
+                    }
+                }else{
+                    t.set
+                    t.show();
+                }*/
 
                 if(mLastFirstVisibleItem<firstVisibleItem)
                 {

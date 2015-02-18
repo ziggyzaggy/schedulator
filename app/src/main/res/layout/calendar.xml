@@ -161,6 +161,7 @@
         android:orientation="vertical"
         android:background="@color/friendsDrawerColor"
         android:weightSum="2"
+        android:animateLayoutChanges="true"
         >
         <LinearLayout
             android:id="@+id/groupsContainer"
@@ -200,7 +201,6 @@
                 android:layout_gravity="end"
                 android:fadingEdge="none"
                 android:fadingEdgeLength="0dp"
-
                 />
 
         </LinearLayout>
@@ -219,14 +219,14 @@
                 android:layout_height="wrap_content"
                 android:text="Friends"
                 android:textSize="24sp"
-                android:layout_marginTop="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
                 android:layout_marginLeft="16dp"
                 />
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
                     android:background="#ccc"
-                    android:layout_marginTop="16dp"
                     />
 
             <ListView
