@@ -205,7 +205,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/drawerFriendContainer"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
@@ -213,21 +213,7 @@
             >
 
 
-            <TextView
-                android:id="@+id/friendsTV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Friends"
-                android:textSize="24sp"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:layout_marginLeft="16dp"
-                />
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="#ccc"
-                    />
+
 
             <ListView
                 android:id="@+id/right_drawer"
@@ -242,8 +228,29 @@
                 android:layout_gravity="end"
                 android:fadingEdge="none"
                 android:fadingEdgeLength="0dp"
+                android:layout_below="@+id/friendsTV"
+                android:layout_alignParentTop="true"
                 />
-        </LinearLayout>
+
+
+
+            <TextView
+            android:id="@+id/friendsTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Friends"
+            android:textSize="24sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/mainBlue"
+            android:textColor="@color/white"
+            />
+
+
+
+        </RelativeLayout>
 
     </LinearLayout>
 

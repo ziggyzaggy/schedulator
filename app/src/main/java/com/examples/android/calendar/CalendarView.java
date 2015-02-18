@@ -86,7 +86,7 @@ public class CalendarView extends Activity {
     private TextView mFriendsTV;
 
     private LinearLayout mRightDrawerGroupContainer;
-    private LinearLayout mRightDrawerFriendContainer;
+    private RelativeLayout mRightDrawerFriendContainer;
     static final int MIN_DISTANCE = 150;
 
 	public void onCreate(Bundle savedInstanceState) {
@@ -103,7 +103,7 @@ public class CalendarView extends Activity {
         isRightDrawerOpened = false;
 
         mRightDrawerGroupContainer = (LinearLayout) findViewById(R.id.groupsContainer);
-        mRightDrawerFriendContainer = (LinearLayout) findViewById(R.id.drawerFriendContainer);
+        mRightDrawerFriendContainer = (RelativeLayout) findViewById(R.id.drawerFriendContainer);
         mGroupsTV = (TextView) findViewById(R.id.groupsTV);
         mFriendsTV = (TextView) findViewById(R.id.friendsTV);
 
@@ -125,6 +125,9 @@ public class CalendarView extends Activity {
 
 
         mRightDrawerList = (ListView) findViewById(R.id.right_drawer);
+        View header = getLayoutInflater().inflate(R.layout.friendslist_listview_header, mRightDrawerList, false);
+        mRightDrawerList.addHeaderView(header, null, false);
+
 	    mRightDrawerList.setAdapter(friendAdapter);
 
         mScrollTracker = new ScrollTracker(mRightDrawerList);
@@ -378,7 +381,7 @@ public class CalendarView extends Activity {
             private int mLastFirstVisibleItem;
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
-
+                Log.d("SCROLL", "view scroll y " + view.getScrollY());
             }
 
             @Override
@@ -398,11 +401,11 @@ public class CalendarView extends Activity {
                 int curHeight = mFriendsTV.getHeight();
 
                 if(offset > 0 && curHeight < initialFriendsTextHeight){
-                    mFriendsTV.setHeight( mFriendsTV.getHeight() + offset);
+                    mFriendsTV.setHeight( curHeight + offset);
                 }
 
                 if(offset < 0 && curHeight > 0){
-                    mFriendsTV.setHeight( mFriendsTV.getHeight() + offset);
+                    mFriendsTV.setHeight( curHeight + offset);
                 }
 
                 if(curHeight > initialFriendsTextHeight){
@@ -462,7 +465,10 @@ public class CalendarView extends Activity {
         ArrayList<Integer> curList = new ArrayList<>();
 
         for (int i = 0; i < mRightDrawerList.getAdapter().getCount(); i++) {
-            if (checkeds.get(i)) {//get checked friends
+            //IMPORTANT: NOTE that checked is incremented by one, this is to overcome the deficiency of android assigning a position for the header in the listview
+            //because the header takes up the position - the checked items returned are also wrong
+            //this is very dirty, but will have to do until i find a better solution
+            if (checkeds.get(i+1)) {//get checked friends
                 curList.add(i);//add position of checked friend to arraylist
             }
         }
@@ -481,7 +487,8 @@ public class CalendarView extends Activity {
         String str = "";
 
         for (int i = 0; i < mRightDrawerList.getAdapter().getCount(); i++) {
-            if (checkeds.get(i)) {//get checked friends
+            //NOTE the increment of 1, please see  "IMPORTANT NOTE" in sendCheckedFriendsToAdapter()
+            if (checkeds.get(i+1)) {//get checked friends
                 str += "POS " + i +" ";
                 curList.add(i);//add position of checked friend to arraylist
             }

@@ -85,6 +85,7 @@ public class FriendListAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
+        //TODO: return item from list for testing purposes
         return null;
     }
 

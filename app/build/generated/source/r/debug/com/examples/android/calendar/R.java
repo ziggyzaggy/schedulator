@@ -61,7 +61,7 @@ public final class R {
         public static final int dateHeaderText=0x7f06001c;
         public static final int datePicker1=0x7f06001d;
         public static final int drawerFriendContainer=0x7f060010;
-        public static final int friendsTV=0x7f060011;
+        public static final int friendsTV=0x7f060012;
         public static final int friends_drawer=0x7f060001;
         public static final int greenIndicator=0x7f060016;
         public static final int gridview=0x7f06000b;
@@ -74,7 +74,7 @@ public final class R {
         public static final int openButton=0x7f06001e;
         public static final int prgBarDates=0x7f060008;
         public static final int redIndicator=0x7f060018;
-        public static final int right_drawer=0x7f060012;
+        public static final int right_drawer=0x7f060011;
         public static final int right_drawer_groups=0x7f06000f;
         public static final int title=0x7f06000a;
         public static final int topBarWrapper=0x7f060003;
@@ -85,8 +85,9 @@ public final class R {
         public static final int calendar=0x7f030000;
         public static final int calendar_item=0x7f030001;
         public static final int friend_list_item=0x7f030002;
-        public static final int group_list_item=0x7f030003;
-        public static final int main=0x7f030004;
+        public static final int friendslist_listview_header=0x7f030003;
+        public static final int group_list_item=0x7f030004;
+        public static final int main=0x7f030005;
     }
     public static final class string {
         public static final int app_name=0x7f070000;
