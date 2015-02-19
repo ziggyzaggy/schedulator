@@ -7,8 +7,8 @@ public class Friend extends User {
 
     private boolean checkedInList;
 
-    public Friend(int userId, boolean isDeleted, String name, String email) {
-        super(userId, isDeleted, name, email);
+    public Friend(int userId, boolean isDeleted, String name, String email, int avatarResourceId) {
+        super(userId, isDeleted, name, email, avatarResourceId);
         checkedInList = false;
     }
 

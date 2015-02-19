@@ -1,6 +1,7 @@
 package ADAPTERS;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.examples.android.calendar.R;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import ENTITIES.Friend;
 
@@ -22,17 +24,21 @@ public class FriendListAdapter extends BaseAdapter {
     private ArrayList<Friend> friendsList;
     private TextView nameTV;
     private TextView avatarTV;
+    private Random rand;
 
     public FriendListAdapter(Context c){
         mContext = c;
         friendsList = new ArrayList<>();
+        rand = new Random();
         makeFriends(100);
+
 
     }
 
     public void makeFriends(int number){
         for(int i = 0; i < number; i++){
-            Friend f = new Friend(i, false, "user no " + i, "example@example.com");
+            int avatarDrawable = (rand.nextBoolean()) ? R.drawable.ic_contact_picture : R.drawable.orange_char;
+            Friend f = new Friend(i, false, "user no " + i, "example@example.com", avatarDrawable);
             friendsList.add(f);
 
 
@@ -84,9 +90,9 @@ public class FriendListAdapter extends BaseAdapter {
     }
 
     @Override
+    //return friend object from friendsList arraylist at given position
     public Object getItem(int position) {
-        //TODO: return item from list for testing purposes
-        return null;
+        return friendsList.get(position);
     }
 
     @Override
@@ -110,16 +116,24 @@ public class FriendListAdapter extends BaseAdapter {
             holder = (viewHolder) v.getTag();
         }
 
+
+
         holder.nameTV.setText(friendsList.get(position).getName());
-        holder.avatarTv.setBackgroundResource(R.drawable.ic_contact_picture);
+        holder.avatarTv.setBackgroundResource(friendsList.get(position).getAvatarResourceId());
+
         int colorToSet = 0;
+        int textColorToSet = 0;
 
         if(friendsList.get(position).isCheckedInList()){
             colorToSet = mContext.getResources().getColor(R.color.mainBlue);
+            textColorToSet = mContext.getResources().getColor(R.color.white);
+
         }else{
             colorToSet = mContext.getResources().getColor(android.R.color.transparent);
+            textColorToSet = mContext.getResources().getColor(android.R.color.black);
         }
         holder.nameTV.setBackgroundColor(colorToSet);
+        holder.nameTV.setTextColor(textColorToSet);
 
         return v;
     }

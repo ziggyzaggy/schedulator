@@ -59,6 +59,7 @@ import ADAPTERS.CalendarAdapter;
 import ADAPTERS.FriendListAdapter;
 import ADAPTERS.GroupsAdapter;
 import ENTITIES.Event;
+import ENTITIES.Friend;
 import HELPERS.DateHelper;
 import HELPERS.ScrollTracker;
 import StaticUtils.Utils;
@@ -343,6 +344,7 @@ public class CalendarView extends Activity {
 
 
 
+
         mRightDrawerList.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -489,8 +491,10 @@ public class CalendarView extends Activity {
         for (int i = 0; i < mRightDrawerList.getAdapter().getCount(); i++) {
             //NOTE the increment of 1, please see  "IMPORTANT NOTE" in sendCheckedFriendsToAdapter()
             if (checkeds.get(i+1)) {//get checked friends
-                str += "POS " + i +" ";
+                Friend friend =(Friend) friendAdapter.getItem(i);
+                str += "-POS " + i +" UserName " + friend.getName() + "-**";
                 curList.add(i);//add position of checked friend to arraylist
+
             }
         }
 

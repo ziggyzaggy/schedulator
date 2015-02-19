@@ -45,8 +45,9 @@ public final class R {
         public static final int item_background_focused=0x7f02000c;
         public static final int list_item_background=0x7f02000d;
         public static final int list_item_selected=0x7f02000e;
-        public static final int ripple_selector=0x7f02000f;
-        public static final int row_background_selector=0x7f020010;
+        public static final int orange_char=0x7f02000f;
+        public static final int ripple_selector=0x7f020010;
+        public static final int row_background_selector=0x7f020011;
     }
     public static final class id {
         public static final int TAG_EVENT_ID=0x7f060000;
