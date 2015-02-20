@@ -124,14 +124,14 @@ containing a value of this type.
         public static final int circle_green=0x7f080006;
         public static final int circle_red=0x7f080005;
         public static final int date=0x7f080014;
-        public static final int dateDetailContainerText=0x7f080009;
+        public static final int dateDetailContainerText=0x7f08000b;
         public static final int dateHeaderText=0x7f08001c;
         public static final int datePicker1=0x7f08001d;
         public static final int drawerFriendContainer=0x7f080010;
         public static final int friendsTV=0x7f080012;
         public static final int friends_drawer=0x7f080001;
         public static final int greenIndicator=0x7f080016;
-        public static final int gridview=0x7f08000b;
+        public static final int gridview=0x7f08000a;
         public static final int groupsContainer=0x7f08000d;
         public static final int groupsTV=0x7f08000e;
         public static final int indicatorContainer=0x7f080015;
@@ -143,7 +143,7 @@ containing a value of this type.
         public static final int redIndicator=0x7f080018;
         public static final int right_drawer=0x7f080011;
         public static final int right_drawer_groups=0x7f08000f;
-        public static final int title=0x7f08000a;
+        public static final int title=0x7f080009;
         public static final int topBarWrapper=0x7f080003;
         public static final int txtGroupName=0x7f08001b;
         public static final int weekText=0x7f080004;

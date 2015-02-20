@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -17,13 +16,12 @@
     android:layout_margin="0dp"
     android:background="@color/white"
     android:animateLayoutChanges="true"
-
     >
 
     <RelativeLayout
-    android:layout_width="fill_parent"
-    android:layout_height="138dp"
-        android:clipToPadding="true"
+        android:layout_width="fill_parent"
+        android:layout_height="138dp"
+
         >
 
         <TextView
@@ -120,23 +118,6 @@
         />
 
 
-
-
-    <TextView
-        android:id="@+id/dateDetailContainerText"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Placeholder"
-        android:layout_marginBottom="8dp"
-        android:textSize="15sp"
-        android:visibility="invisible"
-        android:gravity="center"
-        />
-
-
-
-
-
     <TextView
         android:id="@+id/title"
         android:layout_height="wrap_content"
@@ -145,8 +126,6 @@
         android:textSize="24sp"
         android:textColor="@color/mainGrayText"
         android:gravity="center_horizontal"
-
-
         />
 
 
@@ -162,11 +141,23 @@
         android:gravity="center"
         android:listSelector="#cccccc"
         android:layout_marginTop="20dp"
+        android:animateLayoutChanges="true"
         />
 
-
+    <TextView
+        android:id="@+id/dateDetailContainerText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Placeholder"
+        android:layout_marginBottom="8dp"
+        android:textSize="15sp"
+        android:visibility="invisible"
+        android:gravity="center"
+        />
 
 </LinearLayout>
+
+
 
 
     <LinearLayout
