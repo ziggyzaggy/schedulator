@@ -14,4 +14,12 @@
     <color name="mainGrayText">#7a7a7a</color>
     <color name="friendsDrawerColor">#fff</color>
 	<string name="open">Open</string>
+
+    <array name="circularPrgBarColors">
+        <item>@color/mainBlue</item>
+        <item>@color/mainRed</item>
+        <item>@color/mainGrayText</item>
+        <item>@color/mainGreen</item>
+    </array>
+
 </resources>

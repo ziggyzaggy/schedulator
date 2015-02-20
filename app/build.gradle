@@ -19,5 +19,6 @@ android {
 
     dependencies{
         compile "com.android.support:support-v4:21.0.+"
+        compile "com.github.castorflex.smoothprogressbar:library-circular:1.0.0"
     }
 }
