@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:id="@+id/topBarDayView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/mainBlue"
+        android:text="01.01.2015"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:padding="5dp"
+        android:gravity="end|center"
+        android:elevation="4dp"
+        />
+
+
+    <include layout="@layout/times"/>
+
+</LinearLayout>
+
+</ScrollView>

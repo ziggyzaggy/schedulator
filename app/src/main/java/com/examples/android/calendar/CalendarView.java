@@ -267,13 +267,20 @@ public class CalendarView extends Activity {
                         day = "0" + day;
                     }
                     // return chosen date as string format
-                    intent.putExtra("date", android.text.format.DateFormat.format("yyyy-MM", month) + "-" + day);
+                  /*  intent.putExtra("date", android.text.format.DateFormat.format("yyyy-MM", month) + "-" + day);
                     setResult(RESULT_OK, intent);
                     v.playSoundEffect(SoundEffectConstants.CLICK);
                     //TODO - TEST ON DEVICES WITH NO VIBR
                     Vibrator vibr = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     vibr.vibrate(20); //vibrate for whatever millis
-                    finish();
+                    finish();*/
+
+                    Vibrator vibr = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    vibr.vibrate(20); //vibrate for whatever millis
+
+                    Intent dayViewIntent = new Intent(v.getContext(), DayView.class);
+                    dayViewIntent.putExtra("passedDate", day + "-" + android.text.format.DateFormat.format("MM-yyyy", month));
+                    startActivity(dayViewIntent);
 
                 }
                 return false;

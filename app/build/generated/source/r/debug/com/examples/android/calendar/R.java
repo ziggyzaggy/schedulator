@@ -94,6 +94,7 @@ containing a value of this type.
     }
     public static final class dimen {
         public static final int cpb_default_stroke_width=0x7f070000;
+        public static final int timeWrapperHeight=0x7f070001;
     }
     public static final class drawable {
         public static final int back=0x7f020000;
@@ -117,7 +118,7 @@ containing a value of this type.
     }
     public static final class id {
         public static final int TAG_EVENT_ID=0x7f080000;
-        public static final int avatarTV=0x7f080019;
+        public static final int avatarTV=0x7f08001a;
         public static final int bind=0x7f080013;
         public static final int blueIndicator=0x7f080017;
         public static final int circle_friends=0x7f080007;
@@ -125,8 +126,8 @@ containing a value of this type.
         public static final int circle_red=0x7f080005;
         public static final int date=0x7f080014;
         public static final int dateDetailContainerText=0x7f08000b;
-        public static final int dateHeaderText=0x7f08001c;
-        public static final int datePicker1=0x7f08001d;
+        public static final int dateHeaderText=0x7f08001d;
+        public static final int datePicker1=0x7f08001e;
         public static final int drawerFriendContainer=0x7f080010;
         public static final int friendsTV=0x7f080012;
         public static final int friends_drawer=0x7f080001;
@@ -137,15 +138,20 @@ containing a value of this type.
         public static final int indicatorContainer=0x7f080015;
         public static final int lldrawercontent=0x7f08000c;
         public static final int mainLayoutContainer=0x7f080002;
-        public static final int nameTV=0x7f08001a;
-        public static final int openButton=0x7f08001e;
+        public static final int nameTV=0x7f08001b;
+        public static final int openButton=0x7f08001f;
         public static final int prgBarDates=0x7f080008;
         public static final int redIndicator=0x7f080018;
         public static final int right_drawer=0x7f080011;
         public static final int right_drawer_groups=0x7f08000f;
+        public static final int time1am=0x7f080020;
+        public static final int time2am=0x7f080022;
+        public static final int timesFor1Am=0x7f080021;
+        public static final int timesFor2Am=0x7f080023;
         public static final int title=0x7f080009;
+        public static final int topBarDayView=0x7f080019;
         public static final int topBarWrapper=0x7f080003;
-        public static final int txtGroupName=0x7f08001b;
+        public static final int txtGroupName=0x7f08001c;
         public static final int weekText=0x7f080004;
     }
     public static final class integer {
@@ -155,10 +161,12 @@ containing a value of this type.
     public static final class layout {
         public static final int calendar=0x7f030000;
         public static final int calendar_item=0x7f030001;
-        public static final int friend_list_item=0x7f030002;
-        public static final int friendslist_listview_header=0x7f030003;
-        public static final int group_list_item=0x7f030004;
-        public static final int main=0x7f030005;
+        public static final int day_view=0x7f030002;
+        public static final int friend_list_item=0x7f030003;
+        public static final int friendslist_listview_header=0x7f030004;
+        public static final int group_list_item=0x7f030005;
+        public static final int main=0x7f030006;
+        public static final int times=0x7f030007;
     }
     public static final class string {
         public static final int app_name=0x7f0a0000;

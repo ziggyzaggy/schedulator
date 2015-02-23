@@ -3,5 +3,6 @@
     <style name="Theme.NoBackground" parent="android:Theme">
         <item name="android:windowBackground">@null</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowExitAnimation">@anim/fade_in</item>
     </style>
 </resources>
