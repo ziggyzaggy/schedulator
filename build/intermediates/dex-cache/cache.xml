@@ -2,25 +2,32 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-2c51dab18ecbffc302eafd06170d103b1a9fa7e1.jar" />
-    </item>
-    <item
-        jar="C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\pre-dexed\debug\classes-763c34de2c2d6e42bac3f25702b780662fb93b71.jar" />
-    </item>
-    <item
-        jar="C:\Users\kris\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jar="C:\Users\kristjan\AppData\Local\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="C:\Users\kris\Android Projects\schedulator1\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-95e136e63c6baef5a1078f8d7524002f27a5e668.jar" />
+        <dex dex="C:\Users\kristjan\Aprojects\calendar 19012015 - corrupted itemlistener\calendar experimental 16012015\CalendarView-master1\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-bdeddd7d3d72f4febe1713bfc03402db08ece621.jar" />
+    </item>
+    <item
+        jar="C:\Users\kristjan\Aprojects\calendar 19012015 - corrupted itemlistener\calendar experimental 16012015\CalendarView-master1\app\build\intermediates\exploded-aar\com.github.castorflex.smoothprogressbar\library-circular\1.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="e3dfc7e44f8fde989ba4e8a5fdde34d9a32447c6">
+        <dex dex="C:\Users\kristjan\Aprojects\calendar 19012015 - corrupted itemlistener\calendar experimental 16012015\CalendarView-master1\app\build\intermediates\pre-dexed\debug\classes-9f01caa28164574cc35737a86b641a2805ba079b.jar" />
+    </item>
+    <item
+        jar="C:\Users\kristjan\Aprojects\calendar 19012015 - corrupted itemlistener\calendar experimental 16012015\CalendarView-master1\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\kristjan\Aprojects\calendar 19012015 - corrupted itemlistener\calendar experimental 16012015\CalendarView-master1\app\build\intermediates\pre-dexed\debug\classes-89626bf656cefc3468a4dd00530ec51c8c075a2b.jar" />
+    </item>
+    <item
+        jar="C:\Users\kristjan\Aprojects\calendar 19012015 - corrupted itemlistener\calendar experimental 16012015\CalendarView-master1\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\kristjan\Aprojects\calendar 19012015 - corrupted itemlistener\calendar experimental 16012015\CalendarView-master1\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-3d47c1adf64f89de51583a1c844052ee67864174.jar" />
     </item>
 
 </items>

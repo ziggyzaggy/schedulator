@@ -66,7 +66,7 @@ public class FriendListAdapter extends BaseAdapter {
     //(500 friends results in ~200mb of memory and scrolling freezes)
     // should implement and keep actual states in the entity
 
-    //update - entity User now holds checked state,
+    //update - entity CurrentUser now holds checked state,
     // updateCheckedFriends and getView methods are now responsible of keeping the views checked
     // memory usage back to normal
     //keep above note for future possible android quirks

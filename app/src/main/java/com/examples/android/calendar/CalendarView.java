@@ -61,6 +61,7 @@ import ADAPTERS.FriendListAdapter;
 import ADAPTERS.GroupsAdapter;
 import ENTITIES.Event;
 import ENTITIES.Friend;
+import GLOBALS.CurrentUser;
 import HELPERS.DateHelper;
 import HELPERS.ScrollTracker;
 import StaticUtils.Utils;
@@ -201,7 +202,7 @@ public class CalendarView extends Activity {
                     //d.setFirstDayOfWeek(Calendar.MONDAY); //NOTE set this to ignore locale and instead use mondays as first day of week on all locales
                     int ddd = d.get(Calendar.WEEK_OF_MONTH);
                     TextView weekText = (TextView) findViewById(R.id.weekText);
-                    weekText.setText("Week " + ddd);
+                    weekText.setText("Week " + ddd  + " " + CurrentUser.name);
                 }
 		    }
 		});

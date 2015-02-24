@@ -26,6 +26,8 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import GLOBALS.CurrentUser;
+
 public class CalendarViewSampleActivity extends Activity {
     /** Called when the activity is first created. */
     
@@ -47,7 +49,12 @@ public class CalendarViewSampleActivity extends Activity {
 				Intent intent = new Intent(v.getContext(),CalendarView.class);
 				
 	    		intent.putExtra("date", dp.getYear()+"-"+dp.getMonth()+"-"+dp.getDayOfMonth());
-	    		startActivityForResult(intent, PICK_DATE_REQUEST);				
+	    		startActivityForResult(intent, PICK_DATE_REQUEST);
+
+                //set temporary global test user
+                CurrentUser u = new CurrentUser("Artjomka", 5, "AK47", "02-02-1991");
+
+
 			}
 		});
     }
