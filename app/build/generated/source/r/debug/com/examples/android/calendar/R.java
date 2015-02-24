@@ -83,6 +83,7 @@ containing a value of this type.
         public static final int cpb_sweep_speed=0x7f010006;
     }
     public static final class color {
+        public static final int clickable_textview_states=0x7f060008;
         public static final int cpb_default_color=0x7f060000;
         public static final int friendsDrawerColor=0x7f060001;
         public static final int mainBlue=0x7f060002;
@@ -118,7 +119,7 @@ containing a value of this type.
     }
     public static final class id {
         public static final int TAG_EVENT_ID=0x7f080000;
-        public static final int avatarTV=0x7f08001a;
+        public static final int avatarTV=0x7f08001c;
         public static final int bind=0x7f080013;
         public static final int blueIndicator=0x7f080017;
         public static final int circle_friends=0x7f080007;
@@ -126,8 +127,9 @@ containing a value of this type.
         public static final int circle_red=0x7f080005;
         public static final int date=0x7f080014;
         public static final int dateDetailContainerText=0x7f08000b;
-        public static final int dateHeaderText=0x7f08001d;
-        public static final int datePicker1=0x7f08001e;
+        public static final int dateHeaderText=0x7f08001f;
+        public static final int datePicker1=0x7f080020;
+        public static final int dayViewIncludedTimesView=0x7f08001b;
         public static final int drawerFriendContainer=0x7f080010;
         public static final int friendsTV=0x7f080012;
         public static final int friends_drawer=0x7f080001;
@@ -138,20 +140,21 @@ containing a value of this type.
         public static final int indicatorContainer=0x7f080015;
         public static final int lldrawercontent=0x7f08000c;
         public static final int mainLayoutContainer=0x7f080002;
-        public static final int nameTV=0x7f08001b;
-        public static final int openButton=0x7f08001f;
+        public static final int nameTV=0x7f08001d;
+        public static final int openButton=0x7f080021;
         public static final int prgBarDates=0x7f080008;
         public static final int redIndicator=0x7f080018;
         public static final int right_drawer=0x7f080011;
         public static final int right_drawer_groups=0x7f08000f;
-        public static final int time1am=0x7f080020;
-        public static final int time2am=0x7f080022;
-        public static final int timesFor1Am=0x7f080021;
-        public static final int timesFor2Am=0x7f080023;
+        public static final int rootDayView=0x7f080019;
+        public static final int time1am=0x7f080022;
+        public static final int time2am=0x7f080024;
+        public static final int timesFor1Am=0x7f080023;
+        public static final int timesFor2Am=0x7f080025;
         public static final int title=0x7f080009;
-        public static final int topBarDayView=0x7f080019;
+        public static final int topBarDayView=0x7f08001a;
         public static final int topBarWrapper=0x7f080003;
-        public static final int txtGroupName=0x7f08001c;
+        public static final int txtGroupName=0x7f08001e;
         public static final int weekText=0x7f080004;
     }
     public static final class integer {

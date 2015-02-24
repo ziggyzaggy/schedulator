@@ -1,12 +1,15 @@
 package ENTITIES;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import StaticUtils.Utils;
 
 /**
  * Created by Ziggyzaggy on 21/01/2015.
  * Event entity, should be populated with values from a table
  */
-public class Event {
+public class Event implements Parcelable{
 
 
 
@@ -110,6 +113,59 @@ public class Event {
         this.hasMinePending = hasMinePending;
     }
 
-
     //endregion
+
+    //region parcelable methods
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(getDay());
+        dest.writeString(getMonth());
+        dest.writeString(getYear());
+        dest.writeInt(getNumAccepted());
+        dest.writeInt(getNumMinePending());
+        dest.writeInt(getNumPending());
+        dest.writeByte((byte) (hasPending ? 1 : 0));
+        dest.writeByte((byte) (hasAccepted ? 1 : 0));
+        dest.writeByte((byte) (hasMinePending ? 1 : 0));
+    }
+
+
+    private void readFromParcel(Parcel in){
+        day = in.readString();
+        month = in.readString();
+        year = in.readString();
+        numAccepted = in.readInt();
+        numMinePending = in.readInt();
+        numMinePending = in.readInt();
+        hasMinePending = in.readByte() != 0;
+        hasPending = in.readByte() != 0;
+        hasAccepted = in.readByte() != 0;
+    }
+
+    public Event(Parcel in){
+        readFromParcel(in);
+    }
+
+
+    public static final Creator<Event> CREATOR = new Creator<Event>() {
+        @Override
+        public Event createFromParcel(Parcel source) {
+            return new Event(source);
+        }
+
+        @Override
+        public Event[] newArray(int size) {
+            return new Event[size];
+        }
+    };
+    //endregion
+
 }

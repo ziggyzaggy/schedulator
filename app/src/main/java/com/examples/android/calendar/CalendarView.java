@@ -23,6 +23,7 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.os.Vibrator;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -280,6 +281,16 @@ public class CalendarView extends Activity {
 
                     Intent dayViewIntent = new Intent(v.getContext(), DayView.class);
                     dayViewIntent.putExtra("passedDate", day + "-" + android.text.format.DateFormat.format("MM-yyyy", month));
+
+                    //make sure thtat the selected date has any events bound to it
+                    if(v.findViewById(R.id.indicatorContainer).getVisibility() == View.VISIBLE) {
+                        TextView boundField = (TextView) v.findViewById(R.id.bind);
+                        //get the object from arraylist according to the bound key
+                        Event event = getDetailInfo(boundField.getText().toString());
+                        dayViewIntent.putExtra("eventObj", event);
+                    }
+
+
                     startActivity(dayViewIntent);
 
                 }
@@ -355,7 +366,9 @@ public class CalendarView extends Activity {
         mRightDrawerList.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                setSelectedListItemBackground();
 
+                //region deprecated
                 //view.setBackgroundColor(getResources().getColor(R.color.mainBlue));
 
                 //Drawable d = view.getBackground().getCurrent();
@@ -365,7 +378,7 @@ public class CalendarView extends Activity {
 
 
 
-               setSelectedListItemBackground();
+
 
                /* if(name.getCurrentTextColor() == getResources().getColor(R.color.mainBlue)){
                     name.setTextColor(getResources().getColor(R.color.white));
@@ -381,6 +394,7 @@ public class CalendarView extends Activity {
                 }*/
 
                 String o = "temp";
+                //endregion
             }
         });
 
@@ -421,28 +435,9 @@ public class CalendarView extends Activity {
                     mFriendsTV.setHeight(initialFriendsTextHeight);
                 }
 
-
-
-
-
-
                 Log.v("Offset", " " + offset);
                 Log.v("Height", " " + mFriendsTV.getHeight() + " H " + initialFriendsTextHeight);
 
-
-/*
-                t.makeText(getApplicationContext(), "offset " + offset, Toast.LENGTH_SHORT).show();
-               /* if(t.getView() != null) {
-                    if (t.getView().isShown()) {
-                        t.cancel();
-
-                    } else {
-                        t.show();
-                    }
-                }else{
-                    t.set
-                    t.show();
-                }*/
 
                 if(mLastFirstVisibleItem<firstVisibleItem)
                 {
@@ -561,6 +556,16 @@ public class CalendarView extends Activity {
 
         Event e = eventObjs.get(Integer.parseInt(text));
         tv.setText("Accepted Events: " + e.getNumAccepted() + " Pending events: " + e.getNumPending() + " Mine Pending Events: " + e.getNumMinePending());
+    }
+
+    private Event getDetailInfo(String boundKey){
+        Event e = eventObjs.get(Integer.parseInt(boundKey));
+
+        if(e != null){
+            return e;
+        }
+
+        return null;
     }
 
 

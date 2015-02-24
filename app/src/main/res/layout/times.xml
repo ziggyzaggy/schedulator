@@ -10,13 +10,14 @@
         android:textColor="@color/mainGrayText"
         android:textSize="25sp"
         android:layout_alignParentTop="true"
-        android:padding="8dp"
+        android:padding="16dp"
         />
     <View
         android:layout_below="@+id/time1am"
         android:layout_width="wrap_content"
         android:layout_height="1dp"
         android:background="#ccc"
+        android:padding="20dp"
         />
 
     <RelativeLayout
@@ -32,13 +33,13 @@
         android:layout_height="wrap_content"
         android:text="2 am"
         android:textColor="@color/mainGrayText"
-        android:padding="8dp"
+        android:padding="16dp"
         android:textSize="25sp"
         android:layout_below="@id/timesFor1Am"
         />
     <View
         android:layout_below="@+id/time2am"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:background="#ccc"
         />
