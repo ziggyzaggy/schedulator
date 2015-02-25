@@ -127,13 +127,13 @@ public class FriendListAdapter extends BaseAdapter {
         if(friendsList.get(position).isCheckedInList()){
             colorToSet = mContext.getResources().getColor(R.color.mainBlue);
             textColorToSet = mContext.getResources().getColor(R.color.white);
-
         }else{
             colorToSet = mContext.getResources().getColor(android.R.color.transparent);
             textColorToSet = mContext.getResources().getColor(android.R.color.black);
         }
         holder.nameTV.setBackgroundColor(colorToSet);
         holder.nameTV.setTextColor(textColorToSet);
+
 
         return v;
     }
