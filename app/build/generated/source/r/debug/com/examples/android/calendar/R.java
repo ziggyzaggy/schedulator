@@ -182,8 +182,9 @@ containing a value of this type.
     }
     public static final class style {
         public static final int CircularProgressBar=0x7f0b0000;
-        public static final int Theme_NoBackground=0x7f0b0001;
-        public static final int Theme_SmoothProgressBarDefaults=0x7f0b0002;
+        public static final int DayTimesDivider=0x7f0b0001;
+        public static final int Theme_NoBackground=0x7f0b0002;
+        public static final int Theme_SmoothProgressBarDefaults=0x7f0b0003;
     }
     public static final class styleable {
         /** Attributes that can be used with a CircularProgressBar.

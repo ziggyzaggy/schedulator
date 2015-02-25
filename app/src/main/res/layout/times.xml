@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="16dp"
+    >
 
     <TextView
         android:id="@+id/time1am"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1 am"
+        android:text="1 AM"
         android:textColor="@color/mainGrayText"
         android:textSize="25sp"
         android:layout_alignParentTop="true"
-        android:padding="16dp"
+        android:paddingBottom="16dp"
         />
     <View
         android:layout_below="@+id/time1am"
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        android:background="#ccc"
-        android:padding="20dp"
+        style="@style/DayTimesDivider"
         />
 
     <RelativeLayout
@@ -31,17 +30,15 @@
         android:id="@+id/time2am"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2 am"
+        android:text="2 AM"
         android:textColor="@color/mainGrayText"
-        android:padding="16dp"
+        android:paddingBottom="16dp"
         android:textSize="25sp"
         android:layout_below="@id/timesFor1Am"
         />
     <View
         android:layout_below="@+id/time2am"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#ccc"
+        style="@style/DayTimesDivider"
         />
     <RelativeLayout
         android:id="@+id/timesFor2Am"

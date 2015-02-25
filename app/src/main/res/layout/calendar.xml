@@ -34,7 +34,6 @@
             android:textSize="30sp"
             android:textColor="@color/white"
             android:background="@color/mainBlue"
-            android:elevation="4dp"
             />
 
         <TextView

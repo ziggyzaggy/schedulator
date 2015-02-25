@@ -21,7 +21,6 @@
         android:textSize="28sp"
         android:padding="5dp"
         android:gravity="end|center"
-        android:elevation="4dp"
         />
 
 
