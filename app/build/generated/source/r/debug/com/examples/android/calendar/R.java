@@ -10,13 +10,15 @@ package com.examples.android.calendar;
 public final class R {
     public static final class anim {
         public static final int collapse_height_width=0x7f040000;
-        public static final int exit_to_left=0x7f040001;
-        public static final int expand_height=0x7f040002;
-        public static final int expand_height_width=0x7f040003;
-        public static final int fade_in=0x7f040004;
-        public static final int from_left=0x7f040005;
-        public static final int from_left_lesser=0x7f040006;
-        public static final int from_right=0x7f040007;
+        public static final int entering_fade_in=0x7f040001;
+        public static final int exit_to_left=0x7f040002;
+        public static final int exit_to_right_fancy=0x7f040003;
+        public static final int expand_height=0x7f040004;
+        public static final int expand_height_width=0x7f040005;
+        public static final int fade_in=0x7f040006;
+        public static final int from_left=0x7f040007;
+        public static final int from_left_lesser=0x7f040008;
+        public static final int from_right=0x7f040009;
     }
     public static final class array {
         public static final int circularPrgBarColors=0x7f050000;
@@ -119,6 +121,7 @@ containing a value of this type.
     }
     public static final class id {
         public static final int TAG_EVENT_ID=0x7f080000;
+        public static final int actualTimesWrapper=0x7f080023;
         public static final int avatarTV=0x7f08001c;
         public static final int bind=0x7f080013;
         public static final int blueIndicator=0x7f080017;
@@ -129,7 +132,6 @@ containing a value of this type.
         public static final int dateDetailContainerText=0x7f08000b;
         public static final int dateHeaderText=0x7f08001f;
         public static final int datePicker1=0x7f080020;
-        public static final int dayViewIncludedTimesView=0x7f08001b;
         public static final int drawerFriendContainer=0x7f080010;
         public static final int friendsTV=0x7f080012;
         public static final int friends_drawer=0x7f080001;
@@ -146,13 +148,15 @@ containing a value of this type.
         public static final int redIndicator=0x7f080018;
         public static final int right_drawer=0x7f080011;
         public static final int right_drawer_groups=0x7f08000f;
-        public static final int rootDayView=0x7f080019;
-        public static final int time1am=0x7f080022;
-        public static final int time2am=0x7f080024;
-        public static final int timesFor1Am=0x7f080023;
-        public static final int timesFor2Am=0x7f080025;
+        public static final int rootDayView=0x7f08001a;
+        public static final int rootScrollDayView=0x7f080019;
+        public static final int time1am=0x7f080024;
+        public static final int time2am=0x7f080026;
+        public static final int timeHeaderTV=0x7f080022;
+        public static final int timesFor1Am=0x7f080025;
+        public static final int timesFor2Am=0x7f080027;
         public static final int title=0x7f080009;
-        public static final int topBarDayView=0x7f08001a;
+        public static final int topBarDayView=0x7f08001b;
         public static final int topBarWrapper=0x7f080003;
         public static final int txtGroupName=0x7f08001e;
         public static final int weekText=0x7f080004;
@@ -169,7 +173,8 @@ containing a value of this type.
         public static final int friendslist_listview_header=0x7f030004;
         public static final int group_list_item=0x7f030005;
         public static final int main=0x7f030006;
-        public static final int times=0x7f030007;
+        public static final int single_time=0x7f030007;
+        public static final int times=0x7f030008;
     }
     public static final class string {
         public static final int app_name=0x7f0a0000;

@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,28 +25,40 @@ public class DayView extends Activity{
     private String receivedIntent;
     private TextView headerDateTV;
     private Event eventObj;
+    private float x1,x2;
 
 
+    private ScrollView mRootScrollView;
+    static final int MIN_DISTANCE = 150;
+
+    @Override
+    public void finish() {
+        //override finish method of activity to override the default exit animation
+        super.finish();
+        DayView.this.overridePendingTransition(R.anim.entering_fade_in, R.anim.exit_to_right_fancy);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.day_view);
-
+        LinearLayout root = (LinearLayout) findViewById(R.id.rootDayView);
         receivedIntent = getIntent().getStringExtra("passedDate");
         eventObj = getIntent().getParcelableExtra("eventObj");
 
         headerDateTV = (TextView) findViewById(R.id.topBarDayView);
         headerDateTV.setText(receivedIntent);
 
+        mRootScrollView = (ScrollView) findViewById(R.id.rootScrollDayView);
+
 
         //ensure that an event was passed from parent activity
         //if it wasn't then user had chosen a blank day with no events
         if(eventObj == null){
-            LinearLayout root = (LinearLayout) findViewById(R.id.rootDayView);
-            View v = (View) findViewById(R.id.dayViewIncludedTimesView);
+
+           // View v = (View) findViewById(R.id.dayViewIncludedTimesView);
             //remove the times from root view
-            root.removeView(v);
+           // root.removeView(v);
 
 
             String colorValue = "#" + getResources().getString(R.color.mainBlue).substring(3);
@@ -64,10 +79,10 @@ public class DayView extends Activity{
                     Toast.makeText(getApplicationContext(), "Unimplemented: new event create", Toast.LENGTH_SHORT).show();
                 }
             });
-
-
             root.addView(nullTextView);
 
+        }else{
+            setUpTimes();
         }
 
         headerDateTV.setOnClickListener(new View.OnClickListener() {
@@ -79,5 +94,110 @@ public class DayView extends Activity{
             }
         });
 
+
+        mRootScrollView.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                //region swipie swipie
+
+
+                boolean isX = false;
+
+
+                switch(event.getAction())
+                {
+                    case MotionEvent.ACTION_DOWN:
+                        x1 = event.getX();
+
+
+                        break;
+
+
+
+                    case MotionEvent.ACTION_MOVE:
+
+
+                      /*  x2 = event.getX(); make the whole view pullable, will finsih if good few hours to waste
+                        float moveDeltaX = x2-x1;
+
+                        int negativePull = 5;
+
+                        if(!(Math.round(moveDeltaX) > MIN_DISTANCE)){
+                            mRootScrollView.setPadding(Math.round(moveDeltaX),
+                                    mRootScrollView.getPaddingTop(),
+                                    - Math.round(moveDeltaX),
+                                    mRootScrollView.getPaddingBottom());
+                        }else{
+                            if (negativePull > 0){
+                             negativePull -= moveDeltaX;
+                            }
+
+                            if(negativePull < 0){
+                                negativePull = 1;
+                            }
+                            mRootScrollView.setPadding(Math.round(moveDeltaX) - negativePull,
+                                    mRootScrollView.getPaddingTop(),
+                                    -negativePull,
+                                    mRootScrollView.getPaddingBottom());
+                        }
+
+                        if(moveDeltaX > 0){
+                            isX = true;
+                        }
+                        headerDateTV.setText("" + Math.round(moveDeltaX));
+
+                    */
+
+
+
+                        break;
+                    //endregion
+                    case MotionEvent.ACTION_UP:
+                        x2 = event.getX();
+                        float deltaX = x2 - x1;
+                        if (Math.abs(deltaX) > MIN_DISTANCE)
+                        {
+
+                            // Left to Right swipe action
+                            if (x2 > x1)
+                            {
+                                //close activity with left to right swipe
+                                finish();
+
+                            }
+
+                            // Right to left swipe action
+                            else
+                            {
+
+                            }
+                        }
+                        break;
+                }
+                return isX;
+                //endregion
+            }
+        });
+
+
+
     }
+
+    //method to populate the times dynamically
+    private void setUpTimes(){
+        ViewGroup parent = (ViewGroup) findViewById(R.id.rootDayView);
+
+        for (int i = 1; i < 25; i++){
+            View retView = LayoutInflater.from(this).inflate(R.layout.single_time, parent, false);
+            TextView head = (TextView) retView.findViewById(R.id.timeHeaderTV);
+            head.setText(i +" PM");
+
+            parent.addView(retView);
+        }
+
+
+    }
+
 }
