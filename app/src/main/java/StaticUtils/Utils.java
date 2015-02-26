@@ -1,5 +1,9 @@
 package StaticUtils;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -53,4 +57,20 @@ public final class Utils {
         Collections.sort(two);
         return one.equals(two);
     }
+
+
+    //converts dp to pixels and vice versa
+    public static int pxDp(final Context context, final float px) {
+        //return (int) (px / context.getResources().getDisplayMetrics().density);
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        int dp = Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+        return dp;
+
+
+    }
+
+    public static int dpPx(final Context context, final float dp) {
+        return Math.round(dp * context.getResources().getDisplayMetrics().density);
+    }
+
 }

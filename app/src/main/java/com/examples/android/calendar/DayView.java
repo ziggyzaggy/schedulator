@@ -3,17 +3,20 @@ package com.examples.android.calendar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.Layout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import ENTITIES.Event;
+import StaticUtils.Utils;
 
 /**
  * Created by ziggyzaggy on 23/02/2015.
@@ -190,11 +193,24 @@ public class DayView extends Activity{
         ViewGroup parent = (ViewGroup) findViewById(R.id.rootDayView);
 
         for (int i = 1; i < 25; i++){
+            //inflate layout from a layout xml, view returned into retview is the actual inflated view
             View retView = LayoutInflater.from(this).inflate(R.layout.single_time, parent, false);
+            //set header text
             TextView head = (TextView) retView.findViewById(R.id.timeHeaderTV);
             head.setText(i +" PM");
 
-            parent.addView(retView);
+            RelativeLayout container = (RelativeLayout) retView.findViewById(R.id.actualTimesWrapper);
+
+            View retRealTimeView = LayoutInflater.from(this).inflate(R.layout.single_event_preview, container, false);
+            ((TextView)retRealTimeView.findViewById(R.id.realTimeTV)).setText("2.30");
+            ((TextView)retRealTimeView.findViewById(R.id.realTimeDescTV)).setText("Hello world!");
+
+
+            retRealTimeView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, Utils.pxDp(getApplicationContext(), 100)));
+
+            container.addView(retRealTimeView);
+
+            parent.addView(retView);//add the view to the parent
         }
 
 

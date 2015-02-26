@@ -121,7 +121,7 @@ containing a value of this type.
     }
     public static final class id {
         public static final int TAG_EVENT_ID=0x7f080000;
-        public static final int actualTimesWrapper=0x7f080023;
+        public static final int actualTimesWrapper=0x7f080025;
         public static final int avatarTV=0x7f08001c;
         public static final int bind=0x7f080013;
         public static final int blueIndicator=0x7f080017;
@@ -145,16 +145,18 @@ containing a value of this type.
         public static final int nameTV=0x7f08001d;
         public static final int openButton=0x7f080021;
         public static final int prgBarDates=0x7f080008;
+        public static final int realTimeDescTV=0x7f080023;
+        public static final int realTimeTV=0x7f080022;
         public static final int redIndicator=0x7f080018;
         public static final int right_drawer=0x7f080011;
         public static final int right_drawer_groups=0x7f08000f;
         public static final int rootDayView=0x7f08001a;
         public static final int rootScrollDayView=0x7f080019;
-        public static final int time1am=0x7f080024;
-        public static final int time2am=0x7f080026;
-        public static final int timeHeaderTV=0x7f080022;
-        public static final int timesFor1Am=0x7f080025;
-        public static final int timesFor2Am=0x7f080027;
+        public static final int time1am=0x7f080026;
+        public static final int time2am=0x7f080028;
+        public static final int timeHeaderTV=0x7f080024;
+        public static final int timesFor1Am=0x7f080027;
+        public static final int timesFor2Am=0x7f080029;
         public static final int title=0x7f080009;
         public static final int topBarDayView=0x7f08001b;
         public static final int topBarWrapper=0x7f080003;
@@ -173,8 +175,9 @@ containing a value of this type.
         public static final int friendslist_listview_header=0x7f030004;
         public static final int group_list_item=0x7f030005;
         public static final int main=0x7f030006;
-        public static final int single_time=0x7f030007;
-        public static final int times=0x7f030008;
+        public static final int single_event_preview=0x7f030007;
+        public static final int single_time=0x7f030008;
+        public static final int times=0x7f030009;
     }
     public static final class string {
         public static final int app_name=0x7f0a0000;
