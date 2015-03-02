@@ -17,6 +17,7 @@
 package com.examples.android.calendar;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -28,6 +29,7 @@ import android.os.Vibrator;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.text.Layout;
+import android.transition.Explode;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.Gravity;
@@ -37,6 +39,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
@@ -59,6 +62,7 @@ import java.util.Calendar;
 import ADAPTERS.CalendarAdapter;
 import ADAPTERS.FriendListAdapter;
 import ADAPTERS.GroupsAdapter;
+import ADAPTERS.NavAdapter;
 import ENTITIES.Event;
 import ENTITIES.Friend;
 import GLOBALS.CurrentUser;
@@ -72,6 +76,7 @@ public class CalendarView extends Activity {
 	public Calendar month;
 	public CalendarAdapter adapter;
     public FriendListAdapter friendAdapter;
+    public NavAdapter navAdapter;
 	public Handler handler;
     ArrayList<Event> eventObjs;
 	public JSONObject jobj;
@@ -87,17 +92,20 @@ public class CalendarView extends Activity {
     private ListView mRightDrawerList;
     private TextView mGroupsTV;
     private TextView mFriendsTV;
+    private ListView mNavListView;
 
     private LinearLayout mRightDrawerGroupContainer;
     private RelativeLayout mRightDrawerFriendContainer;
     static final int MIN_DISTANCE = 150;
 
+
 	public void onCreate(Bundle savedInstanceState) {
+
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.calendar);
 
-        final Toast t = new Toast(getApplicationContext());
         //getWindow().setBackgroundDrawable(null);
+
 
 	    month = Calendar.getInstance();
 	    onNewIntent(getIntent());
@@ -124,6 +132,10 @@ public class CalendarView extends Activity {
 	    adapter = new CalendarAdapter(this, month);
         friendAdapter = new FriendListAdapter(this);
         GroupsAdapter gAdapter = new GroupsAdapter(this);
+        navAdapter = new NavAdapter(this);
+
+        mNavListView = (ListView) findViewById(R.id.nav_drawer_listView);
+        mNavListView.setAdapter(navAdapter);
 
 
 
@@ -262,7 +274,7 @@ public class CalendarView extends Activity {
 
                 if (date instanceof TextView && !date.getText().equals("") && isNum) {
                     setSelectedBackground(v, gridview);
-                    Intent intent = new Intent();
+                    //Intent intent = new Intent();
                     String day = date.getText().toString();
 
                     if (day.length() == 1) {
@@ -290,8 +302,6 @@ public class CalendarView extends Activity {
                         Event event = getDetailInfo(boundField.getText().toString());
                         dayViewIntent.putExtra("eventObj", event);
                     }
-
-
                     startActivity(dayViewIntent);
                     overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left_fancy);
 
@@ -362,6 +372,13 @@ public class CalendarView extends Activity {
 
         });
 
+
+        mNavListView.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                navAdapter.setSelectedIndex(position);
+            }
+        });
 
 
 

@@ -155,9 +155,38 @@
 
 </LinearLayout>
 
+    <!--navigation drawer-->
+    <LinearLayout
+        android:id="@+id/navDrawerContainer"
+        android:layout_width="270dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:orientation="vertical"
+        android:background="@color/friendsDrawerColor"
+        android:animateLayoutChanges="true"
+        >
+        <ListView
+            android:id="@+id/nav_drawer_listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:choiceMode="singleChoice"
+            android:listSelector="@color/mainBlue"
+            android:cacheColorHint="@color/friendsDrawerColor"
+            android:drawSelectorOnTop="false"
+            android:divider="@color/mainGrayText"
+            android:dividerHeight="0dp"
+            android:layout_gravity="end"
+            android:fadingEdge="none"
+            android:fadingEdgeLength="0dp"
+            android:layout_alignParentTop="true"
+            />
 
 
+        </LinearLayout>
+    <!--navigation drawer end-->
 
+
+    <!--friend drawer-->
     <LinearLayout
         android:id="@+id/lldrawercontent"
         android:layout_width="270dp"
@@ -264,5 +293,5 @@
         </RelativeLayout>
 
     </LinearLayout>
-
+    <!-- friend drawer end-->
 </android.support.v4.widget.DrawerLayout>
