@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Layout;
+import android.transition.Explode;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -32,7 +33,7 @@ public class DayView extends Activity{
 
 
     private ScrollView mRootScrollView;
-    static final int MIN_DISTANCE = 150;
+    static final int MIN_DISTANCE = 250;
 
     @Override
     public void finish() {
@@ -202,11 +203,17 @@ public class DayView extends Activity{
             RelativeLayout container = (RelativeLayout) retView.findViewById(R.id.actualTimesWrapper);
 
             View retRealTimeView = LayoutInflater.from(this).inflate(R.layout.single_event_preview, container, false);
-            ((TextView)retRealTimeView.findViewById(R.id.realTimeTV)).setText("2.30");
-            ((TextView)retRealTimeView.findViewById(R.id.realTimeDescTV)).setText("Hello world!");
+            ((TextView)retRealTimeView.findViewById(R.id.realTimeTV)).setText("whatever:15");
+            ((TextView)retRealTimeView.findViewById(R.id.realTimeDescTV)).setText("test");
 
 
-            retRealTimeView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, Utils.pxDp(getApplicationContext(), 100)));
+            //Test stage, the first times layout should have same height and same top margin as the next ones, if the do on various screen sizes then the current dp conversion algorithm is correct
+            //WHERES MY RULER
+            //total height of an hours container = 300dp = 60 minutes -> 300/60 = 5dp = 1 minutes
+            retRealTimeView.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 45 * (int)getResources().getDisplayMetrics().density));
+            RelativeLayout.LayoutParams realtimeViewMarginParams = (RelativeLayout.LayoutParams) retRealTimeView.getLayoutParams();
+            realtimeViewMarginParams.setMargins(0, 75 * (int)getResources().getDisplayMetrics().density, 0, 0);// eg. this event starts at 15 minutes past hour
+            retRealTimeView.setLayoutParams(realtimeViewMarginParams);
 
             container.addView(retRealTimeView);
 

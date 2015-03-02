@@ -25,7 +25,6 @@
         />
 
 
-    <!--<include android:id="@+id/dayViewIncludedTimesView" layout="@layout/times"/>-->
 
 </LinearLayout>
 

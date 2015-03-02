@@ -293,6 +293,7 @@ public class CalendarView extends Activity {
 
 
                     startActivity(dayViewIntent);
+                    overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left_fancy);
 
                 }
                 return false;

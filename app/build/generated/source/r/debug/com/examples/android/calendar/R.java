@@ -10,15 +10,17 @@ package com.examples.android.calendar;
 public final class R {
     public static final class anim {
         public static final int collapse_height_width=0x7f040000;
-        public static final int entering_fade_in=0x7f040001;
-        public static final int exit_to_left=0x7f040002;
-        public static final int exit_to_right_fancy=0x7f040003;
-        public static final int expand_height=0x7f040004;
-        public static final int expand_height_width=0x7f040005;
-        public static final int fade_in=0x7f040006;
-        public static final int from_left=0x7f040007;
-        public static final int from_left_lesser=0x7f040008;
-        public static final int from_right=0x7f040009;
+        public static final int enter_from_right=0x7f040001;
+        public static final int entering_fade_in=0x7f040002;
+        public static final int exit_to_left=0x7f040003;
+        public static final int exit_to_left_fancy=0x7f040004;
+        public static final int exit_to_right_fancy=0x7f040005;
+        public static final int expand_height=0x7f040006;
+        public static final int expand_height_width=0x7f040007;
+        public static final int fade_in=0x7f040008;
+        public static final int from_left=0x7f040009;
+        public static final int from_left_lesser=0x7f04000a;
+        public static final int from_right=0x7f04000b;
     }
     public static final class array {
         public static final int circularPrgBarColors=0x7f050000;
@@ -153,10 +155,8 @@ containing a value of this type.
         public static final int rootDayView=0x7f08001a;
         public static final int rootScrollDayView=0x7f080019;
         public static final int time1am=0x7f080026;
-        public static final int time2am=0x7f080028;
         public static final int timeHeaderTV=0x7f080024;
         public static final int timesFor1Am=0x7f080027;
-        public static final int timesFor2Am=0x7f080029;
         public static final int title=0x7f080009;
         public static final int topBarDayView=0x7f08001b;
         public static final int topBarWrapper=0x7f080003;

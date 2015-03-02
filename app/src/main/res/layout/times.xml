@@ -24,27 +24,37 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/timeWrapperHeight"
         android:layout_below="@+id/time1am"
-        />
+        >
 
-    <TextView
-        android:id="@+id/time2am"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2 AM"
-        android:textColor="@color/mainGrayText"
-        android:paddingBottom="16dp"
-        android:textSize="25sp"
-        android:layout_below="@id/timesFor1Am"
-        />
-    <View
-        android:layout_below="@+id/time2am"
-        style="@style/DayTimesDivider"
-        />
-    <RelativeLayout
-        android:id="@+id/timesFor2Am"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/timeWrapperHeight"
-        android:layout_below="@+id/time2am"
-        />
+
+        <LinearLayout
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:weightSum="3"
+            android:layout_marginTop="150dp"
+            >
+
+            <TextView
+                android:id="@+id/realTimeTV"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="@android:color/black"
+                android:text="2.30"
+                />
+            <TextView
+                android:id="@+id/realTimeDescTV"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:textColor="@color/mainGrayText"
+                android:text="test"
+                />
+
+
+        </LinearLayout>
+
+        </RelativeLayout>
+
 
 </RelativeLayout>
