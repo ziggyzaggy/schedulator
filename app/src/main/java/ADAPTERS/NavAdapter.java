@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import com.examples.android.calendar.R;
 
-import java.lang.reflect.Array;
-
 
 /**
  * Created by kristjan on 02/03/2015.
@@ -18,17 +16,22 @@ import java.lang.reflect.Array;
 public class NavAdapter extends BaseAdapter{
     private int selectedIndex;
     private Context mContext;
-    private String[] navItemsArr = {"My Calendar", "Pepperoni", "Salami", "Beef"};
+    private static boolean wasSelected;
+   // private String[] navItemsArr = {"My Calendar", "Pepperoni", "Salami", "Beef"};
+   private static final String[] navItemsArr = GLOBALS.Constants.navIdNames();
 
     public NavAdapter(Context c){
         mContext = c;
         selectedIndex = 0;
+        wasSelected = false;
     }
 
 
     public void setSelectedIndex(int i){
         selectedIndex = i;
-    }
+        wasSelected = true;
+        notifyDataSetChanged();//fix to below comment
+    } //isn't getting picked up by adapter, notifydatasetchanged maybe?
     public int getSelectedIndex(){
         return selectedIndex;
     }
@@ -68,13 +71,14 @@ public class NavAdapter extends BaseAdapter{
         holder.nameTV.setText(navItemsArr[position]);
         int textColorToSet = 0;
 
-        if(position == selectedIndex){
-            textColorToSet = mContext.getResources().getColor(R.color.white);
-        }else{
-            textColorToSet = mContext.getResources().getColor(android.R.color.black);
+        if(wasSelected) {
+            if (position == selectedIndex) {
+                textColorToSet = mContext.getResources().getColor(R.color.white);
+            } else {
+                textColorToSet = mContext.getResources().getColor(android.R.color.black);
+            }
+            holder.nameTV.setTextColor(textColorToSet);
         }
-        holder.nameTV.setTextColor(textColorToSet);
-
 
         return v;
     }

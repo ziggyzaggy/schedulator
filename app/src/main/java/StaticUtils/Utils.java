@@ -73,4 +73,9 @@ public final class Utils {
         return Math.round(dp * context.getResources().getDisplayMetrics().density);
     }
 
+
+    //splits CamelCase string in to human readable Camel Case string
+    public static String splitCamel(String input) {
+        return input.replaceAll("(\\p{Ll})(\\p{Lu})", "$1 $2");
+    }
 }
