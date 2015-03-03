@@ -65,6 +65,7 @@ import ADAPTERS.GroupsAdapter;
 import ADAPTERS.NavAdapter;
 import ENTITIES.Event;
 import ENTITIES.Friend;
+import GLOBALS.Constants;
 import GLOBALS.CurrentUser;
 import HELPERS.DateHelper;
 import HELPERS.ScrollTracker;
@@ -136,7 +137,6 @@ public class CalendarView extends Activity {
 
         mNavListView = (ListView) findViewById(R.id.nav_drawer_listView);
         mNavListView.setAdapter(navAdapter);
-
 
 
         mRightDrawerList = (ListView) findViewById(R.id.right_drawer);
